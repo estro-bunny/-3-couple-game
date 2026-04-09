@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎮 CouplePlayHub
 
-## Getting Started
+![GitHub stars](https://img.shields.io/github/stars/Maddy-O/coupleplayhub?style=social)
+![GitHub forks](https://img.shields.io/github/forks/Maddy-O/coupleplayhub?style=social)
+![GitHub issues](https://img.shields.io/github/issues/Maddy-O/coupleplayhub)
+![License](https://img.shields.io/github/license/Maddy-O/coupleplayhub)
+![Last Commit](https://img.shields.io/github/last-commit/Maddy-O/coupleplayhub)
 
-First, run the development server:
+A fun and interactive web app designed for couples to play games, connect, and enjoy meaningful moments together ❤️
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+🌐 **Live App:** https://coupleplayhub.netlify.app/
+
+---
+
+## 💡 About the Project
+
+**CouplePlayHub** is built to bring couples closer through engaging and entertaining games.
+Unlike traditional apps focused on chatting, this platform focuses on **fun, interaction, and bonding**.
+
+No login. No friction. Just play instantly.
+
+---
+
+## ✨ Features
+
+* 🎯 Multiple fun games for couples
+* 🎡 Interactive spinner with smooth animations
+* ⚡ Fast and responsive UI
+* 📱 Fully mobile-friendly
+* 🔓 No login required – instant access
+* ❤️ Designed for better engagement and bonding
+
+---
+
+## 🖼️ Screenshots
+
+> *(Add screenshots here to increase engagement and trust)*
+> Example:
+>
+> ```
+> ![Home Screen](./screenshots/home.png)
+> ![Game Screen](./screenshots/game.png)
+> ```
+
+---
+
+## 🛠️ Tech Stack
+
+* ⚛️ React / Next.js
+* 🎨 Tailwind CSS *(if used)*
+* 🌐 Netlify (Deployment)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```
+git clone https://github.com/Maddy-O/coupleplayhub.git
+cd coupleplayhub
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install Dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Run Locally
 
-## Learn More
+```
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📂 Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+/components     → Reusable UI components  
+/pages          → App routes (Next.js)  
+/public         → Static assets  
+/styles         → Global styles  
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧭 Roadmap (Upcoming Features)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* 🎮 More couple games
+* 🏆 Score tracking system
+* 🔗 Multiplayer / real-time play
+* 🤖 AI-based game suggestions
+* 🎵 Sound effects & music enhancements
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -m 'feat: add new feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a Pull Request
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 🌟 Support
+
+If you like this project, consider giving it a ⭐ on GitHub!
+It really helps in growing and improving the project.
+
+---
+
+## 💬 Why CouplePlayHub?
+
+Most couple apps focus on messaging.
+**CouplePlayHub focuses on fun.**
+
+Because playing together builds stronger connections ❤️
+
+---
