@@ -1,0 +1,7 @@
+User-Agent: *
+Allow: /
+Disallow: /login/
+Disallow: /join/
+
+Sitemap: https://coupleplayhub.com/sitemap.xml
+Host: https://coupleplayhub.com
