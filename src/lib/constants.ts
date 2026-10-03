@@ -47,7 +47,6 @@ export const FEATURED_GAMES: FeaturedGame[] = [
       "https://lh3.googleusercontent.com/aida-public/AB6AXuBRTjr5qikYrrCqI7bVhaWpLB_OxhmG4wO3cCY0UXISSkJooJe9pr_TEAAFVq3o95tH3qZ6GvvdgyI0g1yy-nJkcl6kAzDs86FhmXRHrviNSegBgNfOw6oQDjHgBvYpc1aZmSMEwQpwKcu8uaTYZQc_wkeR-BST_XK-ydeY1lbs9xO_nNxA2i8yceMRo1dS9N-8hypefOs1AWh-o2nRDlI4GYfTTRELKfRbUTNtJJrVOZxmizmG638PF6qqJK7GD_1HsEKxW90uKHQ",
     alt: "cinematic close up of glowing neon pink dice on a dark reflective satin surface",
     buttonLabel: "ROLL NOW",
-    badge: "Most Played",
     variant: "large",
     href: "/games/sexy-dice",
   },
@@ -84,8 +83,6 @@ export const FEATURED_GAMES: FeaturedGame[] = [
       "https://lh3.googleusercontent.com/aida-public/AB6AXuBl1Vq1MsYljDgTzukJFJee2xb3ARdViRwqbA8QhBKUbEqxdqeG9sOOm2NElP1KIcQVEci068OicKevTJ35Li4pTMutPM-fFkkFi1ctQ8VkWvPEZZfkr4x4Jm4VlzaW6hTH5UgXPTEYf_xKOwZjN5Ds4cM8IgRRE3jaVCFhOncnCvA4352y3P_-QyWFzpKBgjb4NkruYcyOIclO5dyOyGT7RIL4rRKaBU5wkpYP6qsr7JUAVlC9B-h27eK7GErNtcMODYfH7IbRCVM",
     alt: "blurry silhouettes at a stylish lounge party with electric violet neon lighting",
     buttonLabel: "START PARTY",
-    badge: "TV-14",
-    badgeColor: "secondary",
     variant: "wide",
     description:
       "Bring the heat to your social gatherings with moderated fun.",
@@ -98,14 +95,14 @@ export const GLASS_GAMES: GlassGame[] = [
     icon: "casino",
     title: "SUPER SEX DICE",
     description:
-      "Customizable actions and locations for the ultimate random thrill.",
+      "Roll for a playful action and setting combination.",
     href: "/games/super-sex-dice",
   },
   {
     icon: "timer",
     title: "SEXY TIMER",
     description:
-      "Race against time to complete daring tasks before the bell rings.",
+      "Choose a short countdown and play through a timed prompt.",
     href: "/games/sexy-timer",
   },
   {
