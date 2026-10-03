@@ -30,20 +30,8 @@ export default function AffiliatesPage() {
           <h1 className="text-5xl md:text-7xl font-black font-headline tracking-tighter">
             AFFILIATE <span className="text-secondary">PROGRAM</span>
           </h1>
-          <p className="text-xl text-on-surface-variant max-w-2xl mx-auto">
-            Partner with CouplePlayHub and earn commissions promoting the best couple games online. Program details coming soon.
-          </p>
-          <div className="pt-4">
-            <Button
-              href="/join"
-              variant="secondary"
-              size="lg"
-              className="rounded-xl"
-            >
-              JOIN AS AFFILIATE
-            </Button>
-          </div>
-        </div>
+          <p className="text-xl text-on-surface-variant max-w-2xl mx-auto">There is no affiliate program yet. If that changes, the program details and application flow will be published here.</p>
+                  </div>
       </section>
     </PageShell>
   );
