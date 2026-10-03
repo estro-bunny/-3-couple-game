@@ -1,10 +1,10 @@
 # 🐇💗 CouplePlayHub — EstroBunny
 
-![GitHub stars](https://img.shields.io/github/stars/Maddy-O/coupleplayhub?style=social)
-![GitHub forks](https://img.shields.io/github/forks/Maddy-O/coupleplayhub?style=social)
-![GitHub issues](https://img.shields.io/github/issues/Maddy-O/coupleplayhub)
-![License](https://img.shields.io/github/license/Maddy-O/coupleplayhub)
-![Last Commit](https://img.shields.io/github/last-commit/Maddy-O/coupleplayhub)
+![GitHub stars](https://img.shields.io/github/stars/estro-bunny/-3-couple-game?style=social)
+![GitHub forks](https://img.shields.io/github/forks/estro-bunny/-3-couple-game?style=social)
+![GitHub issues](https://img.shields.io/github/issues/estro-bunny/-3-couple-game)
+![License](https://img.shields.io/github/license/estro-bunny/-3-couple-game)
+![Last Commit](https://img.shields.io/github/last-commit/estro-bunny/-3-couple-game)
 
 A fun, private-first web playground for couples to play games, flirt, laugh, and create their own chaos together. ❤️
 
@@ -80,10 +80,10 @@ npm run dev
 ## 📂 Project Structure
 
 ```
-/components     → Reusable UI components  
-/pages          → App routes (Next.js)  
-/public         → Static assets  
-/styles         → Global styles  
+src/app       → Next.js routes and pages  
+src/components → Reusable UI and game boards  
+src/lib        → Game engines, constants, and SEO  
+public         → Static assets  
 ```
 
 ---
@@ -121,6 +121,21 @@ This project is licensed under the MIT License.
 ## 🛠️ Development Philosophy
 
 This is a passion project, not a content farm. Build the games first. Make them fun. Keep privacy understandable. Avoid fake metrics and features that do not exist yet. Every meaningful feature should be small enough to finish, test, and ship.
+
+## 🎮 Current playable library
+
+All eight advertised core games currently have playable routes:
+
+- Sexy Dice
+- Truth or Dare
+- Spin the Bottle
+- Sex Roulette Wheel
+- Kama Sutra Cards
+- Party Games
+- Super Sex Dice
+- Sexy Timer
+
+Progress is stored locally in the browser; no account is required for local play.
 
 ## 🌟 Support
 
