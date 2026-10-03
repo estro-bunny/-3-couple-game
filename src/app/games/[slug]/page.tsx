@@ -7,6 +7,7 @@ import SpinTheBottleBoard from "@/components/games/spin-the-bottle/SpinTheBottle
 import SexRouletteBoard from "@/components/games/sex-roulette/SexRouletteBoard";
 import KamaSutraCardsBoard from "@/components/games/kama-sutra/KamaSutraCardsBoard";
 import PartyGamesBoard from "@/components/games/party-games/PartyGamesBoard";
+import SuperDiceBoard from "@/components/games/super-dice/SuperDiceBoard";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import RelatedGames from "@/components/ui/RelatedGames";
 import { FEATURED_GAMES, GLASS_GAMES } from "@/lib/constants";
@@ -81,6 +82,7 @@ export default async function GamePage({
   const isSexRoulette = slug === "sex-roulette-wheel";
   const isKamaSutraCards = slug === "kama-sutra-cards";
   const isPartyGames = slug === "party-games";
+  const isSuperDice = slug === "super-sex-dice";
 
   const seo = GAME_SEO[slug];
 
@@ -123,7 +125,9 @@ export default async function GamePage({
                       ? "Draw a card for a romantic prompt, connection challenge, or conversation starter."
                       : isPartyGames
                         ? "Pick a mode and keep the party moving with quick-fire prompts, questions, and playful challenges."
-                        : seo?.description ?? description}
+                        : isSuperDice
+                          ? "Roll two dice for a playful action and setting, then let chance choose the next moment."
+                          : seo?.description ?? description}
           </p>
 
           {isSexyDice ? (
@@ -138,6 +142,8 @@ export default async function GamePage({
             <KamaSutraCardsBoard />
           ) : isPartyGames ? (
             <PartyGamesBoard />
+          ) : isSuperDice ? (
+            <SuperDiceBoard />
           ) : (
             <>
               <div className="pt-4">
