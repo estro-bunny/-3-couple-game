@@ -4,7 +4,6 @@ import type {
   FeaturedGame,
   GlassGame,
   HighlightItem,
-  StatItem,
   FeaturePoint,
   FooterLink,
 } from "@/types";
@@ -32,7 +31,7 @@ export const CATEGORIES: CategoryItem[] = [
   {
     icon: "local_fire_department",
     title: "XXX",
-    description: "Intense, explicit, and adventurous.",
+    description: "Bolder prompts and playful challenges.",
     href: "/categories/xxx",
   },
   {
@@ -121,33 +120,28 @@ export const GLASS_GAMES: GlassGame[] = [
 ];
 
 export const FEATURES: FeaturePoint[] = [
-  { icon: "check_circle", text: "Customizable intimacy levels" },
-  { icon: "check_circle", text: "Expert-curated challenges" },
-  { icon: "check_circle", text: "Secure & Private platform" },
-];
-
-export const STATS: StatItem[] = [
-  { value: "98%", label: "Success Rate" },
-  { value: "10k+", label: "Active Users" },
+  { icon: "check_circle", text: "Playable games with simple local progress" },
+  { icon: "check_circle", text: "Skip-friendly prompts and controls" },
+  { icon: "check_circle", text: "No account required for local play" },
 ];
 
 export const HIGHLIGHTS: HighlightItem[] = [
   {
     icon: "security",
-    title: "Zero-Log Privacy",
-    description: "Your play history is yours alone. We never store session data.",
+    title: "Local-First Progress",
+    description: "Game progress is kept in your browser on this device.",
   },
   {
     icon: "devices",
-    title: "Multi-Device Sync",
+    title: "No Account Needed",
     description:
-      "Start on your phone, finish on your smart TV. Seamless play.",
+      "Jump into the games without creating an account or signing in.",
   },
   {
     icon: "stars",
-    title: "VIP Exclusive Content",
+    title: "Built for Connection",
     description:
-      "Unlock premium card decks and elite game modes every week.",
+      "Play together, skip anything uncomfortable, and keep the pace yours.",
   },
 ];
 
