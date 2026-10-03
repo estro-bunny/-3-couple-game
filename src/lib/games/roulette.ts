@@ -39,7 +39,8 @@ export function getRouletteRotation(
 
   const segmentSize = 360 / optionCount;
   const targetCenter = selectedIndex * segmentSize + segmentSize / 2;
-  const targetAngle = (360 - targetCenter) % 360;
+  const normalizedCurrent = ((currentRotation % 360) + 360) % 360;
+  const targetAngle = (360 - targetCenter - normalizedCurrent + 360) % 360;
 
   return currentRotation + extraTurns * 360 + targetAngle;
 }
