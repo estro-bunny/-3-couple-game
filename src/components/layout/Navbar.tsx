@@ -5,45 +5,32 @@ import Logo from "@/components/ui/Logo";
 
 export default function Navbar() {
   return (
-    <>
-      <header className="fixed top-0 w-full z-50 bg-[#131313]/90 backdrop-blur-xl shadow-[0_4px_30px_rgba(255,0,255,0.1)]">
-        <nav
-          className="flex justify-between items-center px-8 h-20"
-          aria-label="Main navigation"
-        >
-          <div className="flex items-center gap-8">
-            <Logo size="sm" />
-            <div className="hidden md:flex gap-6 items-center">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className={`font-headline tracking-tight transition-colors duration-300 ${
-                    link.isActive
-                      ? "text-primary border-b-2 border-primary pb-1"
-                      : "text-on-surface-variant hover:text-on-surface"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+    <header className="fixed top-0 w-full z-50 px-3 pt-3">
+      <nav
+        className="mx-auto max-w-7xl h-16 px-4 md:px-6 flex justify-between items-center rounded-2xl border border-primary/20 bg-[#08070d]/80 backdrop-blur-2xl shadow-[0_10px_50px_rgba(255,0,255,.12)]"
+        aria-label="Main navigation"
+      >
+        <div className="flex items-center gap-5">
+          <Logo size="sm" />
+          <span className="hidden lg:inline text-[10px] font-black tracking-[.28em] text-secondary/70">
+            INITIALIZING CHAOS...
+          </span>
+          <div className="hidden md:flex gap-5 items-center">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="relative font-headline text-sm font-bold tracking-tight text-on-surface-variant hover:text-primary transition-colors after:absolute after:-bottom-2 after:left-0 after:h-px after:w-0 after:bg-secondary hover:after:w-full after:transition-all"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
-          <div className="flex items-center gap-4">
-            <Button href="/login" variant="ghost" size="sm">
-              Login
-            </Button>
-            <Button href="/join" variant="primary" size="sm">
-              Join Now
-            </Button>
-          </div>
-        </nav>
-      </header>
-      {/* Separator line */}
-      <div
-        className="fixed top-20 w-full h-px bg-gradient-to-b from-surface-container-low to-transparent z-40"
-        aria-hidden="true"
-      />
-    </>
+        </div>
+        <Button href="/games" variant="primary" size="sm" className="rounded-xl shadow-[0_0_24px_rgba(255,0,255,.25)]">
+          PLAY NOW <span aria-hidden="true">♡</span>
+        </Button>
+      </nav>
+    </header>
   );
 }
