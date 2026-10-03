@@ -28,7 +28,7 @@ export default function GamesPage() {
             </h1>
             <p className="text-on-surface-variant text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
               Eight playable games. No account. No fake leaderboard. No pretending we're normal.
-              Pick one, play together, skip whatever you don't vibe with.
+              Built queer-friendly: no assigned gender roles, no heterosexual assumptions. Pick one, play together, skip whatever you don't vibe with.
             </p>
           </div>
 
