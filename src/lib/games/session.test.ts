@@ -1,8 +1,10 @@
 import { describe, expect, it, beforeEach } from "vitest";
 import {
   EMPTY_GAME_SESSION,
+  completeGameRound,
   loadGameSession,
   recordRound,
+  resetGameSession,
   saveGameSession,
 } from "./session";
 
@@ -46,6 +48,24 @@ describe("game session engine", () => {
     saveGameSession("test", session);
 
     expect(loadGameSession("test")).toEqual(session);
+  });
+
+  it("completes and persists a round through the public mutation API", () => {
+    const next = completeGameRound("test", EMPTY_GAME_SESSION, 5000);
+
+    expect(next).toEqual({
+      roundsCompleted: 1,
+      startedAt: 5000,
+      lastPlayedAt: 5000,
+    });
+    expect(loadGameSession("test")).toEqual(next);
+  });
+
+  it("resets and persists an empty session through the public mutation API", () => {
+    saveGameSession("test", recordRound(EMPTY_GAME_SESSION, 1000));
+
+    expect(resetGameSession("test")).toEqual(EMPTY_GAME_SESSION);
+    expect(loadGameSession("test")).toEqual(EMPTY_GAME_SESSION);
   });
 
   it("recovers safely from malformed storage", () => {
