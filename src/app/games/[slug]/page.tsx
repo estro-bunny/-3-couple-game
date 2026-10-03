@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import PageShell from "@/components/layout/PageShell";
 import Button from "@/components/ui/Button";
 import GameBoard from "@/components/games/sexy-dice/GameBoard";
+import TruthOrDareBoard from "@/components/games/truth-or-dare/TruthOrDareBoard";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import RelatedGames from "@/components/ui/RelatedGames";
 import { FEATURED_GAMES, GLASS_GAMES } from "@/lib/constants";
@@ -71,6 +72,7 @@ export default async function GamePage({
     "Get ready for an unforgettable experience with your partner.";
   const image = featured?.image;
   const isSexyDice = slug === "sexy-dice";
+  const isTruthOrDare = slug === "truth-or-dare";
 
   const seo = GAME_SEO[slug];
 
@@ -103,11 +105,15 @@ export default async function GamePage({
           <p className="text-xl text-on-surface-variant max-w-2xl mx-auto">
             {isSexyDice
               ? "Roll the dice and let fate decide your next intimate move. The most popular online dice game for couples."
-              : seo?.description ?? description}
+              : isTruthOrDare
+                ? "Take turns choosing Truth or Dare with a local-first deck built for connection, laughter, and easy skips."
+                : seo?.description ?? description}
           </p>
 
           {isSexyDice ? (
             <GameBoard />
+          ) : isTruthOrDare ? (
+            <TruthOrDareBoard />
           ) : (
             <>
               <div className="pt-4">
