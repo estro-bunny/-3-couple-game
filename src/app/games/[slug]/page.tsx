@@ -5,6 +5,7 @@ import GameBoard from "@/components/games/sexy-dice/GameBoard";
 import TruthOrDareBoard from "@/components/games/truth-or-dare/TruthOrDareBoard";
 import SpinTheBottleBoard from "@/components/games/spin-the-bottle/SpinTheBottleBoard";
 import SexRouletteBoard from "@/components/games/sex-roulette/SexRouletteBoard";
+import KamaSutraCardsBoard from "@/components/games/kama-sutra/KamaSutraCardsBoard";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import RelatedGames from "@/components/ui/RelatedGames";
 import { FEATURED_GAMES, GLASS_GAMES } from "@/lib/constants";
@@ -77,6 +78,7 @@ export default async function GamePage({
   const isTruthOrDare = slug === "truth-or-dare";
   const isSpinTheBottle = slug === "spin-the-bottle";
   const isSexRoulette = slug === "sex-roulette-wheel";
+  const isKamaSutraCards = slug === "kama-sutra-cards";
 
   const seo = GAME_SEO[slug];
 
@@ -115,7 +117,9 @@ export default async function GamePage({
                   ? "Take turns spinning the bottle and let a random pick decide who gets the next turn."
                   : isSexRoulette
                     ? "Spin the wheel and let chance choose the next playful moment for you both."
-                    : seo?.description ?? description}
+                    : isKamaSutraCards
+                      ? "Draw a card for a romantic prompt, connection challenge, or conversation starter."
+                      : seo?.description ?? description}
           </p>
 
           {isSexyDice ? (
@@ -126,6 +130,8 @@ export default async function GamePage({
             <SpinTheBottleBoard />
           ) : isSexRoulette ? (
             <SexRouletteBoard />
+          ) : isKamaSutraCards ? (
+            <KamaSutraCardsBoard />
           ) : (
             <>
               <div className="pt-4">
