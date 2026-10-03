@@ -59,19 +59,24 @@ export default function LovenseBridge() {
           document.head.appendChild(script);
         });
 
-        const response = await fetch("/.netlify/functions/lovense-token", { method: "POST" });
+        const uid = getAnonymousUid();
+        const response = await fetch("/.netlify/functions/lovense-token", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ uid }),
+        });
         if (!response.ok) {
           const data = await response.json().catch(() => ({}));
           throw new Error(data.message || "Lovense integration is not configured yet.");
         }
 
-        const { authToken, platform } = await response.json();
+        const { authToken, platform, uid: serverUid } = await response.json();
         if (cancelled || !window.LovenseBasicSdk) return;
 
         const sdk = new window.LovenseBasicSdk({
           platform,
           authToken,
-          uid: getAnonymousUid(),
+          uid: serverUid || uid,
           appType: "connect",
           debug: false,
         });
