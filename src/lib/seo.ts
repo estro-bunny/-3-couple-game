@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const SITE_NAME = "CouplePlayHub by EstroBunny";
 export const SITE_URL = "https://coupleplayhub.netlify.app";
 export const SITE_DESCRIPTION =
-  "Discover the best online couple games to spice up your relationship. Play naughty games, romantic truth or dare, sexy dice, and fun challenges designed for couples.";
+  "Play free browser-based couple games including Truth or Dare, dice, roulette, cards, timers, and playful challenges designed for connection.";
 export const SITE_TAGLINE = "Couple games, private by default, made for connection";
 
 export const DEFAULT_KEYWORDS = [
@@ -76,7 +76,7 @@ export const GAME_SEO: Record<
   "sexy-dice": {
     title: "Sexy Dice Game Online - Roll & Play | CouplePlayHub",
     description:
-      "Roll the sexy dice and let fate decide your next intimate move. The most popular online dice game for couples looking to add spontaneity to their love life.",
+      "Roll the sexy dice and let fate decide your next intimate move. A playful browser dice game for couples looking to add spontaneity to date night.",
     keywords: [
       "sexy dice game",
       "couples dice game online",
@@ -88,7 +88,7 @@ export const GAME_SEO: Record<
   "sex-roulette-wheel": {
     title: "Sex Roulette Wheel - Spin to Win | CouplePlayHub",
     description:
-      "Spin the roulette wheel and discover exciting new challenges. A thrilling adult roulette game designed to ignite passion between partners.",
+      "Spin the roulette wheel and discover exciting new challenges. A playful roulette game that lets chance choose the next shared moment.",
     keywords: [
       "sex roulette wheel",
       "couples roulette game",
@@ -111,7 +111,7 @@ export const GAME_SEO: Record<
   "kama-sutra-cards": {
     title: "Kama Sutra Cards - Draw & Explore | CouplePlayHub",
     description:
-      "Draw a Kama Sutra card and explore new positions together. A beautifully designed card game that helps couples discover intimate adventures.",
+      "Draw a romantic prompt, connection challenge, or conversation starter from a browser-based card deck.",
     keywords: [
       "kama sutra card game",
       "kama sutra positions game",
@@ -192,7 +192,7 @@ export const CATEGORY_SEO: Record<
   xxx: {
     title: "XXX Couple Games - Intense & Adventurous | CouplePlayHub",
     description:
-      "Dive into intense, explicit, and adventurous games for daring couples. Push your boundaries with our most provocative gaming experiences.",
+      "Explore the bolder side of CouplePlayHub with playful challenges designed for consenting adults.",
     keywords: [
       "adult games for couples",
       "explicit couple games",
@@ -203,7 +203,7 @@ export const CATEGORY_SEO: Record<
   "kinky-levels": {
     title: "Kinky Level Games - Push Your Boundaries | CouplePlayHub",
     description:
-      "For couples who want to push every boundary. Explore our most daring games with customizable intensity levels for ultimate excitement.",
+      "For couples who want bolder challenges, with an emphasis on mutual comfort and easy skips.",
     keywords: [
       "kinky games for couples",
       "boundary pushing couple games",
