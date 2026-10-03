@@ -15,7 +15,7 @@ const HOME_FAQS = [
   {
     question: "What is CouplePlayHub?",
     answer:
-      CouplePlayHub is a free browser-based collection of playful couple games built around connection, conversation, and easy-to-skip challenges.,
+      CouplePlayHub is a free browser-based collection of playful couple games built around connection, conversation, and easy-to-skip challenges. The games are queer-friendly by design and avoid assuming your gender, roles, or relationship shape.,
   },
   {
     question: "Are the couple games free to play?",
@@ -35,7 +35,7 @@ const HOME_FAQS = [
   {
     question: "What types of couple games are available?",
     answer:
-      The current playable library includes Sexy Dice, Truth or Dare, Sex Roulette Wheel, Kama Sutra Cards, Spin the Bottle, Sexy Timer, Party Games, and Super Sex Dice.,
+      The current playable library includes Sexy Dice, Truth or Dare, Sex Roulette Wheel, Kama Sutra Cards, Spin the Bottle, Sexy Timer, Party Games, and Super Sex Dice. They are designed to work for partners regardless of gender or orientation.,
   },
 ];
 
