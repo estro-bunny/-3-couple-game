@@ -15,27 +15,27 @@ const HOME_FAQS = [
   {
     question: "What is CouplePlayHub?",
     answer:
-      "CouplePlayHub is a free online platform offering fun, romantic, and naughty games designed specifically for couples. From sexy dice to truth or dare, our games help partners strengthen their connection and add excitement to their relationship.",
+      CouplePlayHub is a free browser-based collection of playful couple games built around connection, conversation, and easy-to-skip challenges.,
   },
   {
     question: "Are the couple games free to play?",
     answer:
-      "Yes! Most of our couple games are completely free to play. We also offer a VIP membership for access to premium card decks, exclusive game modes, and new content every week.",
+      Yes. The playable games currently available on the site are free to use, with no account required for local play.,
   },
   {
     question: "Can I play these games on my phone?",
     answer:
-      "Absolutely. CouplePlayHub is fully responsive and works on all devices including smartphones, tablets, laptops, and smart TVs. Start on one device and continue on another with our multi-device sync feature.",
+      Yes. The games are designed for browser play across phones, tablets, and desktop screens. Local progress stays in the browser on the device where you play.,
   },
   {
     question: "Is my privacy protected?",
     answer:
-      "Yes. CouplePlayHub operates on a strict zero-log privacy policy. We never store your session data or play history. Your intimate moments remain completely private.",
+      The current games use browser-local progress and do not require an account. That means your local session history is kept on the device rather than tied to a CouplePlayHub account.,
   },
   {
     question: "What types of couple games are available?",
     answer:
-      "We offer a wide variety including Sexy Dice, Truth or Dare, Sex Roulette Wheel, Kama Sutra Cards, Spin the Bottle, Sexy Timer, and Party Games. Games range from soft and romantic (Vanilla) to intense and adventurous (XXX and Kinky Levels).",
+      The current playable library includes Sexy Dice, Truth or Dare, Sex Roulette Wheel, Kama Sutra Cards, Spin the Bottle, Sexy Timer, Party Games, and Super Sex Dice.,
   },
 ];
 
