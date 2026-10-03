@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
-export const SITE_NAME = "CouplePlayHub";
-export const SITE_URL = "https://coupleplayhub.com";
+export const SITE_NAME = "CouplePlayHub by EstroBunny";
+export const SITE_URL = "https://coupleplayhub.netlify.app";
 export const SITE_DESCRIPTION =
   "Discover the best online couple games to spice up your relationship. Play naughty games, romantic truth or dare, sexy dice, and fun challenges designed for couples.";
-export const SITE_TAGLINE = "Online Games for Naughty Couples";
+export const SITE_TAGLINE = "Couple games, private by default, made for connection";
 
 export const DEFAULT_KEYWORDS = [
   "couple games online",
