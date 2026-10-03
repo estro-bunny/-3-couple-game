@@ -16,19 +16,40 @@ export default function GameBoard() {
     hasRolled,
     roll,
     reset,
+    resetSession,
+    session,
     activities,
     bodyParts,
   } = useDiceRoll();
 
   return (
     <div className="w-full max-w-4xl mx-auto space-y-10">
-      {/* Dice area */}
+      <div className="glass-card rounded-2xl p-4 flex items-center justify-between gap-4 text-left">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">
+            Local session
+          </p>
+          <p className="font-bold">
+            {session.roundsCompleted}{" "}
+            {session.roundsCompleted === 1 ? "round" : "rounds"} played
+          </p>
+        </div>
+        {session.roundsCompleted > 0 && (
+          <button
+            type="button"
+            onClick={resetSession}
+            className="text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors"
+          >
+            Clear progress
+          </button>
+        )}
+      </div>
+
       <div className="flex justify-center items-center gap-10 md:gap-16">
         <Dice value={dice1} isRolling={isRolling} label="Action" />
         <Dice value={dice2} isRolling={isRolling} label="Body Part" />
       </div>
 
-      {/* Play / Reset buttons */}
       <div className="flex justify-center gap-4">
         <Button
           size="lg"
@@ -50,7 +71,6 @@ export default function GameBoard() {
         )}
       </div>
 
-      {/* Result */}
       <ResultDisplay
         result={result}
         activity={activity}
@@ -59,7 +79,6 @@ export default function GameBoard() {
         isRolling={isRolling}
       />
 
-      {/* Lists */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <ListPanel
           title="🎲 Activities"
@@ -74,6 +93,11 @@ export default function GameBoard() {
           color="secondary"
         />
       </div>
+
+      <p className="text-center text-xs text-on-surface-variant/70">
+        Play at your own pace. Either partner can skip a result or reset the
+        round at any time.
+      </p>
     </div>
   );
 }
