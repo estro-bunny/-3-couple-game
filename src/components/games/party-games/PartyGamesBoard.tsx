@@ -1,7 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { loadGameSession, recordRound, saveGameSession } from "@/lib/games/session";
+import {
+  completeGameRound,
+  loadGameSession,
+  resetGameSession,
+} from "@/lib/games/session";
 import { PARTY_DECKS, PartyMode, pickPartyPrompt } from "@/lib/games/party-games";
 
 const STORAGE_KEY = "coupleplayhub:game:party-games";
@@ -26,8 +30,10 @@ export default function PartyGamesBoard() {
     const next = pickPartyPrompt(PARTY_DECKS[mode], previousId);
     if (!next) return;
 
-    const session = recordRound(loadGameSession(STORAGE_KEY));
-    saveGameSession(STORAGE_KEY, session);
+    const session = completeGameRound(
+      STORAGE_KEY,
+      loadGameSession(STORAGE_KEY)
+    );
     setRounds(session.roundsCompleted);
     setPreviousId(next.id);
     setPrompt(next);
@@ -40,7 +46,7 @@ export default function PartyGamesBoard() {
   }
 
   const reset = useCallback(() => {
-    localStorage.removeItem(STORAGE_KEY);
+    resetGameSession(STORAGE_KEY);
     setRounds(0);
     setPreviousId(undefined);
     setPrompt(pickPartyPrompt(PARTY_DECKS[mode]));
