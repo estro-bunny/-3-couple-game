@@ -17,25 +17,25 @@ export const CATEGORIES: CategoryItem[] = [
   {
     icon: "favorite",
     title: "Vanilla",
-    description: "Soft, romantic, and playful connections.",
+    description: "Soft, romantic, queer-friendly, and playful connections.",
     href: "/categories/vanilla",
   },
   {
     icon: "auto_awesome",
     title: "PG",
-    description: "Light teasing and fun challenges.",
+    description: "Light teasing, flirting, and fun challenges without gendered roles.",
     href: "/categories/pg",
   },
   {
     icon: "local_fire_department",
     title: "XXX",
-    description: "Bolder prompts and playful challenges.",
+    description: "Bolder prompts and playful challenges for partners of any gender.",
     href: "/categories/xxx",
   },
   {
     icon: "token",
     title: "Kinky Levels",
-    description: "For those who want to push boundaries.",
+    description: "For partners who want to explore boundaries on their own terms.",
     href: "/categories/kinky-levels",
   },
 ];
@@ -116,7 +116,7 @@ export const GLASS_GAMES: GlassGame[] = [
 
 export const FEATURES: FeaturePoint[] = [
   { icon: "check_circle", text: "Playable games with simple local progress" },
-  { icon: "check_circle", text: "Skip-friendly prompts and controls" },
+  { icon: "check_circle", text: "Skip-friendly prompts with no gendered roles" },
   { icon: "check_circle", text: "No account required for local play" },
 ];
 
@@ -134,9 +134,9 @@ export const HIGHLIGHTS: HighlightItem[] = [
   },
   {
     icon: "stars",
-    title: "Built for Connection",
+    title: "Queer-Friendly by Design",
     description:
-      "Play together, skip anything uncomfortable, and keep the pace yours.",
+      "No boyfriend/girlfriend assumptions, no assigned roles, and no gender required to play."
   },
 ];
 
