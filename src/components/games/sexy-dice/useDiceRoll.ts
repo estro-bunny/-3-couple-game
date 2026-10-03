@@ -4,9 +4,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import {
   EMPTY_GAME_SESSION,
   GameSession,
+  completeGameRound,
   loadGameSession,
-  recordRound,
-  saveGameSession,
+  resetGameSession,
 } from "@/lib/games/session";
 
 const ACTIVITIES = [
@@ -104,9 +104,7 @@ export function useDiceRoll() {
       });
 
       setSession((prev) => {
-        const next = recordRound(prev);
-        saveGameSession(SESSION_STORAGE_KEY, next);
-        return next;
+        return completeGameRound(SESSION_STORAGE_KEY, prev);
       });
     }, ROLL_DURATION);
   }, [state.isRolling]);
@@ -119,9 +117,7 @@ export function useDiceRoll() {
   }, []);
 
   const resetSession = useCallback(() => {
-    const next = EMPTY_GAME_SESSION;
-    setSession(next);
-    saveGameSession(SESSION_STORAGE_KEY, next);
+    setSession(resetGameSession(SESSION_STORAGE_KEY));
     setState(EMPTY_ROLL);
   }, []);
 
