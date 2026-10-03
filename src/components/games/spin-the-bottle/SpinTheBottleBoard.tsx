@@ -56,10 +56,9 @@ export default function SpinTheBottleBoard() {
   }, [isSpinning, players]);
 
   const clearProgress = useCallback(() => {
-    setSession(EMPTY_GAME_SESSION);
+    setSession(resetGameSession(STORAGE_KEY));
     setSelectedPlayer(null);
     previousPlayer.current = undefined;
-    saveGameSession(STORAGE_KEY, EMPTY_GAME_SESSION);
   }, []);
 
   const updatePlayer = (index: 0 | 1, value: string) => {
