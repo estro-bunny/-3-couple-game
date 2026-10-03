@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import PageShell from "@/components/layout/PageShell";
-import Button from "@/components/ui/Button";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
