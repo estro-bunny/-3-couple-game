@@ -1,3 +1,5 @@
+import { completeChaosGame, parseChaosSession, serializeChaosSession } from "./chaos-session-state";
+
 export interface GameSession {
   roundsCompleted: number;
   startedAt: number | null;
@@ -50,6 +52,42 @@ export function saveGameSession(storageKey: string, session: GameSession) {
   }
 }
 
+const CHAOS_SESSION_STORAGE_KEY = "coupleplayhub:chaos-session";
+
+function gameSlugFromStorageKey(storageKey: string): string | null {
+  const prefix = "coupleplayhub:game:";
+  return storageKey.startsWith(prefix) ? storageKey.slice(prefix.length) : null;
+}
+
+function syncChaosSessionCompletion(storageKey: string, now: number) {
+  if (typeof window === "undefined") return;
+  if (!window.location.search.includes("session=1")) return;
+
+  const slug = gameSlugFromStorageKey(storageKey);
+  if (!slug) return;
+
+  try {
+    const raw = window.localStorage.getItem(CHAOS_SESSION_STORAGE_KEY);
+    const state = parseChaosSession(raw);
+
+    if (!state.currentSlug || state.currentSlug !== slug) return;
+
+    const next = completeChaosGame(state, slug, now);
+    window.localStorage.setItem(
+      CHAOS_SESSION_STORAGE_KEY,
+      serializeChaosSession(next)
+    );
+
+    window.dispatchEvent(
+      new CustomEvent("coupleplayhub:chaos-session-updated", {
+        detail: next,
+      })
+    );
+  } catch {
+    // Session sync is additive; game progress must still succeed if it fails.
+  }
+}
+
 export function completeGameRound(
   storageKey: string,
   session: GameSession,
@@ -57,6 +95,7 @@ export function completeGameRound(
 ): GameSession {
   const next = recordRound(session, now);
   saveGameSession(storageKey, next);
+  syncChaosSessionCompletion(storageKey, now);
   return next;
 }
 
