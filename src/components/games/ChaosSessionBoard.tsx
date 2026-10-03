@@ -57,7 +57,7 @@ export default function ChaosSessionBoard() {
             {current ? "NEXT CHAOS ♡" : "START SESSION ♡"}
           </button>
           {current && (
-            <Link href={"/games/" + current.slug}
+            <Link href={"/games/" + current.slug + "?session=1"}
               className="rounded-2xl px-6 py-4 font-black uppercase tracking-widest border border-secondary/40 text-secondary hover:bg-secondary/10 text-center transition-colors">
               PLAY {current.title}
             </Link>
