@@ -4,9 +4,9 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import Button from "@/components/ui/Button";
 import {
   EMPTY_GAME_SESSION,
+  completeGameRound,
   loadGameSession,
-  recordRound,
-  saveGameSession,
+  resetGameSession,
   type GameSession,
 } from "@/lib/games/session";
 
@@ -41,11 +41,7 @@ export default function SexyTimerBoard() {
         if (value === null || value <= 1) {
           window.clearInterval(timer);
           setRunning(false);
-          setSession((prev) => {
-            const next = recordRound(prev);
-            saveGameSession(KEY, next);
-            return next;
-          });
+          setSession((prev) => completeGameRound(KEY, prev));
           return 0;
         }
         return value - 1;
@@ -66,20 +62,18 @@ export default function SexyTimerBoard() {
     setPrompt(PROMPTS[Math.floor(Math.random() * PROMPTS.length)]);
     setRemaining(duration);
     setRunning(true);
-  };
+  }, [duration]);
 
-  const reset = () => {
+  const reset = useCallback(() => {
     setRunning(false);
     setRemaining(null);
     setPrompt(null);
-  };
+  }, []);
 
-  const clearProgress = () => {
-    const next = EMPTY_GAME_SESSION;
-    setSession(next);
-    saveGameSession(KEY, next);
+  const clearProgress = useCallback(() => {
+    setSession(resetGameSession(KEY));
     reset();
-  };
+  }, [reset]);
 
   return (
     <div className="w-full max-w-4xl mx-auto space-y-8">
