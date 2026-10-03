@@ -1,6 +1,13 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  EMPTY_GAME_SESSION,
+  GameSession,
+  loadGameSession,
+  recordRound,
+  saveGameSession,
+} from "@/lib/games/session";
 
 const ACTIVITIES = [
   "Kiss",
@@ -22,6 +29,7 @@ const BODY_PARTS = [
 
 const ROLL_DURATION = 1500;
 const TICK_INTERVAL = 100;
+const SESSION_STORAGE_KEY = "coupleplayhub:game:sexy-dice";
 
 export interface DiceRollState {
   dice1: number | null;
@@ -33,19 +41,30 @@ export interface DiceRollState {
   hasRolled: boolean;
 }
 
-export function useDiceRoll() {
-  const [state, setState] = useState<DiceRollState>({
-    dice1: null,
-    dice2: null,
-    isRolling: false,
-    activity: null,
-    bodyPart: null,
-    result: null,
-    hasRolled: false,
-  });
+const EMPTY_ROLL: DiceRollState = {
+  dice1: null,
+  dice2: null,
+  isRolling: false,
+  activity: null,
+  bodyPart: null,
+  result: null,
+  hasRolled: false,
+};
 
+export function useDiceRoll() {
+  const [state, setState] = useState<DiceRollState>(EMPTY_ROLL);
+  const [session, setSession] = useState<GameSession>(EMPTY_GAME_SESSION);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    setSession(loadGameSession(SESSION_STORAGE_KEY));
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   const roll = useCallback(() => {
     if (state.isRolling) return;
@@ -58,7 +77,6 @@ export function useDiceRoll() {
       result: null,
     }));
 
-    // Animate random values during roll
     intervalRef.current = setInterval(() => {
       setState((prev) => ({
         ...prev,
@@ -67,7 +85,6 @@ export function useDiceRoll() {
       }));
     }, TICK_INTERVAL);
 
-    // Settle on final values
     timeoutRef.current = setTimeout(() => {
       if (intervalRef.current) clearInterval(intervalRef.current);
 
@@ -85,22 +102,36 @@ export function useDiceRoll() {
         result: `${activity} on ${bodyPart}`,
         hasRolled: true,
       });
+
+      setSession((prev) => {
+        const next = recordRound(prev);
+        saveGameSession(SESSION_STORAGE_KEY, next);
+        return next;
+      });
     }, ROLL_DURATION);
   }, [state.isRolling]);
 
   const reset = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setState({
-      dice1: null,
-      dice2: null,
-      isRolling: false,
-      activity: null,
-      bodyPart: null,
-      result: null,
-      hasRolled: false,
-    });
+
+    setState(EMPTY_ROLL);
   }, []);
 
-  return { ...state, roll, reset, activities: ACTIVITIES, bodyParts: BODY_PARTS };
+  const resetSession = useCallback(() => {
+    const next = EMPTY_GAME_SESSION;
+    setSession(next);
+    saveGameSession(SESSION_STORAGE_KEY, next);
+    setState(EMPTY_ROLL);
+  }, []);
+
+  return {
+    ...state,
+    roll,
+    reset,
+    resetSession,
+    session,
+    activities: ACTIVITIES,
+    bodyParts: BODY_PARTS,
+  };
 }
