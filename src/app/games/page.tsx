@@ -8,46 +8,39 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "All Couple Games Online - Play Free Naughty & Romantic Games",
-  description:
-    "Browse our full collection of couple games including sexy dice, truth or dare, roulette, kama sutra cards, and more. Free online games designed for couples to play together.",
-  keywords: [
-    "couple games list",
-    "all couple games online",
-    "free naughty games",
-    "browse couple games",
-  ],
+  description: "Browse the playable CouplePlayHub library: dice, truth or dare, roulette, cards, timers, spins and party games.",
+  keywords: ["couple games list", "all couple games online", "free couple games", "browse couple games"],
   path: "/games",
 });
 
 export default function GamesPage() {
   return (
     <PageShell>
-      <section className="py-16 px-8 bg-surface">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative py-16 md:py-24 px-5 md:px-8 bg-surface cyber-grid overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,0,255,.12),transparent_40%)] pointer-events-none" />
+        <div className="relative max-w-7xl mx-auto">
           <Breadcrumbs items={[{ label: "Games" }]} />
-          <h1 className="text-5xl font-black font-headline tracking-tighter mb-4">
-            ALL <span className="text-primary-container">GAMES</span>
-          </h1>
-          <p className="text-on-surface-variant text-lg mb-8">
-            Browse our full collection of couple games — from romantic and playful to intense and provocative. Every game is designed to bring partners closer together.
-          </p>
-
-          <h2 className="text-2xl font-bold font-headline tracking-tight mb-8 text-on-surface-variant">
-            Featured Games
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            {FEATURED_GAMES.map((game) => (
-              <GameCard key={game.title} {...game} />
-            ))}
+          <div className="max-w-4xl mt-10 mb-14">
+            <p className="text-[10px] font-black tracking-[.35em] text-secondary uppercase mb-4">02 // CHAOS LIBRARY</p>
+            <h1 className="text-5xl md:text-8xl font-black font-headline tracking-[-.07em] leading-[.88]">
+              PICK A GAME.<br /><span className="text-primary">CAUSE TROUBLE.</span>
+            </h1>
+            <p className="text-on-surface-variant text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
+              Eight playable games. No account. No fake leaderboard. No pretending we're normal.
+              Pick one, play together, skip whatever you don't vibe with.
+            </p>
           </div>
 
-          <h2 className="text-2xl font-bold font-headline tracking-tight mt-16 mb-8 text-on-surface-variant">
-            More Games to Explore
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {GLASS_GAMES.map((game) => (
-              <GlassGameCard key={game.title} {...game} />
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+            {FEATURED_GAMES.map((game) => <GameCard key={game.title} {...game} />)}
+          </div>
+
+          <div className="flex items-center gap-4 mt-16 mb-7">
+            <span className="text-[10px] font-black tracking-[.3em] text-secondary uppercase">MORE CHAOS</span>
+            <div className="h-px flex-1 bg-gradient-to-r from-secondary/30 to-transparent" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            {GLASS_GAMES.map((game) => <GlassGameCard key={game.title} {...game} />)}
           </div>
         </div>
       </section>
