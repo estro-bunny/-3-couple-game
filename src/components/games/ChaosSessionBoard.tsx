@@ -36,6 +36,23 @@ export default function ChaosSessionBoard() {
     window.localStorage.setItem(STORAGE_KEY, serializeChaosSession(state));
   }, [state, hydrated]);
 
+  useEffect(() => {
+    function handleSessionUpdate() {
+      setState(parseChaosSession(window.localStorage.getItem(STORAGE_KEY)));
+    }
+
+    window.addEventListener("coupleplayhub:chaos-session-updated", handleSessionUpdate);
+    window.addEventListener("storage", handleSessionUpdate);
+
+    return () => {
+      window.removeEventListener(
+        "coupleplayhub:chaos-session-updated",
+        handleSessionUpdate
+      );
+      window.removeEventListener("storage", handleSessionUpdate);
+    };
+  }, []);
+
   const vibe = state.vibe;
   const current = CHAOS_SESSION_GAMES.find((game) => game.slug === state.currentSlug) ?? null;
 
