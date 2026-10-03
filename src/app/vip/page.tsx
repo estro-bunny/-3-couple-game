@@ -28,19 +28,8 @@ export default function VipPage() {
           <h1 className="text-5xl md:text-7xl font-black font-headline tracking-tighter">
             VIP <span className="text-primary">ACCESS</span>
           </h1>
-          <p className="text-xl text-on-surface-variant max-w-2xl mx-auto">
-            Unlock premium card decks, elite game modes, and exclusive content updated every week. Elevate your couple game nights with VIP-only experiences.
-          </p>
-          <div className="pt-4">
-            <Button
-              href="/join"
-              size="lg"
-              className="rounded-xl shadow-[0_0_40px_rgba(255,0,255,0.3)]"
-            >
-              BECOME A VIP
-            </Button>
-          </div>
-        </div>
+          <p className="text-xl text-on-surface-variant max-w-2xl mx-auto">VIP is not part of the current product. This page is intentionally a roadmap placeholder; there is no account, subscription, or premium-content system yet.</p>
+                  </div>
       </section>
     </PageShell>
   );
