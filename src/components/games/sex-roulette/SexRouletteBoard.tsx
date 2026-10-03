@@ -84,9 +84,8 @@ export default function SexRouletteBoard() {
     if (isSpinning) return;
 
     setSelectedId(null);
-    setSession(EMPTY_GAME_SESSION);
+    setSession(resetGameSession(STORAGE_KEY));
     previousId.current = undefined;
-    saveGameSession(STORAGE_KEY, EMPTY_GAME_SESSION);
   }, [isSpinning]);
 
   const segmentSize = 100 / SEX_ROULETTE_OPTIONS.length;
