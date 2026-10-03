@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import PageShell from "@/components/layout/PageShell";
 import Button from "@/components/ui/Button";
 import GameBoard from "@/components/games/sexy-dice/GameBoard";
@@ -70,8 +71,9 @@ export default async function GamePage({
   const featured = FEATURED_GAMES.find((g) => toSlug(g.title) === slug);
   const glass = GLASS_GAMES.find((g) => toSlug(g.title) === slug);
 
-  const title =
-    featured?.title ?? glass?.title ?? slug.replace(/-/g, " ").toUpperCase();
+  if (!featured && !glass) notFound();
+
+  const title = featured?.title ?? glass?.title ?? slug.replace(/-/g, " ").toUpperCase();
   const description =
     featured?.description ??
     glass?.description ??
