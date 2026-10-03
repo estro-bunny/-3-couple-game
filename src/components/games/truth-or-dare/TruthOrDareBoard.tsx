@@ -4,7 +4,6 @@ import { useCallback, useEffect, useState } from "react";
 import {
   EMPTY_GAME_SESSION,
   GameSession,
-  loadGameSession,
   completeGameRound,
   loadGameSession,
   resetGameSession,
