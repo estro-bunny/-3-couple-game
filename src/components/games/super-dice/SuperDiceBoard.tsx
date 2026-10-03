@@ -3,10 +3,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   EMPTY_GAME_SESSION,
-  GameSession,
+  completeGameRound,
   loadGameSession,
-  recordRound,
-  saveGameSession,
+  resetGameSession,
+  type GameSession,
 } from "@/lib/games/session";
 
 const ACTIONS = ["Kiss", "Cuddle", "Massage", "Compliment", "Dance", "Partner choice"];
@@ -45,9 +45,7 @@ export default function SuperDiceBoard() {
       setSetting(nextSetting);
       setRolling(false);
       setSession(prev => {
-        const next = recordRound(prev);
-        saveGameSession(KEY, next);
-        return next;
+        return completeGameRound(KEY, prev);
       });
     }, 900);
   }, [rolling]);
