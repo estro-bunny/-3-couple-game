@@ -59,9 +59,7 @@ export default function SuperDiceBoard() {
   };
 
   const clearProgress = () => {
-    const next = EMPTY_GAME_SESSION;
-    setSession(next);
-    saveGameSession(KEY, next);
+    setSession(resetGameSession(KEY));
     reset();
   };
 
