@@ -4,6 +4,7 @@ import Button from "@/components/ui/Button";
 import GameBoard from "@/components/games/sexy-dice/GameBoard";
 import TruthOrDareBoard from "@/components/games/truth-or-dare/TruthOrDareBoard";
 import SpinTheBottleBoard from "@/components/games/spin-the-bottle/SpinTheBottleBoard";
+import SexRouletteBoard from "@/components/games/sex-roulette/SexRouletteBoard";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import RelatedGames from "@/components/ui/RelatedGames";
 import { FEATURED_GAMES, GLASS_GAMES } from "@/lib/constants";
@@ -75,6 +76,7 @@ export default async function GamePage({
   const isSexyDice = slug === "sexy-dice";
   const isTruthOrDare = slug === "truth-or-dare";
   const isSpinTheBottle = slug === "spin-the-bottle";
+  const isSexRoulette = slug === "sex-roulette-wheel";
 
   const seo = GAME_SEO[slug];
 
@@ -111,7 +113,9 @@ export default async function GamePage({
                 ? "Take turns choosing Truth or Dare with a local-first deck built for connection, laughter, and easy skips."
                 : isSpinTheBottle
                   ? "Take turns spinning the bottle and let a random pick decide who gets the next turn."
-                  : seo?.description ?? description}
+                  : isSexRoulette
+                    ? "Spin the wheel and let chance choose the next playful moment for you both."
+                    : seo?.description ?? description}
           </p>
 
           {isSexyDice ? (
@@ -120,6 +124,8 @@ export default async function GamePage({
             <TruthOrDareBoard />
           ) : isSpinTheBottle ? (
             <SpinTheBottleBoard />
+          ) : isSexRoulette ? (
+            <SexRouletteBoard />
           ) : (
             <>
               <div className="pt-4">
