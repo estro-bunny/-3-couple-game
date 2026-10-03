@@ -1,4 +1,4 @@
-# 🎮 CouplePlayHub
+# 🐇💗 CouplePlayHub — EstroBunny
 
 ![GitHub stars](https://img.shields.io/github/stars/Maddy-O/coupleplayhub?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/Maddy-O/coupleplayhub?style=social)
@@ -6,7 +6,9 @@
 ![License](https://img.shields.io/github/license/Maddy-O/coupleplayhub)
 ![Last Commit](https://img.shields.io/github/last-commit/Maddy-O/coupleplayhub)
 
-A fun and interactive web app designed for couples to play games, connect, and enjoy meaningful moments together ❤️
+A fun, private-first web playground for couples to play games, flirt, laugh, and create their own chaos together. ❤️
+
+**CouplePlayHub is an EstroBunny passion project.** The goal is simple: build a genuinely good couple-game platform without turning every interaction into a login wall, subscription funnel, or data-harvesting machine.
 
 🌐 **Live App:** https://coupleplayhub.netlify.app/
 
@@ -57,8 +59,8 @@ No login. No friction. Just play instantly.
 ### 1. Clone the Repository
 
 ```
-git clone https://github.com/Maddy-O/coupleplayhub.git
-cd coupleplayhub
+git clone https://github.com/estro-bunny/-3-couple-game.git
+cd -3-couple-game
 ```
 
 ### 2. Install Dependencies
@@ -86,13 +88,15 @@ npm run dev
 
 ---
 
-## 🧭 Roadmap (Upcoming Features)
+## 🐇 Revival Roadmap
 
-* 🎮 More couple games
-* 🏆 Score tracking system
-* 🔗 Multiplayer / real-time play
-* 🤖 AI-based game suggestions
-* 🎵 Sound effects & music enhancements
+* 🎮 Finish the core game library and make every advertised game actually playable
+* 🏆 Shared sessions, scores, streaks, and couple progression
+* 🔗 Optional real-time rooms for two-player play
+* 💾 Local-first saves with explicit export/import
+* 📱 Make the mobile experience first-class
+* 🔊 Sound, haptics, accessibility, and reduced-motion polish
+* 🐇 EstroBunny visual identity without losing the intimate/night-game atmosphere
 
 ---
 
@@ -113,6 +117,10 @@ Contributions are welcome!
 This project is licensed under the MIT License.
 
 ---
+
+## 🛠️ Development Philosophy
+
+This is a passion project, not a content farm. Build the games first. Make them fun. Keep privacy understandable. Avoid fake metrics and features that do not exist yet. Every meaningful feature should be small enough to finish, test, and ship.
 
 ## 🌟 Support
 
