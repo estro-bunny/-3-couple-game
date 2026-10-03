@@ -4,10 +4,10 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Button from "@/components/ui/Button";
 import {
   EMPTY_GAME_SESSION,
-  GameSession,
+  completeGameRound,
   loadGameSession,
-  recordRound,
-  saveGameSession,
+  resetGameSession,
+  type GameSession,
 } from "@/lib/games/session";
 import {
   KAMA_SUTRA_CARDS,
@@ -59,9 +59,7 @@ export default function KamaSutraCardsBoard() {
       setCurrentCardId(next.id);
       setIsDrawing(false);
       setSession((current) => {
-        const updated = recordRound(current);
-        saveGameSession(STORAGE_KEY, updated);
-        return updated;
+        return completeGameRound(STORAGE_KEY, current);
       });
     }, 450);
   }, [isDrawing]);
