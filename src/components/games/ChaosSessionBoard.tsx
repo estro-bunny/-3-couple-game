@@ -6,7 +6,6 @@ import { CHAOS_SESSION_GAMES, type ChaosVibe, pickSessionGame } from "@/lib/game
 import {
   EMPTY_CHAOS_SESSION,
   advanceChaosSession,
-  completeChaosGame,
   parseChaosSession,
   serializeChaosSession,
   startChaosSession,
@@ -51,10 +50,6 @@ export default function ChaosSessionBoard() {
         ? advanceChaosSession(previous, next)
         : startChaosSession(previous, next, vibe)
     );
-  }
-
-  function markCurrentComplete() {
-    setState((previous) => completeChaosGame(previous));
   }
 
   function reset() {
@@ -106,12 +101,15 @@ export default function ChaosSessionBoard() {
           <div className="mt-8 rounded-2xl border border-secondary/20 bg-secondary/5 p-6 text-center">
             <p className="text-xs font-black tracking-[.25em] uppercase text-secondary">CHAOS HAS CHOSEN</p>
             <p className="text-2xl md:text-4xl font-black font-headline mt-2">{current.title}</p>
-            <p className="text-sm text-on-surface-variant mt-2">Mark the game complete when you're done, then launch the next chaos.</p>
+            <p className="text-sm text-on-surface-variant mt-2">
+              Finish a round inside the game and this session updates automatically.
+            </p>
             <div className="flex flex-wrap justify-center gap-3 mt-5">
-              <button type="button" onClick={markCurrentComplete}
-                className="rounded-xl px-4 py-2 text-xs font-black uppercase tracking-widest border border-primary/40 text-primary hover:bg-primary/10 transition-colors">
-                COMPLETE GAME
-              </button>
+              {state.completedSlugs.includes(current.slug) && (
+                <span className="rounded-xl px-4 py-2 text-xs font-black uppercase tracking-widest border border-primary/40 text-primary bg-primary/5">
+                  ROUND CLEARED ♡
+                </span>
+              )}
               <button type="button" onClick={reset}
                 className="rounded-xl px-4 py-2 text-xs font-black uppercase tracking-widest border border-outline-variant/30 text-on-surface-variant hover:border-secondary/50 transition-colors">
                 RESET SESSION
