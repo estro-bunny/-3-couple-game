@@ -73,9 +73,8 @@ export default function KamaSutraCardsBoard() {
     if (isDrawing) return;
 
     setCurrentCardId(null);
-    setSession(EMPTY_GAME_SESSION);
+    setSession(resetGameSession(STORAGE_KEY));
     previousId.current = undefined;
-    saveGameSession(STORAGE_KEY, EMPTY_GAME_SESSION);
   }, [isDrawing]);
 
   return (
