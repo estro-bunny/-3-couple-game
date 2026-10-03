@@ -8,6 +8,7 @@ import SexRouletteBoard from "@/components/games/sex-roulette/SexRouletteBoard";
 import KamaSutraCardsBoard from "@/components/games/kama-sutra/KamaSutraCardsBoard";
 import PartyGamesBoard from "@/components/games/party-games/PartyGamesBoard";
 import SuperDiceBoard from "@/components/games/super-dice/SuperDiceBoard";
+import SexyTimerBoard from "@/components/games/sexy-timer/SexyTimerBoard";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import RelatedGames from "@/components/ui/RelatedGames";
 import { FEATURED_GAMES, GLASS_GAMES } from "@/lib/constants";
@@ -83,6 +84,7 @@ export default async function GamePage({
   const isKamaSutraCards = slug === "kama-sutra-cards";
   const isPartyGames = slug === "party-games";
   const isSuperDice = slug === "super-sex-dice";
+  const isSexyTimer = slug === "sexy-timer";
 
   const seo = GAME_SEO[slug];
 
@@ -127,7 +129,9 @@ export default async function GamePage({
                         ? "Pick a mode and keep the party moving with quick-fire prompts, questions, and playful challenges."
                         : isSuperDice
                           ? "Roll two dice for a playful action and setting, then let chance choose the next moment."
-                          : seo?.description ?? description}
+                          : isSexyTimer
+                            ? "Choose a countdown and get a playful prompt before the clock starts."
+                            : seo?.description ?? description}
           </p>
 
           {isSexyDice ? (
@@ -144,6 +148,8 @@ export default async function GamePage({
             <PartyGamesBoard />
           ) : isSuperDice ? (
             <SuperDiceBoard />
+          ) : isSexyTimer ? (
+            <SexyTimerBoard />
           ) : (
             <>
               <div className="pt-4">
