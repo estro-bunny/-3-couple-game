@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import PageShell from "@/components/layout/PageShell";
 import Button from "@/components/ui/Button";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
@@ -55,8 +56,10 @@ export default async function CategoryPage({
     (c) => c.title.toLowerCase().replace(/\s+/g, "-") === slug
   );
 
-  const title = category?.title ?? slug.replace(/-/g, " ").toUpperCase();
-  const description = category?.description ?? "Explore games in this category.";
+  if (!category) notFound();
+
+  const title = category.title;
+  const description = category.description;
   const seo = CATEGORY_SEO[slug];
 
   return (
