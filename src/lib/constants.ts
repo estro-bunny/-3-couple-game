@@ -11,8 +11,6 @@ import type {
 export const NAV_LINKS: NavLink[] = [
   { label: "Games", href: "/games", isActive: true },
   { label: "Categories", href: "/categories" },
-  { label: "VIP", href: "/vip" },
-  { label: "Deals", href: "/deals" },
 ];
 
 export const CATEGORIES: CategoryItem[] = [
@@ -149,7 +147,6 @@ export const FOOTER_LINKS: FooterLink[] = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
   { label: "Support", href: "/support" },
-  { label: "Affiliates", href: "/affiliates" },
 ];
 
 export const FOOTER_ICONS = ["share", "lock", "verified_user"];
