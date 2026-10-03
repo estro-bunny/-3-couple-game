@@ -21,9 +21,13 @@ export default function SpinTheBottleBoard() {
   const [session, setSession] = useState<GameSession>(EMPTY_GAME_SESSION);
   const [rotation, setRotation] = useState(0);
   const previousPlayer = useRef<string | undefined>();
+  const spinTimer = useRef<ReturnType<typeof window.setTimeout> | null>(null);
 
   useEffect(() => {
     setSession(loadGameSession(STORAGE_KEY));
+    return () => {
+      if (spinTimer.current) window.clearTimeout(spinTimer.current);
+    };
   }, []);
 
   const spin = useCallback(() => {
@@ -42,7 +46,7 @@ export default function SpinTheBottleBoard() {
 
     setRotation((current) => current + extraTurns * 360 + targetAngle);
 
-    window.setTimeout(() => {
+    spinTimer.current = window.setTimeout(() => {
       setSelectedPlayer(nextPlayer);
       setIsSpinning(false);
       setSession((current) => {
