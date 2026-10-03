@@ -19,6 +19,8 @@ export default function SuperDiceBoard() {
   const [rolling, setRolling] = useState(false);
   const [session, setSession] = useState<GameSession>(EMPTY_GAME_SESSION);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const previousAction = useRef<number | null>(null);
+  const previousSetting = useRef<number | null>(null);
 
   useEffect(() => {
     setSession(loadGameSession(KEY));
@@ -29,8 +31,16 @@ export default function SuperDiceBoard() {
     if (rolling) return;
     setRolling(true);
     timer.current = setTimeout(() => {
-      const nextAction = Math.floor(Math.random() * 6);
-      const nextSetting = Math.floor(Math.random() * 6);
+      let nextAction = Math.floor(Math.random() * 6);
+      let nextSetting = Math.floor(Math.random() * 6);
+      if (previousAction.current !== null && nextAction === previousAction.current) {
+        nextAction = (nextAction + 1) % ACTIONS.length;
+      }
+      if (previousSetting.current !== null && nextSetting === previousSetting.current) {
+        nextSetting = (nextSetting + 1) % SETTINGS.length;
+      }
+      previousAction.current = nextAction;
+      previousSetting.current = nextSetting;
       setAction(nextAction);
       setSetting(nextSetting);
       setRolling(false);
@@ -46,6 +56,8 @@ export default function SuperDiceBoard() {
     setAction(null);
     setSetting(null);
     setRolling(false);
+    previousAction.current = null;
+    previousSetting.current = null;
   };
 
   const clearProgress = () => {
