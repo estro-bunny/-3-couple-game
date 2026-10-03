@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Privacy Policy - CouplePlayHub",
   description:
-    "Read the CouplePlayHub privacy policy. Learn about our zero-log policy and how we protect your data while you enjoy couple games online.",
+    "Read how CouplePlayHub handles local game progress, optional Lovense connections, and the limited services used by the site.",
   path: "/privacy",
 });
 
@@ -19,47 +19,62 @@ export default function PrivacyPage() {
           <h1 className="text-5xl font-black font-headline tracking-tighter">
             PRIVACY <span className="text-primary">POLICY</span>
           </h1>
+
           <div className="space-y-6 text-on-surface-variant leading-relaxed">
             <p>
-              Your privacy is our top priority. CouplePlayHub operates on a
-              zero-log policy — we never store your session data or play
-              history. Your intimate moments remain completely private.
+              CouplePlayHub is designed to be private by default. The games do
+              not require an account, and game progress is stored locally in
+              your browser. We do not claim that the site is zero-log or that
+              no data ever leaves your device.
             </p>
 
             <h2 className="text-2xl font-bold font-headline text-on-surface pt-4">
-              Information We Collect
+              Game Progress
             </h2>
             <p>
-              We only collect the minimum information necessary to provide
-              our couple gaming services: your email address for account
-              creation and basic usage analytics to improve our games.
+              Round counts and related game state use your browser&apos;s local
+              storage. Clearing that browser data can remove local progress.
+              There is currently no account system or cross-device sync.
             </p>
 
             <h2 className="text-2xl font-bold font-headline text-on-surface pt-4">
-              How We Use Your Information
+              Optional Lovense Connection
             </h2>
             <p>
-              Your information is used solely to operate the platform, send
-              account-related communications, and improve our couple games.
-              We never sell or share your personal data with third parties
-              for marketing purposes.
+              Lovense integration is optional. If you connect it, the browser
+              communicates with Lovense services and Lovense Connect to
+              establish the hardware connection. CouplePlayHub uses an
+              anonymous local identifier for this integration; it is not an
+              account identity. Do not use the integration if you are not
+              comfortable with that third-party communication.
             </p>
 
             <h2 className="text-2xl font-bold font-headline text-on-surface pt-4">
-              Data Security
+              Accounts &amp; Email
             </h2>
             <p>
-              All data is encrypted in transit and at rest. We employ
-              industry-standard security measures to protect your account
-              and personal information.
+              Accounts and email-based sign-in are not currently part of the
+              CouplePlayHub product. The old account pages are retained only
+              as informational placeholders and are not connected to an
+              account database.
+            </p>
+
+            <h2 className="text-2xl font-bold font-headline text-on-surface pt-4">
+              Third-Party Services
+            </h2>
+            <p>
+              The site is deployed through its hosting provider, and optional
+              integrations may communicate with their own services. Their
+              respective privacy policies and terms apply to those services.
             </p>
 
             <h2 className="text-2xl font-bold font-headline text-on-surface pt-4">
               Contact Us
             </h2>
             <p>
-              If you have any questions about this privacy policy, please
-              contact our support team.
+              If you have questions about CouplePlayHub privacy practices,
+              contact the project maintainers through the project&apos;s
+              published support channels.
             </p>
           </div>
         </div>
