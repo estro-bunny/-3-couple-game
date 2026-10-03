@@ -5,8 +5,9 @@ import {
   EMPTY_GAME_SESSION,
   GameSession,
   loadGameSession,
-  recordRound,
-  saveGameSession,
+  completeGameRound,
+  loadGameSession,
+  resetGameSession,
 } from "@/lib/games/session";
 import { PROMPTS, Prompt, TruthOrDareMode } from "@/lib/games/truth-or-dare";
 import Button from "@/components/ui/Button";
@@ -32,9 +33,7 @@ export default function TruthOrDareBoard() {
     setMode(nextMode);
     setPrompt((previous) => pickPrompt(nextMode, previous?.id));
     setSession((previous) => {
-      const next = recordRound(previous);
-      saveGameSession(STORAGE_KEY, next);
-      return next;
+      return completeGameRound(STORAGE_KEY, previous);
     });
   }, [mode]);
 
@@ -43,9 +42,8 @@ export default function TruthOrDareBoard() {
   }, []);
 
   const clearProgress = useCallback(() => {
-    setSession(EMPTY_GAME_SESSION);
+    setSession(resetGameSession(STORAGE_KEY));
     setPrompt(null);
-    saveGameSession(STORAGE_KEY, EMPTY_GAME_SESSION);
   }, []);
 
   return (
