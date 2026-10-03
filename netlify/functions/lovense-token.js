@@ -12,7 +12,15 @@ exports.handler = async (event) => {
     return { statusCode: 503, body: JSON.stringify({ message: "Lovense is not configured on this deployment yet." }) };
   }
 
-  const uid = "cph_" + crypto.randomUUID().replaceAll("-", "");
+  let requestedUid = null;
+  try {
+    const body = event.body ? JSON.parse(event.body) : {};
+    requestedUid = typeof body.uid === "string" ? body.uid.trim() : null;
+  } catch {}
+
+  const uid = requestedUid && /^cph_[a-f0-9]{32}$/.test(requestedUid)
+    ? requestedUid
+    : "cph_" + crypto.randomUUID().replaceAll("-", "");
 
   try {
     const response = await fetch(LOVENSE_TOKEN_URL, {
