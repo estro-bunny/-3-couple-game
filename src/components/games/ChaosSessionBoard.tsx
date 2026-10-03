@@ -1,8 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { CHAOS_SESSION_GAMES, type ChaosVibe, pickSessionGame } from "@/lib/games/chaos-session";
+import {
+  EMPTY_CHAOS_SESSION,
+  advanceChaosSession,
+  completeChaosGame,
+  parseChaosSession,
+  serializeChaosSession,
+  startChaosSession,
+  type ChaosSessionState,
+} from "@/lib/games/chaos-session-state";
+
+const STORAGE_KEY = "coupleplayhub:chaos-session";
 
 const VIBES: { id: ChaosVibe; label: string; emoji: string; copy: string }[] = [
   { id: "surprise", label: "Surprise me", emoji: "🎲", copy: "Let chaos decide." },
@@ -13,14 +24,41 @@ const VIBES: { id: ChaosVibe; label: string; emoji: string; copy: string }[] = [
 ];
 
 export default function ChaosSessionBoard() {
-  const [vibe, setVibe] = useState<ChaosVibe>("surprise");
-  const [current, setCurrent] = useState<ReturnType<typeof pickSessionGame> | null>(null);
-  const [round, setRound] = useState(0);
+  const [state, setState] = useState<ChaosSessionState>(EMPTY_CHAOS_SESSION);
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setState(parseChaosSession(window.localStorage.getItem(STORAGE_KEY)));
+    setHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    window.localStorage.setItem(STORAGE_KEY, serializeChaosSession(state));
+  }, [state, hydrated]);
+
+  const vibe = state.vibe;
+  const current = CHAOS_SESSION_GAMES.find((game) => game.slug === state.currentSlug) ?? null;
+
+  function setVibe(nextVibe: ChaosVibe) {
+    setState((previous) => ({ ...previous, vibe: nextVibe }));
+  }
 
   function launch() {
     const next = pickSessionGame(CHAOS_SESSION_GAMES, vibe, current?.slug);
-    setCurrent(next);
-    setRound((value) => value + 1);
+    setState((previous) =>
+      previous.startedAt
+        ? advanceChaosSession(previous, next)
+        : startChaosSession(previous, next, vibe)
+    );
+  }
+
+  function markCurrentComplete() {
+    setState((previous) => completeChaosGame(previous));
+  }
+
+  function reset() {
+    setState(EMPTY_CHAOS_SESSION);
   }
 
   return (
@@ -28,10 +66,10 @@ export default function ChaosSessionBoard() {
       <div className="glass-card rounded-3xl p-6 md:p-10 border border-primary/20 shadow-[0_0_80px_rgba(255,0,255,0.08)]">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
           <div>
-            <p className="text-[10px] font-black tracking-[.3em] text-secondary uppercase">SESSION ENGINE // {String(round).padStart(2, "0")}</p>
+            <p className="text-[10px] font-black tracking-[.3em] text-secondary uppercase">SESSION ENGINE // {String(state.roundsCompleted).padStart(2, "0")}</p>
             <h2 className="text-3xl md:text-5xl font-black font-headline tracking-tight mt-2">PICK YOUR <span className="text-primary">VIBE.</span></h2>
           </div>
-          <span className="text-xs font-black uppercase tracking-widest text-on-surface-variant">{CHAOS_SESSION_GAMES.length} games connected</span>
+          <span className="text-xs font-black uppercase tracking-widest text-on-surface-variant">{state.completedSlugs.length}/{CHAOS_SESSION_GAMES.length} games cleared</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
@@ -68,11 +106,21 @@ export default function ChaosSessionBoard() {
           <div className="mt-8 rounded-2xl border border-secondary/20 bg-secondary/5 p-6 text-center">
             <p className="text-xs font-black tracking-[.25em] uppercase text-secondary">CHAOS HAS CHOSEN</p>
             <p className="text-2xl md:text-4xl font-black font-headline mt-2">{current.title}</p>
-            <p className="text-sm text-on-surface-variant mt-2">Finish a round, come back here, and let the session pick your next game.</p>
+            <p className="text-sm text-on-surface-variant mt-2">Mark the game complete when you're done, then launch the next chaos.</p>
+            <div className="flex flex-wrap justify-center gap-3 mt-5">
+              <button type="button" onClick={markCurrentComplete}
+                className="rounded-xl px-4 py-2 text-xs font-black uppercase tracking-widest border border-primary/40 text-primary hover:bg-primary/10 transition-colors">
+                COMPLETE GAME
+              </button>
+              <button type="button" onClick={reset}
+                className="rounded-xl px-4 py-2 text-xs font-black uppercase tracking-widest border border-outline-variant/30 text-on-surface-variant hover:border-secondary/50 transition-colors">
+                RESET SESSION
+              </button>
+            </div>
           </div>
         )}
 
-        <p className="text-center text-xs text-on-surface-variant/70 mt-6">No account. No server-side session. No pressure. Skip anything you don't want to play.</p>
+        <p className="text-center text-xs text-on-surface-variant/70 mt-6">Progress stays in this browser. No account. No server-side session. No pressure. Skip anything you don't want to play.</p>
       </div>
     </div>
   );
