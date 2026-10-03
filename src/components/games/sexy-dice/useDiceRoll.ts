@@ -15,7 +15,7 @@ const ACTIVITIES = [
   "Stroke",
   "Massage",
   "Caress/Tickle",
-  "Provider choice",
+  "Your choice",
 ];
 
 const BODY_PARTS = [
@@ -24,7 +24,7 @@ const BODY_PARTS = [
   "Back",
   "Thighs & butt",
   "Legs",
-  "Receiver choice",
+  "Your choice",
 ];
 
 const ROLL_DURATION = 1500;
@@ -103,9 +103,7 @@ export function useDiceRoll() {
         hasRolled: true,
       });
 
-      setSession((prev) => {
-        return completeGameRound(SESSION_STORAGE_KEY, prev);
-      });
+      setSession((prev) => completeGameRound(SESSION_STORAGE_KEY, prev));
     }, ROLL_DURATION);
   }, [state.isRolling]);
 
