@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Button from "@/components/ui/Button";
 import {
   EMPTY_GAME_SESSION,
@@ -62,7 +62,7 @@ export default function SexyTimerBoard() {
     [minutes, seconds]
   );
 
-  const start = () => {
+  const start = useCallback(() => {
     setPrompt(PROMPTS[Math.floor(Math.random() * PROMPTS.length)]);
     setRemaining(duration);
     setRunning(true);
