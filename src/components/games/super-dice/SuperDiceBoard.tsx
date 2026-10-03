@@ -52,7 +52,7 @@ export default function SuperDiceBoard() {
     }, 900);
   }, [rolling]);
 
-  const reset = () => {
+  const reset = useCallback(() => {
     setAction(null);
     setSetting(null);
     setRolling(false);
