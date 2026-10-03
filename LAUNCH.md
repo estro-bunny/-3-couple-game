@@ -65,7 +65,7 @@ Build command: npm run build
 Publish directory: .next
 ```
 
-If the existing Netlify integration already detects Next.js automatically, prefer its detected configuration over forcing a conflicting publish setting.
+This repository uses Next.js static export (`output: "export"`), so the production build writes the deployable site to `out/`.
 
 ## Definition of done
 
