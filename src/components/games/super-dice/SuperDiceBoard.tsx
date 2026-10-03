@@ -9,7 +9,7 @@ import {
   type GameSession,
 } from "@/lib/games/session";
 
-const ACTIONS = ["Kiss", "Cuddle", "Massage", "Compliment", "Dance", "Partner choice"];
+const ACTIONS = ["Kiss", "Cuddle", "Massage", "Compliment", "Dance", "Your choice"];
 const SETTINGS = ["On the couch", "By the window", "In the kitchen", "At the front door", "Under a blanket", "Your choice"];
 const KEY = "coupleplayhub:game:super-sex-dice";
 
@@ -44,9 +44,7 @@ export default function SuperDiceBoard() {
       setAction(nextAction);
       setSetting(nextSetting);
       setRolling(false);
-      setSession(prev => {
-        return completeGameRound(KEY, prev);
-      });
+      setSession(prev => completeGameRound(KEY, prev));
     }, 900);
   }, [rolling]);
 
@@ -56,7 +54,7 @@ export default function SuperDiceBoard() {
     setRolling(false);
     previousAction.current = null;
     previousSetting.current = null;
-  };
+  }, []);
 
   const clearProgress = () => {
     setSession(resetGameSession(KEY));
@@ -78,7 +76,10 @@ export default function SuperDiceBoard() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
-        {[["Action", action, ACTIONS], ["Setting", setting, SETTINGS]].map(([label, value, items]) => (
+        {[
+          ["Action", action, ACTIONS],
+          ["Setting", setting, SETTINGS],
+        ].map(([label, value, items]) => (
           <div key={label as string} className="glass-card rounded-2xl p-6">
             <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">{label as string} die</p>
             <div className="min-h-32 flex items-center justify-center">
