@@ -5,6 +5,7 @@ import GameCard from "@/components/ui/GameCard";
 import GlassGameCard from "@/components/ui/GlassGameCard";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo";
+import LovenseBridge from "@/components/lovense/LovenseBridge";
 
 export const metadata: Metadata = buildMetadata({
   title: "All Couple Games Online - Play Free Naughty & Romantic Games",
@@ -30,6 +31,8 @@ export default function GamesPage() {
               Pick one, play together, skip whatever you don't vibe with.
             </p>
           </div>
+
+          <div className="mb-8"><LovenseBridge /></div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
             {FEATURED_GAMES.map((game) => <GameCard key={game.title} {...game} />)}
