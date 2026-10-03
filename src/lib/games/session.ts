@@ -49,3 +49,18 @@ export function saveGameSession(storageKey: string, session: GameSession) {
     // Local storage can be unavailable in private/restricted browser contexts.
   }
 }
+
+export function completeGameRound(
+  storageKey: string,
+  session: GameSession,
+  now = Date.now()
+): GameSession {
+  const next = recordRound(session, now);
+  saveGameSession(storageKey, next);
+  return next;
+}
+
+export function resetGameSession(storageKey: string): GameSession {
+  saveGameSession(storageKey, EMPTY_GAME_SESSION);
+  return EMPTY_GAME_SESSION;
+}
