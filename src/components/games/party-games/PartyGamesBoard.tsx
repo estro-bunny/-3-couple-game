@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { loadGameSession, recordRound, saveGameSession } from "@/lib/games/session";
 import { PARTY_DECKS, PartyMode, pickPartyPrompt } from "@/lib/games/party-games";
 
@@ -22,7 +22,7 @@ export default function PartyGamesBoard() {
     setRounds(loadGameSession(STORAGE_KEY).roundsCompleted);
   }, []);
 
-  function nextPrompt() {
+  const nextPrompt = useCallback(() => {
     const next = pickPartyPrompt(PARTY_DECKS[mode], previousId);
     if (!next) return;
 
@@ -39,7 +39,7 @@ export default function PartyGamesBoard() {
     setPrompt(pickPartyPrompt(PARTY_DECKS[nextMode]));
   }
 
-  function reset() {
+  const reset = useCallback(() => {
     localStorage.removeItem(STORAGE_KEY);
     setRounds(0);
     setPreviousId(undefined);
