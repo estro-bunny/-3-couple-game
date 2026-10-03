@@ -4,10 +4,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Button from "@/components/ui/Button";
 import {
   EMPTY_GAME_SESSION,
-  GameSession,
+  completeGameRound,
   loadGameSession,
-  recordRound,
-  saveGameSession,
+  resetGameSession,
+  type GameSession,
 } from "@/lib/games/session";
 import { pickRandom } from "@/lib/games/random";
 
@@ -50,9 +50,7 @@ export default function SpinTheBottleBoard() {
       setSelectedPlayer(nextPlayer);
       setIsSpinning(false);
       setSession((current) => {
-        const next = recordRound(current);
-        saveGameSession(STORAGE_KEY, next);
-        return next;
+        return completeGameRound(STORAGE_KEY, current);
       });
     }, 1800);
   }, [isSpinning, players]);
