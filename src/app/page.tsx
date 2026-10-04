@@ -14,28 +14,23 @@ export const metadata: Metadata = {
 const HOME_FAQS = [
   {
     question: "What is CouplePlayHub?",
-    answer:
-      CouplePlayHub is a free browser-based collection of playful couple games built around connection, conversation, and easy-to-skip challenges. The games are queer-friendly by design and avoid assuming your gender, roles, or relationship shape.,
+    answer: "CouplePlayHub is a free browser-based collection of playful couple games built around connection, conversation, and easy-to-skip challenges. The games are queer-friendly by design and avoid assuming your gender, roles, or relationship shape.",
   },
   {
     question: "Are the couple games free to play?",
-    answer:
-      Yes. The playable games currently available on the site are free to use, with no account required for local play.,
+    answer: "Yes. The playable games currently available on the site are free to use, with no account required for local play.",
   },
   {
     question: "Can I play these games on my phone?",
-    answer:
-      Yes. The games are designed for browser play across phones, tablets, and desktop screens. Local progress stays in the browser on the device where you play.,
+    answer: "Yes. The games are designed for browser play across phones, tablets, and desktop screens. Local progress stays in the browser on the device where you play.",
   },
   {
     question: "Is my privacy protected?",
-    answer:
-      The current games use browser-local progress and do not require an account. That means your local session history is kept on the device rather than tied to a CouplePlayHub account.,
+    answer: "The current games use browser-local progress and do not require an account. That means your local session history is kept on the device rather than tied to a CouplePlayHub account.",
   },
   {
     question: "What types of couple games are available?",
-    answer:
-      The current playable library includes Sexy Dice, Truth or Dare, Sex Roulette Wheel, Kama Sutra Cards, Spin the Bottle, Sexy Timer, Party Games, and Super Sex Dice. They are designed to work for partners regardless of gender or orientation.,
+    answer: "The current playable library includes Sexy Dice, Truth or Dare, Sex Roulette Wheel, Kama Sutra Cards, Spin the Bottle, Sexy Timer, Party Games, and Super Sex Dice. They are designed to work for partners regardless of gender or orientation.",
   },
 ];
 
