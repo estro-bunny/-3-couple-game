@@ -8,10 +8,10 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex flex-col items-center md:items-start gap-2">
           <span className="text-lg font-black text-primary font-headline">
-            COUPLEPLAYHUB
+            ESTROBUNNY'S BURROW
           </span>
           <p className="text-on-surface-variant font-body text-sm tracking-wide">
-            &copy; {new Date().getFullYear()} CouplePlayHub. All rights reserved.
+            &copy; {new Date().getFullYear()} EstroBunny's Burrow. All rights reserved.
           </p>
         </div>
         <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-8">
