@@ -6,6 +6,7 @@ import { CHAOS_SESSION_GAMES, type ChaosVibe, pickSessionGame } from "@/lib/game
 import {
   EMPTY_CHAOS_SESSION,
   advanceChaosSession,
+  isChaosSessionComplete,
   parseChaosSession,
   serializeChaosSession,
   startChaosSession,
@@ -55,6 +56,7 @@ export default function ChaosSessionBoard() {
 
   const vibe = state.vibe;
   const current = CHAOS_SESSION_GAMES.find((game) => game.slug === state.currentSlug) ?? null;
+  const sessionComplete = isChaosSessionComplete(state, CHAOS_SESSION_GAMES.length);
 
   function setVibe(nextVibe: ChaosVibe) {
     setState((previous) => ({ ...previous, vibe: nextVibe }));
@@ -101,10 +103,18 @@ export default function ChaosSessionBoard() {
           })}
         </div>
 
+        {sessionComplete && (
+          <div className="mt-8 rounded-2xl border border-primary/40 bg-primary/10 p-6 text-center shadow-[0_0_50px_rgba(255,0,255,0.12)]">
+            <p className="text-xs font-black tracking-[.3em] uppercase text-primary">SESSION COMPLETE // 08 / 08</p>
+            <p className="text-3xl md:text-5xl font-black font-headline mt-2">CHAOS CLEARED ♡</p>
+            <p className="text-sm text-on-surface-variant mt-2">You cleared every game in this session. Run it again whenever you want another round of trouble.</p>
+          </div>
+        )}
+
         <div className="mt-8 flex flex-col sm:flex-row gap-3">
           <button type="button" onClick={launch}
             className="flex-1 rounded-2xl px-6 py-4 font-black uppercase tracking-widest bg-primary text-on-primary shadow-[0_0_45px_rgba(255,0,255,0.25)] hover:scale-[1.01] active:scale-[0.99] transition-transform">
-            {current ? "NEXT CHAOS ♡" : "START SESSION ♡"}
+            {sessionComplete ? "RUN IT AGAIN ♡" : current ? "NEXT CHAOS ♡" : "START SESSION ♡"}
           </button>
           {current && (
             <Link href={"/games/" + current.slug + "?session=1"}
