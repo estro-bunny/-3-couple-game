@@ -112,11 +112,11 @@ export default function ChaosSessionBoard() {
 
   return (
     <div className="w-full max-w-5xl mx-auto">
-      <div className="glass-card rounded-3xl p-6 md:p-10 border border-primary/20 shadow-[0_0_80px_rgba(255,0,255,0.08)]">
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+      <div className="glass-card rounded-3xl p-5 sm:p-6 md:p-10 border border-primary/20 shadow-[0_0_80px_rgba(255,0,255,0.08)]">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6 sm:mb-8">
           <div>
             <p className="text-[10px] font-black tracking-[.3em] text-secondary uppercase">SESSION ENGINE // {String(state.roundsCompleted).padStart(2, "0")}</p>
-            <h2 className="text-3xl md:text-5xl font-black font-headline tracking-tight mt-2">PICK YOUR <span className="text-primary">VIBE.</span></h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black font-headline tracking-tight mt-2">PICK YOUR <span className="text-primary">VIBE.</span></h2>
           </div>
           <span className="text-xs font-black uppercase tracking-widest text-on-surface-variant">{state.completedSlugs.length}/{CHAOS_SESSION_GAMES.length} games cleared</span>
         </div>
@@ -139,14 +139,14 @@ export default function ChaosSessionBoard() {
         </div>
 
         {sessionComplete && (
-          <div className="mt-8 rounded-2xl border border-primary/40 bg-primary/10 p-6 text-center shadow-[0_0_50px_rgba(255,0,255,0.12)]">
+          <div className="mt-6 sm:mt-8 rounded-2xl border border-primary/40 bg-primary/10 p-6 text-center shadow-[0_0_50px_rgba(255,0,255,0.12)]">
             <p className="text-xs font-black tracking-[.3em] uppercase text-primary">SESSION COMPLETE // 08 / 08</p>
             <p className="text-3xl md:text-5xl font-black font-headline mt-2">CHAOS CLEARED ♡</p>
             <p className="text-sm text-on-surface-variant mt-2">You cleared every game in this session. Run it again whenever you want another round of trouble.</p>
           </div>
         )}
 
-        <div className="mt-8 flex flex-col sm:flex-row gap-3">
+        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3">
           <button type="button" onClick={launch}
             className="flex-1 rounded-2xl px-6 py-4 font-black uppercase tracking-widest bg-primary text-on-primary shadow-[0_0_45px_rgba(255,0,255,0.25)] hover:scale-[1.01] active:scale-[0.99] transition-transform">
             {sessionComplete ? "RUN IT AGAIN ♡" : current ? "NEXT CHAOS ♡" : "START SESSION ♡"}
