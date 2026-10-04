@@ -20,6 +20,12 @@ export const EMPTY_CHAOS_SESSION: ChaosSessionState = {
   lastAdvancedAt: null,
 };
 
+const VALID_GAME_SLUGS = new Set(CHAOS_SESSION_GAMES.map((game) => game.slug));
+
+function isValidGameSlug(value: unknown): value is string {
+  return typeof value === "string" && VALID_GAME_SLUGS.has(value);
+}
+
 export function startChaosSession(
   state: ChaosSessionState,
   game: ChaosSessionGame,
@@ -43,7 +49,7 @@ export function completeChaosGame(
   slug = state.currentSlug,
   now = Date.now()
 ): ChaosSessionState {
-  if (!slug) return state;
+  if (!slug || !isValidGameSlug(slug)) return state;
 
   const alreadyCompleted = state.completedSlugs.includes(slug);
   const completedSlugs = alreadyCompleted
@@ -69,6 +75,8 @@ export function advanceChaosSession(
   game: ChaosSessionGame,
   now = Date.now()
 ): ChaosSessionState {
+  if (!isValidGameSlug(game.slug)) return state;
+
   return {
     ...state,
     currentSlug: game.slug,
@@ -137,20 +145,39 @@ export function parseChaosSession(raw: string | null | undefined): ChaosSessionS
         ? parsed.vibe
         : "surprise";
 
+    const completedSlugs = Array.isArray(parsed.completedSlugs)
+      ? [...new Set(
+          parsed.completedSlugs.filter(
+            (slug): slug is string => isValidGameSlug(slug)
+          )
+        )]
+      : [];
+
+    const currentSlug = isValidGameSlug(parsed.currentSlug)
+      ? parsed.currentSlug
+      : null;
+
+    const nextSlug =
+      isValidGameSlug(parsed.nextSlug) && !completedSlugs.includes(parsed.nextSlug)
+        ? parsed.nextSlug
+        : null;
+
     return {
       vibe,
-      currentSlug: typeof parsed.currentSlug === "string" ? parsed.currentSlug : null,
-      nextSlug: typeof parsed.nextSlug === "string" ? parsed.nextSlug : null,
-      completedSlugs: Array.isArray(parsed.completedSlugs)
-        ? parsed.completedSlugs.filter((slug): slug is string => typeof slug === "string")
-        : [],
+      currentSlug,
+      nextSlug,
+      completedSlugs,
       roundsCompleted:
-        typeof parsed.roundsCompleted === "number" && parsed.roundsCompleted >= 0
-          ? parsed.roundsCompleted
+        typeof parsed.roundsCompleted === "number" && Number.isFinite(parsed.roundsCompleted) && parsed.roundsCompleted >= 0
+          ? Math.floor(parsed.roundsCompleted)
           : 0,
-      startedAt: typeof parsed.startedAt === "number" ? parsed.startedAt : null,
+      startedAt: typeof parsed.startedAt === "number" && Number.isFinite(parsed.startedAt)
+        ? parsed.startedAt
+        : null,
       lastAdvancedAt:
-        typeof parsed.lastAdvancedAt === "number" ? parsed.lastAdvancedAt : null,
+        typeof parsed.lastAdvancedAt === "number" && Number.isFinite(parsed.lastAdvancedAt)
+          ? parsed.lastAdvancedAt
+          : null,
     };
   } catch {
     return EMPTY_CHAOS_SESSION;
