@@ -63,11 +63,19 @@ export default function ChaosSessionBoard() {
   }
 
   function launch() {
-    const next = pickSessionGame(CHAOS_SESSION_GAMES, vibe, current?.slug);
+    const restarting = sessionComplete;
+    const next = pickSessionGame(
+      CHAOS_SESSION_GAMES,
+      vibe,
+      restarting ? undefined : current?.slug,
+      restarting ? [] : state.completedSlugs
+    );
     setState((previous) =>
-      previous.startedAt
-        ? advanceChaosSession(previous, next)
-        : startChaosSession(previous, next, vibe)
+      restarting
+        ? startChaosSession(previous, next, vibe)
+        : previous.startedAt
+          ? advanceChaosSession(previous, next)
+          : startChaosSession(previous, next, vibe)
     );
   }
 
