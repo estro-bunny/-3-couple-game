@@ -37,7 +37,7 @@ export default function PartyGamesBoard() {
     setRounds(session.roundsCompleted);
     setPreviousId(next.id);
     setPrompt(next);
-  }
+  }, []);
 
   function changeMode(nextMode: PartyMode) {
     setMode(nextMode);
@@ -50,7 +50,7 @@ export default function PartyGamesBoard() {
     setRounds(0);
     setPreviousId(undefined);
     setPrompt(pickPartyPrompt(PARTY_DECKS[mode]));
-  }
+  }, [mode]);
 
   return (
     <div className="max-w-2xl mx-auto space-y-6 text-left">
