@@ -24,12 +24,12 @@ export default function GameBoard() {
 
   return (
     <div className="w-full max-w-4xl mx-auto space-y-6 sm:space-y-10">
-      <div className="glass-card rounded-2xl p-4 flex items-center justify-between gap-3 text-left">
+      <div className="burrow-panel rounded-2xl p-4 flex items-center justify-between gap-3 text-left">
         <div>
-          <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">
+          <p className="text-[9px] font-black uppercase tracking-[.25em] text-secondary">
             Local session
           </p>
-          <p className="font-bold">
+          <p className="mt-1 font-black uppercase tracking-wide">
             {session.roundsCompleted}{" "}
             {session.roundsCompleted === 1 ? "round" : "rounds"} played
           </p>
