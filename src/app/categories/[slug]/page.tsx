@@ -24,7 +24,6 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const seo = CATEGORY_SEO[slug];
-  const games = category ? getGamesByCategory(category.gameCategory) : [];
 
   if (seo) {
     return buildMetadata({
@@ -58,6 +57,7 @@ export default async function CategoryPage({
   const title = category.title;
   const description = category.description;
   const seo = CATEGORY_SEO[slug];
+  const games = getGamesByCategory(category.gameCategory);
 
   return (
     <PageShell>
