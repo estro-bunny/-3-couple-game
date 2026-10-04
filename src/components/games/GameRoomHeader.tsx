@@ -16,7 +16,7 @@ export default function GameRoomHeader({
   image,
 }: GameRoomHeaderProps) {
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-secondary/20 bg-surface-container-low shadow-[0_0_70px_rgba(0,229,255,.06)]">
+    <div className="relative overflow-hidden rounded-[2rem] border border-primary/20 bg-surface-container-low shadow-[0_0_90px_rgba(255,125,233,.07)]">
       <div className="absolute inset-0 cyber-grid opacity-30 pointer-events-none" />
       {image && (
         <div className="absolute inset-0 pointer-events-none">
@@ -56,9 +56,9 @@ export default function GameRoomHeader({
         <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
           <div>
             <p className="text-[10px] font-black uppercase tracking-[.32em] text-primary/80">
-              BURROW ROOM // {category.toUpperCase()}
+              CHAOS DEN // ROOM {category.toUpperCase()}
             </p>
-            <h2 className="mt-3 text-3xl sm:text-4xl md:text-6xl font-black font-headline tracking-[-.05em] leading-none">
+            <div className="mt-3 flex items-start gap-3"><span className="hidden sm:block text-3xl leading-none text-primary/70">ᕱ⑅ᕱ</span><h2 className="mt-3 text-4xl sm:text-5xl md:text-7xl font-black font-headline tracking-[-.06em] leading-[.92]">
               {title}
             </h2>
             <div className="mt-4 flex flex-wrap gap-2">
@@ -85,7 +85,7 @@ export default function GameRoomHeader({
 
       <div className="relative border-t border-secondary/10 px-5 sm:px-7 md:px-8 py-3 flex flex-wrap items-center justify-between gap-2 text-[9px] font-black uppercase tracking-[.2em] text-on-surface-variant/60">
         <span>PLAY NICE. OR DON'T. JUST CONSENT.</span>
-        <span className="text-primary/60">NO ACCOUNT // NO PRESSURE</span>
+        <span className="text-primary/60">NO ACCOUNT // NO PRESSURE // ALWAYS YOUR RULES</span>
       </div>
     </div>
   );
