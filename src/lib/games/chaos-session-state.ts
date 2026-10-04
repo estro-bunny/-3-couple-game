@@ -81,6 +81,37 @@ export function serializeChaosSession(state: ChaosSessionState): string {
   return JSON.stringify(state);
 }
 
+export function exportChaosSession(state: ChaosSessionState): string {
+  return JSON.stringify(
+    {
+      version: 1,
+      exportedAt: Date.now(),
+      state,
+    },
+    null,
+    2
+  );
+}
+
+export function importChaosSession(raw: string | null | undefined): ChaosSessionState {
+  if (!raw) return EMPTY_CHAOS_SESSION;
+
+  try {
+    const parsed = JSON.parse(raw) as {
+      version?: unknown;
+      state?: unknown;
+    };
+
+    if (parsed.version !== 1 || !parsed.state || typeof parsed.state !== "object") {
+      return EMPTY_CHAOS_SESSION;
+    }
+
+    return parseChaosSession(JSON.stringify(parsed.state));
+  } catch {
+    return EMPTY_CHAOS_SESSION;
+  }
+}
+
 export function parseChaosSession(raw: string | null | undefined): ChaosSessionState {
   if (!raw) return EMPTY_CHAOS_SESSION;
 
