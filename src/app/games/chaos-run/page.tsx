@@ -15,32 +15,42 @@ export default function ChaosRunPage() {
   return (
     <PageShell>
       <section className="relative min-h-[80vh] overflow-hidden bg-surface px-4 py-10 cyber-grid sm:px-6 sm:py-16 md:px-8 md:py-24">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,0,255,.14),transparent_42%)]" />
+        <div className="pointer-events-none absolute -top-24 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
         <div className="relative mx-auto max-w-6xl">
           <Breadcrumbs items={[{ label: "Chaos Den", href: "/games" }, { label: "Chaos Run" }]} />
 
-          <div className="mx-auto mt-8 mb-10 max-w-4xl text-center sm:mt-12 sm:mb-14">
-            <p className="mb-4 text-[10px] font-black uppercase tracking-[.35em] text-secondary">03 // CHAOS RUN // SESSION MODE</p>
-            <h1 className="font-headline text-5xl font-black leading-[.88] tracking-[-.07em] sm:text-6xl md:text-8xl">
-              CHAIN THE<br /><span className="text-primary">CHAOS.</span>
-            </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-on-surface-variant sm:text-lg md:text-xl">
-              One night. Multiple rooms. Pick a vibe and let the Burrow choose what happens next.
-              Your progress stays in this browser, and you can bail out whenever you want.
-            </p>
+          <div className="grid lg:grid-cols-[1fr_auto] gap-8 items-end mt-8 sm:mt-12 mb-10 sm:mb-14">
+            <div className="max-w-4xl">
+              <div className="flex flex-wrap gap-2 mb-5">
+                <span className="bunny-sticker">03 // CHAOS RUN</span>
+                <span className="bunny-sticker bunny-sticker-cyan">SESSION MODE</span>
+              </div>
+              <h1 className="font-headline text-5xl sm:text-6xl md:text-8xl font-black leading-[.82] tracking-[-.075em]">
+                LET THE BURROW
+                <span className="block text-primary">CHOOSE.</span>
+              </h1>
+              <p className="mt-6 max-w-2xl text-base leading-relaxed text-on-surface-variant sm:text-lg">
+                One night. Multiple rooms. Pick a vibe, then let the Burrow throw the next idea at you.
+                Progress stays in this browser. Bail out whenever you want.
+              </p>
+            </div>
+            <div className="hidden lg:block text-right">
+              <div className="text-7xl">ᕱ⑅ᕱ</div>
+              <div className="mt-2 text-[9px] font-black tracking-[.25em] text-secondary uppercase">BUNNI CORE // CHAOTIC</div>
+            </div>
           </div>
 
           <ChaosSessionBoard />
 
-          <div className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-3 text-center sm:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
             {[
-              ["01", "PICK A VIBE", "Set the energy before the chaos starts."],
-              ["02", "CLEAR A ROOM", "Finish a round and the run remembers it."],
-              ["03", "KEEP GOING", "Jump into the next room or stop. Your call."],
+              ["01", "PICK A VIBE", "Soft, romantic, mischievous, or maximum chaos."],
+              ["02", "CLEAR A ROOM", "Finish a room and the run remembers it locally."],
+              ["03", "KEEP GOING", "Take the next room, replay, or stop. Your call."],
             ].map(([number, title, copy]) => (
-              <div key={number} className="rounded-2xl border border-outline-variant/20 bg-surface-container-low p-5">
-                <p className="text-[9px] font-black tracking-[.28em] text-primary/70">{number} //</p>
-                <p className="mt-2 text-sm font-black uppercase tracking-wider">{title}</p>
+              <div key={number} className="rounded-2xl border border-white/[.07] bg-[#100c15] p-5">
+                <div className="text-[9px] font-black tracking-[.25em] text-primary">{number} //</div>
+                <div className="mt-2 text-sm font-black uppercase tracking-[.12em]">{title}</div>
                 <p className="mt-2 text-xs leading-relaxed text-on-surface-variant">{copy}</p>
               </div>
             ))}
