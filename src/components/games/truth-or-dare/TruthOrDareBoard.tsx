@@ -46,8 +46,8 @@ export default function TruthOrDareBoard() {
   }, []);
 
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-8">
-      <div className="glass-card rounded-2xl p-4 flex items-center justify-between gap-4 text-left">
+    <div className="w-full max-w-3xl mx-auto space-y-5 sm:space-y-8">
+      <div className="glass-card rounded-2xl p-4 flex items-center justify-between gap-3 text-left">
         <div>
           <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">
             Local session
@@ -61,7 +61,7 @@ export default function TruthOrDareBoard() {
           <button
             type="button"
             onClick={clearProgress}
-            className="text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors"
+            className="min-h-11 px-3 rounded-xl text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors border border-transparent hover:border-primary/20"
           >
             Clear progress
           </button>
@@ -87,16 +87,16 @@ export default function TruthOrDareBoard() {
         </Button>
       </div>
 
-      <div className="glass-card rounded-3xl min-h-[280px] p-8 md:p-12 flex flex-col items-center justify-center text-center border border-outline-variant/20">
+      <div className="glass-card rounded-3xl min-h-[240px] sm:min-h-[280px] p-6 sm:p-8 md:p-12 flex flex-col items-center justify-center text-center border border-outline-variant/20">
         {prompt ? (
           <>
             <span className="text-xs font-black uppercase tracking-[0.3em] text-primary mb-5">
               {mode}
             </span>
-            <p className="text-2xl md:text-4xl font-black font-headline tracking-tight text-on-surface">
+            <p className="text-xl sm:text-2xl md:text-4xl font-black font-headline tracking-tight text-on-surface">
               {prompt.text}
             </p>
-            <div className="flex gap-3 mt-8">
+            <div className="flex flex-col sm:flex-row gap-3 mt-6 sm:mt-8">
               <Button size="lg" className="rounded-xl" onClick={() => draw(mode)}>
                 NEXT
               </Button>
