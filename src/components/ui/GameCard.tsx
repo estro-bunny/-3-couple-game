@@ -3,7 +3,7 @@ import Button from "./Button";
 
 interface GameCardProps {
   title: string; image: string; alt: string; buttonLabel: string; href: string;
-  badge?: string; badgeColor?: "primary" | "secondary"; description?: string;
+  badge?: string; badgeColor?: "primary" | "secondary"; description?: string; categoryLabel?: string;
   variant: "large" | "medium" | "small" | "wide";
 }
 const variantConfig = {
@@ -21,6 +21,7 @@ export default function GameCard({ title, image, alt, buttonLabel, href, badge, 
       <img className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${config.imgOpacity}`} src={image} alt={alt || `${title} - online couple game on CouplePlayHub`} loading={variant === "large" ? "eager" : "lazy"} width={variant === "large" ? 800 : 400} height={variant === "large" ? 500 : 400} />
       <div className="absolute inset-0 bg-gradient-to-t from-[#08070d] via-[#08070d]/25 to-transparent" />
       <div className={`absolute bottom-0 ${config.padding} space-y-3 sm:space-y-4 w-full`}>
+        {categoryLabel && <span className="inline-block text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-[.2em] bg-black/50 border border-secondary/30 text-secondary backdrop-blur-md">{categoryLabel}</span>}
         {badge && <span className={`${badgeBg} inline-block text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest`}>{badge}</span>}
         <div className="flex items-end justify-between gap-3 sm:gap-4">
           <h3 className={`${config.titleSize} font-headline font-black uppercase tracking-[-.04em]`}>{title}</h3>
