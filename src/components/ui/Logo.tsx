@@ -2,42 +2,32 @@ import Link from "next/link";
 
 export default function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
   const sizeClasses = {
-    sm: "text-2xl",
-    md: "text-4xl",
-    lg: "text-6xl",
-  };
-
-  const heartSizes = {
     sm: "text-xl",
     md: "text-3xl",
     lg: "text-5xl",
   };
 
   return (
-    <Link href="/" className="inline-flex min-h-11 items-center no-underline">
+    <Link
+      href="/"
+      className="inline-flex min-h-11 items-center gap-2 no-underline group"
+      aria-label="EstroBunny's Burrow home"
+    >
       <span
-        className={`${sizeClasses[size]} font-[600] tracking-tighter relative select-none flex items-baseline font-[var(--font-logo)]`}
+        className={`relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-secondary/30 bg-secondary/5 text-xl shadow-[0_0_24px_rgba(0,229,255,.12)] transition-all group-hover:border-primary/60 group-hover:shadow-[0_0_28px_rgba(255,0,255,.25)] ${size === "lg" ? "h-14 w-14 text-3xl" : ""}`}
+        aria-hidden="true"
       >
-        <span className="bg-gradient-to-br from-[#ff007f] to-[#a020f0] bg-clip-text text-transparent">
-          CouplePlay
+        <span className="absolute inset-1 rounded-lg border border-primary/10" />
+        <span className="relative">🐇</span>
+      </span>
+      <span
+        className={`${sizeClasses[size]} font-[600] tracking-[-.08em] leading-none select-none font-[var(--font-logo)]`}
+      >
+        <span className="text-on-surface">ESTRO</span>
+        <span className="bg-gradient-to-r from-primary via-[#ff3ddf] to-secondary bg-clip-text text-transparent">
+          BUNNI
         </span>
-
-        <span className="relative inline-block -ml-[3px] -mr-[2px]">
-          <span className="text-[#bd93f9] relative z-[1]">H</span>
-          <span
-            className={`absolute ${heartSizes[size]} text-[#ff007f] left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2 z-[2] animate-neon-flicker`}
-            style={{
-              textShadow:
-                "0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff007f, 0 0 30px #ff007f, 0 0 40px #ff007f, 0 0 55px #ff007f, 0 0 75px #ff007f",
-            }}
-          >
-            &#9825;
-          </span>
-        </span>
-
-        <span className="bg-gradient-to-br from-[#ff007f] to-[#a020f0] bg-clip-text text-transparent">
-          ub
-        </span>
+        <span className="text-secondary/80">.xo</span>
       </span>
     </Link>
   );
