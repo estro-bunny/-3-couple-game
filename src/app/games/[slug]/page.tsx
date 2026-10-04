@@ -13,6 +13,7 @@ import SexyTimerBoard from "@/components/games/sexy-timer/SexyTimerBoard";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import GameRoomHeader from "@/components/games/GameRoomHeader";
 import ChaosRunHud from "@/components/games/ChaosRunHud";
+import ChaosRunHandoff from "@/components/games/ChaosRunHandoff";
 import GameRoomFooter from "@/components/games/GameRoomFooter";
 import RelatedGames from "@/components/ui/RelatedGames";
 import { GAME_REGISTRY, getGame } from "@/lib/games/registry";
@@ -172,6 +173,7 @@ export default async function GamePage({
               </p>
             </>
           )}
+          <ChaosRunHandoff currentSlug={slug} />
         </div>
       </section>
 
