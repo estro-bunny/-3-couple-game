@@ -24,7 +24,7 @@ const variantStyles: Record<ButtonVariant, string> = {
 const sizeStyles: Record<string, string> = {
   sm: "px-5 sm:px-6 py-2.5 text-[11px]",
   md: "px-6 sm:px-8 py-3.5 text-sm",
-  lg: "px-7 sm:px-10 py-4.5 sm:py-5 text-base sm:text-lg",
+  lg: "px-7 sm:px-10 py-4 sm:py-5 text-base sm:text-lg",
 };
 
 export default function Button({ children, variant = "primary", className = "", size = "md", href, onClick, disabled = false }: ButtonProps) {
