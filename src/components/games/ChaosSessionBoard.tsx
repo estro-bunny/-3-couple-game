@@ -141,14 +141,6 @@ export default function ChaosSessionBoard() {
           })}
         </div>
 
-        {sessionComplete && (
-          <div className="mt-6 sm:mt-8 rounded-2xl border border-primary/40 bg-primary/10 p-6 text-center shadow-[0_0_50px_rgba(255,0,255,0.12)]">
-            <p className="text-xs font-black tracking-[.3em] uppercase text-primary">SESSION COMPLETE // {String(CHAOS_TOTAL).padStart(2, "0")} / {String(CHAOS_TOTAL).padStart(2, "0")}</p>
-            <p className="text-3xl md:text-5xl font-black font-headline mt-2">CHAOS CLEARED ♡</p>
-            <p className="text-sm text-on-surface-variant mt-2">You cleared every game in this session. Run it again whenever you want another round of trouble.</p>
-          </div>
-        )}
-
         <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3">
           <button type="button" onClick={launch}
             className="flex-1 rounded-2xl px-6 py-4 font-black uppercase tracking-widest bg-primary text-on-primary shadow-[0_0_45px_rgba(255,0,255,0.25)] hover:scale-[1.01] active:scale-[0.99] transition-transform">
@@ -186,26 +178,6 @@ export default function ChaosSessionBoard() {
             </div>
           </div>
         )}
-
-        {current && state.completedSlugs.includes(current.slug) && !sessionComplete && (() => {
-          const next = state.nextSlug
-            ? CHAOS_SESSION_GAMES.find((game) => game.slug === state.nextSlug)
-            : null;
-          if (!next) return null;
-          return (
-            <div className="mt-8 rounded-2xl border border-primary/30 bg-primary/5 p-6 text-center shadow-[0_0_45px_rgba(255,0,255,.08)]">
-              <p className="text-xs font-black tracking-[.28em] uppercase text-primary">ROOM CLEARED ♡</p>
-              <p className="mt-2 text-2xl sm:text-4xl font-black font-headline">THE BURROW HAS ANOTHER IDEA.</p>
-              <p className="mt-2 text-sm text-on-surface-variant">Next room: <span className="font-black text-secondary">{next.title}</span></p>
-              <Link
-                href={"/games/" + next.slug + "?session=1"}
-                className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl bg-primary px-6 py-3 text-xs font-black uppercase tracking-[.16em] text-on-primary shadow-[0_0_35px_rgba(255,0,255,.2)] hover:scale-[1.01] transition-transform"
-              >
-                ENTER NEXT ROOM →
-              </Link>
-            </div>
-          );
-        })()}
 
         {current && (
           <div className="mt-8 rounded-2xl border border-secondary/20 bg-secondary/5 p-6 text-center">
