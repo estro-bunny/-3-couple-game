@@ -58,9 +58,15 @@ export default function GameRoomHeader({
             <p className="text-[10px] font-black uppercase tracking-[.32em] text-primary/80">
               CHAOS DEN // ROOM {category.toUpperCase()}
             </p>
-            <div className="mt-3 flex items-start gap-3"><span className="hidden sm:block text-3xl leading-none text-primary/70">ᕱ⑅ᕱ</span><h2 className="mt-3 text-4xl sm:text-5xl md:text-7xl font-black font-headline tracking-[-.06em] leading-[.92]">
-              {title}
-            </h2>
+            <div className="mt-3 flex items-start gap-3">
+              <span className="hidden sm:block text-3xl leading-none text-primary/70">
+                ᕱ⑅ᕱ
+              </span>
+              <h2 className="text-4xl sm:text-5xl md:text-7xl font-black font-headline tracking-[-.06em] leading-[.92]">
+                {title}
+              </h2>
+            </div>
+
             <div className="mt-4 flex flex-wrap gap-2">
               <span className="rounded-lg border border-primary/20 bg-primary/5 px-3 py-1.5 text-[10px] font-black uppercase tracking-[.18em] text-primary">
                 VIBE // {vibe}
