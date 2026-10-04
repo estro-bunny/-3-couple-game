@@ -162,6 +162,31 @@ export default function ChaosSessionBoard() {
           )}
         </div>
 
+        {sessionComplete && (
+          <div className="mt-8 overflow-hidden rounded-2xl border border-primary/40 bg-primary/5 p-7 text-center shadow-[0_0_70px_rgba(255,0,255,.12)]">
+            <p className="text-xs font-black tracking-[.32em] uppercase text-primary">RUN COMPLETE // BURROW CLEARED ♡</p>
+            <h2 className="mt-3 text-3xl sm:text-5xl font-black font-headline">YOU CLEARED THE CHAOS.</h2>
+            <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-on-surface-variant">
+              Every room in this Chaos Run has been cleared. No score. No pressure. Just one very successful night in the Burrow.
+            </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <button
+                type="button"
+                onClick={() => launch(vibe)}
+                className="inline-flex min-h-12 items-center justify-center rounded-xl bg-primary px-6 py-3 text-xs font-black uppercase tracking-[.16em] text-on-primary shadow-[0_0_35px_rgba(255,0,255,.2)] hover:scale-[1.01] transition-transform"
+              >
+                RUN IT AGAIN ♡
+              </button>
+              <Link
+                href="/games"
+                className="inline-flex min-h-12 items-center justify-center rounded-xl border border-secondary/30 bg-secondary/5 px-6 py-3 text-xs font-black uppercase tracking-[.16em] text-secondary hover:bg-secondary/10 transition-colors"
+              >
+                BACK TO CHAOS DEN →
+              </Link>
+            </div>
+          </div>
+        )}
+
         {current && state.completedSlugs.includes(current.slug) && !sessionComplete && (() => {
           const next = pickSessionGame(CHAOS_SESSION_GAMES, vibe, current.slug, state.completedSlugs);
           return (
