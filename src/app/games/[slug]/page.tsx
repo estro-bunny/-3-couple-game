@@ -92,8 +92,8 @@ export default async function GamePage({
 
   return (
     <PageShell>
-      <section className="py-16 px-8 bg-surface min-h-[80vh]">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+      <section className="py-10 sm:py-16 px-4 sm:px-8 bg-surface min-h-[80vh]">
+        <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
           <Breadcrumbs
             items={[
               { label: "Games", href: "/games" },
@@ -101,7 +101,7 @@ export default async function GamePage({
             ]}
           />
           {image && (
-            <div className="relative h-[300px] rounded-2xl overflow-hidden mb-8">
+            <div className="relative h-[180px] sm:h-[300px] rounded-2xl overflow-hidden mb-6 sm:mb-8">
               <img
                 src={image}
                 alt={`${title} - online couple game on CouplePlayHub`}
@@ -113,10 +113,10 @@ export default async function GamePage({
               <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/80 to-transparent" />
             </div>
           )}
-          <h1 className="text-5xl md:text-7xl font-black font-headline tracking-tighter">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black font-headline tracking-tighter">
             {title}
           </h1>
-          <p className="text-xl text-on-surface-variant max-w-2xl mx-auto">
+          <p className="text-base sm:text-xl text-on-surface-variant max-w-2xl mx-auto">
             {isSexyDice
               ? "Roll the dice and let fate decide your next intimate move. The most popular online dice game for couples."
               : isTruthOrDare
