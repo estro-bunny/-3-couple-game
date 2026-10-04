@@ -3,6 +3,8 @@ import { CHAOS_SESSION_GAMES } from "./chaos-session";
 import {
   EMPTY_CHAOS_SESSION,
   advanceChaosSession,
+  exportChaosSession,
+  importChaosSession,
   completeChaosGame,
   parseChaosSession,
   serializeChaosSession,
@@ -61,6 +63,21 @@ describe("chaos session state", () => {
     const state = startChaosSession(EMPTY_CHAOS_SESSION, first, "mischief", 1234);
     const parsed = parseChaosSession(serializeChaosSession(state));
     expect(parsed).toEqual(state);
+  });
+
+  it("exports and imports a portable session envelope", () => {
+    let state = startChaosSession(EMPTY_CHAOS_SESSION, first, "romantic", 1000);
+    state = completeChaosGame(state, first.slug, 2000);
+
+    const imported = importChaosSession(exportChaosSession(state));
+
+    expect(imported).toEqual(state);
+  });
+
+  it("rejects unsupported import envelopes", () => {
+    expect(importChaosSession(JSON.stringify({ version: 99, state: {} }))).toEqual(
+      EMPTY_CHAOS_SESSION
+    );
   });
 
   it("falls back safely for malformed session data", () => {
