@@ -172,7 +172,7 @@ export default function ChaosSessionBoard() {
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               <button
                 type="button"
-                onClick={() => launch(vibe)}
+                onClick={launch}
                 className="inline-flex min-h-12 items-center justify-center rounded-xl bg-primary px-6 py-3 text-xs font-black uppercase tracking-[.16em] text-on-primary shadow-[0_0_35px_rgba(255,0,255,.2)] hover:scale-[1.01] transition-transform"
               >
                 RUN IT AGAIN ♡
