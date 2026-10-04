@@ -26,8 +26,9 @@ export default function ChaosRunTrail() {
   const total = CHAOS_SESSION_GAMES.length;
   const cleared = state.completedSlugs.length;
   const complete = isChaosSessionComplete(state, total);
-  const currentIndex = CHAOS_SESSION_GAMES.findIndex((game) => game.slug === state.currentSlug);
-  const nextRoom = currentIndex >= 0 && !complete ? CHAOS_SESSION_GAMES[(currentIndex + 1) % total] : null;
+  const nextRoom = !complete && state.nextSlug
+    ? CHAOS_SESSION_GAMES.find((game) => game.slug === state.nextSlug) ?? null
+    : null;
 
   return (
     <section className="mt-6 rounded-3xl border border-secondary/15 bg-surface-container-low p-5 sm:p-6" aria-label="Chaos Run room trail">
