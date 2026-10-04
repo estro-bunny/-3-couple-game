@@ -13,6 +13,7 @@ import SexyTimerBoard from "@/components/games/sexy-timer/SexyTimerBoard";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import GameRoomHeader from "@/components/games/GameRoomHeader";
 import ChaosRunHud from "@/components/games/ChaosRunHud";
+import GameRoomFooter from "@/components/games/GameRoomFooter";
 import RelatedGames from "@/components/ui/RelatedGames";
 import { GAME_REGISTRY, getGame } from "@/lib/games/registry";
 import {
@@ -137,6 +138,8 @@ export default async function GamePage({
                             ? "Choose a countdown and get a playful prompt before the clock starts."
                             : seo?.description ?? description}
           </p>
+
+          <GameRoomFooter title={title} />
 
           {isSexyDice ? (
             <GameBoard />
