@@ -26,7 +26,7 @@ export default function KamaSutraCardsBoard() {
   const [currentCardId, setCurrentCardId] = useState<string | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [session, setSession] = useState<GameSession>(EMPTY_GAME_SESSION);
-  const previousId = useRef<string | undefined>();
+  const previousId = useRef<string | undefined>(undefined);
   const timeoutRef = useRef<number | null>(null);
 
   const currentCard = useMemo(
