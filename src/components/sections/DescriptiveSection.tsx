@@ -1,12 +1,10 @@
 import {
   FEATURES,
-  STATS,
   HIGHLIGHTS,
   SPICE_IMAGE,
   PAVLOV_IMAGE,
 } from "@/lib/constants";
 import MaterialIcon from "@/components/ui/MaterialIcon";
-import StatCard from "@/components/ui/StatCard";
 import HighlightCard from "@/components/ui/HighlightCard";
 
 export default function DescriptiveSection() {
@@ -63,10 +61,16 @@ export default function DescriptiveSection() {
               create lasting memories and deep connections through positive
               reinforcement and playful anticipation.
             </p>
-            <div className="flex justify-end gap-4 pt-4">
-              {STATS.map((stat) => (
-                <StatCard key={stat.label} {...stat} />
-              ))}
+            <div className="flex flex-wrap justify-end gap-3 pt-4" aria-label="Product principles">
+              <span className="rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-primary">
+                Private-first
+              </span>
+              <span className="rounded-full border border-secondary/20 bg-secondary/5 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-secondary">
+                Local play
+              </span>
+              <span className="rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-primary">
+                Queer-friendly
+              </span>
             </div>
           </div>
           <div className="flex-1 relative">
