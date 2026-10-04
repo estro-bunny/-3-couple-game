@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FEATURED_GAMES, GLASS_GAMES } from "@/lib/constants";
+import { getFeaturedGames, getGlassGames, toFeaturedGame, toGlassGame } from "@/lib/games/registry";
 import GameCard from "@/components/ui/GameCard";
 import GlassGameCard from "@/components/ui/GlassGameCard";
 
@@ -28,7 +28,7 @@ export default function FeaturedGamesSection() {
 
         {/* Bento grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-          {FEATURED_GAMES.map((game) => (
+          {getFeaturedGames().map(toFeaturedGame).map((game) => (
             <GameCard key={game.title} {...game} />
           ))}
         </div>
@@ -38,7 +38,7 @@ export default function FeaturedGamesSection() {
           More Couple Games to Explore
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {GLASS_GAMES.map((game) => (
+          {getGlassGames().map(toGlassGame).map((game) => (
             <GlassGameCard key={game.title} {...game} />
           ))}
         </div>
