@@ -4,6 +4,50 @@ export type GameVibe = "connection" | "chaos" | "flirty" | "romantic" | "playful
 export type GameKind = "featured" | "glass";
 export type GameCategory = "vanilla" | "pg" | "mature" | "kinky-levels";
 
+export interface GameCategoryDefinition {
+  slug: string;
+  title: string;
+  icon: string;
+  description: string;
+  href: string;
+}
+
+export const GAME_CATEGORIES: readonly GameCategoryDefinition[] = [
+  {
+    slug: "vanilla",
+    title: "Vanilla",
+    icon: "favorite",
+    description: "Soft, romantic, queer-friendly, and playful connections.",
+    href: "/categories/vanilla",
+  },
+  {
+    slug: "pg",
+    title: "PG",
+    icon: "auto_awesome",
+    description: "Light teasing, flirting, and fun challenges without gendered roles.",
+    href: "/categories/pg",
+  },
+  {
+    slug: "mature",
+    title: "XXX",
+    icon: "local_fire_department",
+    description: "Bolder prompts and playful challenges for partners of any gender.",
+    href: "/categories/xxx",
+  },
+  {
+    slug: "kinky-levels",
+    title: "Kinky Levels",
+    icon: "token",
+    description: "For partners who want to explore boundaries on their own terms.",
+    href: "/categories/kinky-levels",
+  },
+];
+
+export function getCategory(slug: string) {
+  return GAME_CATEGORIES.find((category) => category.slug === slug);
+}
+
+
 export interface GameDefinition {
   slug: string;
   title: string;
