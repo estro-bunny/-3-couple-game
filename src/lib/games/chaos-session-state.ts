@@ -1,8 +1,9 @@
-import type { ChaosSessionGame, ChaosVibe } from "./chaos-session";
+import { CHAOS_SESSION_GAMES, pickSessionGame, type ChaosSessionGame, type ChaosVibe } from "./chaos-session";
 
 export interface ChaosSessionState {
   vibe: ChaosVibe;
   currentSlug: string | null;
+  nextSlug: string | null;
   completedSlugs: string[];
   roundsCompleted: number;
   startedAt: number | null;
@@ -12,6 +13,7 @@ export interface ChaosSessionState {
 export const EMPTY_CHAOS_SESSION: ChaosSessionState = {
   vibe: "surprise",
   currentSlug: null,
+  nextSlug: null,
   completedSlugs: [],
   roundsCompleted: 0,
   startedAt: null,
@@ -28,6 +30,7 @@ export function startChaosSession(
     ...state,
     vibe,
     currentSlug: game.slug,
+    nextSlug: null,
     completedSlugs: [],
     roundsCompleted: 0,
     startedAt: now,
@@ -47,9 +50,15 @@ export function completeChaosGame(
     ? state.completedSlugs
     : [...state.completedSlugs, slug];
 
+  const allComplete = completedSlugs.length >= CHAOS_SESSION_GAMES.length;
+  const nextGame = allComplete
+    ? null
+    : pickSessionGame(CHAOS_SESSION_GAMES, state.vibe, slug, completedSlugs);
+
   return {
     ...state,
     completedSlugs,
+    nextSlug: nextGame?.slug ?? null,
     roundsCompleted: alreadyCompleted ? state.roundsCompleted : state.roundsCompleted + 1,
     lastAdvancedAt: now,
   };
@@ -63,6 +72,7 @@ export function advanceChaosSession(
   return {
     ...state,
     currentSlug: game.slug,
+    nextSlug: null,
     lastAdvancedAt: now,
   };
 }
@@ -130,6 +140,7 @@ export function parseChaosSession(raw: string | null | undefined): ChaosSessionS
     return {
       vibe,
       currentSlug: typeof parsed.currentSlug === "string" ? parsed.currentSlug : null,
+      nextSlug: typeof parsed.nextSlug === "string" ? parsed.nextSlug : null,
       completedSlugs: Array.isArray(parsed.completedSlugs)
         ? parsed.completedSlugs.filter((slug): slug is string => typeof slug === "string")
         : [],
