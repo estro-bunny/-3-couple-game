@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PageShell from "@/components/layout/PageShell";
 import Button from "@/components/ui/Button";
+import GameCard from "@/components/ui/GameCard";
+import GlassGameCard from "@/components/ui/GlassGameCard";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
-import { GAME_CATEGORIES, getCategory } from "@/lib/games/registry";
+import { GAME_CATEGORIES, getCategory, getGamesByCategory, toFeaturedGame, toGlassGame } from "@/lib/games/registry";
 import {
   CATEGORY_SEO,
   SITE_URL,
@@ -22,6 +24,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const seo = CATEGORY_SEO[slug];
+  const games = category ? getGamesByCategory(category.gameCategory) : [];
 
   if (seo) {
     return buildMetadata({
@@ -48,9 +51,7 @@ export default async function CategoryPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const category = CATEGORIES.find(
-    (c) => c.title.toLowerCase().replace(/\s+/g, "-") === slug
-  );
+  const category = getCategory(slug);
 
   if (!category) notFound();
 
@@ -74,14 +75,34 @@ export default async function CategoryPage({
           <p className="text-xl text-on-surface-variant max-w-2xl mx-auto">
             {seo?.description ?? description}
           </p>
-          <div className="pt-4">
+          <div className="pt-2">
             <Button href="/games" size="lg" className="rounded-xl">
-              BROWSE GAMES
+              BROWSE ALL GAMES
             </Button>
           </div>
-          <p className="text-sm text-on-surface-variant opacity-60">
-            Full category page coming soon with curated games for this intensity level.
-          </p>
+        </div>
+
+        <div className="max-w-7xl mx-auto mt-14 sm:mt-20">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="text-[10px] font-black tracking-[.3em] text-secondary uppercase">CATEGORY // {title}</span>
+            <div className="h-px flex-1 bg-gradient-to-r from-secondary/30 to-transparent" />
+          </div>
+          {games.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+              {games.filter((game) => game.kind === "featured").map((game) => (
+                <GameCard key={game.slug} {...toFeaturedGame(game)} />
+              ))}
+              {games.filter((game) => game.kind === "glass").map((game) => (
+                <div key={game.slug} className="md:col-span-4">
+                  <GlassGameCard {...toGlassGame(game)} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="glass-card rounded-2xl p-8 text-center text-on-surface-variant">
+              No games are currently assigned to this category.
+            </div>
+          )}
         </div>
       </section>
 
