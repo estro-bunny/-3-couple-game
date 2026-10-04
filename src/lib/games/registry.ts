@@ -10,19 +10,19 @@ export interface GameDefinition {
   href: string;
   kind: GameKind;
   vibe: GameVibe;
-  category: "vanilla" | "pg" | "xxx" | "kinky-levels";
+  category: "vanilla" | "pg" | "mature" | "kinky-levels";
   playable: boolean;
   sessionEnabled: boolean;
 }
 
 const slugFromTitle = (title: string) =>
-  title.toLowerCase().replace(/\\s+/g, "-");
+  title.toLowerCase().replace(/\s+/g, "-");
 
 const FEATURED_VIBES: Record<string, GameVibe> = {
   "sexy-dice": "chaos",
   "sex-roulette-wheel": "flirty",
   "truth-or-dare": "connection",
-  "kama-sutra-cards": "romantic",
+  "kama-sutra-cards": "pg",
   "party-games": "playful",
 };
 
@@ -35,12 +35,12 @@ const GLASS_VIBES: Record<string, GameVibe> = {
 const GAME_CATEGORIES: Record<string, GameDefinition["category"]> = {
   "truth-or-dare": "vanilla",
   "spin-the-bottle": "pg",
-  "sex-roulette-wheel": "xxx",
+  "sex-roulette-wheel": "mature",
   "kama-sutra-cards": "romantic",
   "party-games": "pg",
-  "super-sex-dice": "xxx",
-  "sexy-timer": "xxx",
-  "sexy-dice": "xxx",
+  "super-sex-dice": "mature",
+  "sexy-timer": "mature",
+  "sexy-dice": "mature",
 };
 
 const featuredDefinitions: GameDefinition[] = FEATURED_GAMES.map((game) => {
