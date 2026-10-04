@@ -51,8 +51,8 @@ export async function generateMetadata({
   const title = game?.title ?? slug.replace(/-/g, " ");
 
   return buildMetadata({
-    title: `${title} - Play Online | CouplePlayHub`,
-    description: `Play ${title} online with your partner. A fun and exciting couple game designed to bring you closer together.`,
+    title: `${title} - Chaos Room | EstroBunny's Burrow`,
+    description: `Play ${title} inside EstroBunny's Burrow. A local-first game room for partners who want cute chaos without the pressure.`,
     path: `/games/${slug}`,
   });
 }
@@ -61,7 +61,6 @@ export default async function GamePage({
   params,
 }: {
   params: Promise<{ slug: string }>;
-  searchParams?: Promise<{ session?: string }>;
 }) {
   const { slug } = await params;
   const game = getGame(slug);
