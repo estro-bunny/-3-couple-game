@@ -1,13 +1,14 @@
 import Link from "next/link";
-import { FEATURED_GAMES, GLASS_GAMES } from "@/lib/constants";
+import { getPlayableGames } from "@/lib/games/registry";
 import MaterialIcon from "./MaterialIcon";
-function toSlug(title: string) { return title.toLowerCase().replace(/\s+/g, "-"); }
 interface RelatedGamesProps { currentSlug: string; }
 export default function RelatedGames({ currentSlug }: RelatedGamesProps) {
-  const allGames = [
-    ...FEATURED_GAMES.map((g) => ({ slug: toSlug(g.title), title: g.title, image: g.image, description: g.description })),
-    ...GLASS_GAMES.map((g) => ({ slug: toSlug(g.title), title: g.title, image: undefined, description: g.description })),
-  ];
+  const allGames = getPlayableGames().map((game) => ({
+    slug: game.slug,
+    title: game.title,
+    image: game.image,
+    description: game.description,
+  }));
   const related = allGames.filter((g) => g.slug !== currentSlug).slice(0, 4);
   if (related.length === 0) return null;
   return (
