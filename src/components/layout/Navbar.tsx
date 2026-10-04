@@ -5,30 +5,24 @@ import Logo from "@/components/ui/Logo";
 
 export default function Navbar() {
   return (
-    <header className="fixed top-0 w-full z-50 px-3 pt-3">
-      <nav
-        className="mx-auto max-w-7xl min-h-16 px-3 sm:px-4 md:px-6 flex justify-between items-center gap-3 rounded-2xl border border-primary/20 bg-[#08070d]/80 backdrop-blur-2xl shadow-[0_10px_50px_rgba(255,0,255,.12)]"
-        aria-label="Main navigation"
-      >
-        <div className="flex items-center gap-3 sm:gap-5 min-w-0">
+    <header className="fixed top-0 w-full z-50 px-3 pt-3 sm:px-5">
+      <nav className="mx-auto max-w-6xl min-h-16 px-3 sm:px-4 md:px-5 flex justify-between items-center gap-3 rounded-[1.35rem] border border-white/10 bg-[#09070e]/90 backdrop-blur-2xl shadow-[0_18px_60px_rgba(0,0,0,.38)]" aria-label="Main navigation">
+        <div className="flex items-center gap-3 min-w-0">
           <Logo size="sm" />
-          <span className="hidden lg:inline text-[10px] font-black tracking-[.28em] text-secondary/70">
-            BURROW // ONLINE
-          </span>
-          <div className="hidden md:flex gap-4 lg:gap-5 items-center">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="relative font-headline text-sm font-bold tracking-tight text-on-surface-variant hover:text-primary transition-colors after:absolute after:-bottom-2 after:left-0 after:h-px after:w-0 after:bg-secondary hover:after:w-full after:transition-all"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <div className="hidden xl:flex items-center gap-2 ml-2">
+            <span className="h-2 w-2 rounded-full bg-secondary shadow-[0_0_14px_#00e5ff]" />
+            <span className="text-[9px] font-black tracking-[.25em] text-secondary/70">BURROW // ONLINE</span>
           </div>
         </div>
-        <Button href="/games" variant="primary" size="sm" className="rounded-xl shadow-[0_0_24px_rgba(255,0,255,.25)] shrink-0">
-          PLAY NOW <span aria-hidden="true">♡</span>
+        <div className="hidden md:flex items-center gap-1 p-1 rounded-xl bg-white/[.035] border border-white/[.06]">
+          {NAV_LINKS.map((link) => (
+            <Link key={link.label} href={link.href} className="rounded-lg px-4 py-2.5 text-[11px] font-black uppercase tracking-[.14em] text-on-surface-variant hover:text-on-surface hover:bg-primary/10 transition-all">
+              {link.label}
+            </Link>
+          ))}
+        </div>
+        <Button href="/games" variant="primary" size="sm" className="rounded-xl border border-primary/40 shadow-[0_0_28px_rgba(255,0,255,.22)] hover:shadow-[0_0_42px_rgba(255,0,255,.38)]">
+          PLAY ♡
         </Button>
       </nav>
     </header>
