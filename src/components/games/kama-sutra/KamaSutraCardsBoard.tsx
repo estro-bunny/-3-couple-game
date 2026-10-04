@@ -59,7 +59,10 @@ export default function KamaSutraCardsBoard() {
       setCurrentCardId(next.id);
       setIsDrawing(false);
       setSession((current) => {
-        return completeGameRound(STORAGE_KEY, current);
+        const nextSession = recordRound(current);
+        saveGameSession(STORAGE_KEY, nextSession);
+        syncChaosSessionCompletion(STORAGE_KEY, nextSession.lastPlayedAt ?? Date.now());
+        return nextSession;
       });
     }, 450);
   }, [isDrawing]);
