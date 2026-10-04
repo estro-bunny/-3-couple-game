@@ -76,7 +76,7 @@ export const GAME_REGISTRY: readonly GameDefinition[] = [
     href: "/games/kama-sutra-cards",
     kind: "featured",
     vibe: "romantic",
-    category: "romantic",
+    category: "pg",
     playable: true,
     sessionEnabled: true,
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA5V8KlXHpBcR9U__5t2B-5ZZ3VSo-btfN3izBw_t6A8mlgJQWd5er08hG_n8vr_0Bo-PP3W-GiXM0e5y7vXwRp1vUCAQJtv1iVKbqtw57e1HK_Rmqnelo2_Ll1Fn_QKO6Ku2ktNJzjoae-VK1LYBuA1oe_yxuPD9d8mevT4jq66rairIh92vj1XPvsY0TwO7C7WDEARRuuIMXH6J74-cixo7Vg78A4NrBW1h5e6iMPWo7HP7qOeTRQ3_fP7XqpL5NVN9G4jF_-3sQ",
