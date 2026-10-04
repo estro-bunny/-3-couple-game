@@ -11,6 +11,7 @@ import PartyGamesBoard from "@/components/games/party-games/PartyGamesBoard";
 import SuperDiceBoard from "@/components/games/super-dice/SuperDiceBoard";
 import SexyTimerBoard from "@/components/games/sexy-timer/SexyTimerBoard";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
+import GameRoomHeader from "@/components/games/GameRoomHeader";
 import RelatedGames from "@/components/ui/RelatedGames";
 import { GAME_REGISTRY, getGame } from "@/lib/games/registry";
 import {
@@ -36,6 +37,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const seo = GAME_SEO[slug];
+  const sessionActive = query.session === "1";
 
   if (seo) {
     return buildMetadata({
@@ -60,8 +62,10 @@ export default async function GamePage({
   params,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams?: Promise<{ session?: string }>;
 }) {
   const { slug } = await params;
+  const query = searchParams ? await searchParams : {};
 
   const game = getGame(slug);
 
@@ -87,26 +91,35 @@ export default async function GamePage({
         <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
           <Breadcrumbs
             items={[
-              { label: "Games", href: "/games" },
+              { label: "Chaos Den", href: "/games" },
               { label: title },
             ]}
           />
+          <GameRoomHeader
+            title={title}
+            vibe={game.vibe}
+            category={game.category}
+            sessionActive={sessionActive}
+            image={image}
+          />
           {image && (
-            <div className="relative h-[180px] sm:h-[300px] rounded-2xl overflow-hidden mb-6 sm:mb-8">
+            <div className="relative h-[150px] sm:h-[220px] rounded-2xl overflow-hidden mt-5 border border-primary/10">
               <img
                 src={image}
-                alt={`${title} - online couple game on CouplePlayHub`}
-                className="absolute inset-0 w-full h-full object-cover opacity-40"
+                alt={`${title} room atmosphere inside EstroBunny's Burrow`}
+                className="absolute inset-0 w-full h-full object-cover opacity-45"
                 loading="eager"
                 width={800}
                 height={300}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/80 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/50 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 flex items-end justify-between gap-3">
+                <span className="text-[9px] font-black uppercase tracking-[.25em] text-secondary">ROOM ATMOSPHERE // SIGNAL LOCKED</span>
+                <span className="hidden sm:block text-[9px] font-black uppercase tracking-[.2em] text-on-surface-variant/60">ESTROBUNNY'S BURROW</span>
+              </div>
             </div>
           )}
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black font-headline tracking-tighter">
-            {title}
-          </h1>
+          <h1 className="sr-only">{title}</h1>
           <p className="text-base sm:text-xl text-on-surface-variant max-w-2xl mx-auto">
             {isSexyDice
               ? "Roll the dice and let fate decide your next intimate move. The most popular online dice game for couples."
