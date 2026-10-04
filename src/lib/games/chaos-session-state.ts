@@ -66,6 +66,13 @@ export function advanceChaosSession(
   };
 }
 
+export function isChaosSessionComplete(
+  state: ChaosSessionState,
+  totalGames: number
+): boolean {
+  return totalGames > 0 && state.completedSlugs.length >= totalGames;
+}
+
 export function resetChaosSession(): ChaosSessionState {
   return EMPTY_CHAOS_SESSION;
 }
