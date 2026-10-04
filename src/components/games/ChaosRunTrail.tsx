@@ -26,6 +26,8 @@ export default function ChaosRunTrail() {
   const total = CHAOS_SESSION_GAMES.length;
   const cleared = state.completedSlugs.length;
   const complete = isChaosSessionComplete(state, total);
+  const currentIndex = CHAOS_SESSION_GAMES.findIndex((game) => game.slug === state.currentSlug);
+  const nextRoom = currentIndex >= 0 && !complete ? CHAOS_SESSION_GAMES[(currentIndex + 1) % total] : null;
 
   return (
     <section className="mt-6 rounded-3xl border border-secondary/15 bg-surface-container-low p-5 sm:p-6" aria-label="Chaos Run room trail">
@@ -64,7 +66,7 @@ export default function ChaosRunTrail() {
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-outline-variant/10 pt-4">
         <p className="text-[10px] font-black uppercase tracking-[.14em] text-on-surface-variant/60">
-          {complete ? "RUN COMPLETE // BURROW CLEARED ♡" : "CLEAR THE CURRENT ROOM. THEN COME BACK FOR THE NEXT."}
+          {complete ? "RUN COMPLETE // BURROW CLEARED ♡" : nextRoom ? "NEXT ROOM // " + nextRoom.title.toUpperCase() : "CLEAR THE CURRENT ROOM. THEN COME BACK FOR THE NEXT."}
         </p>
         <Link href="/games/chaos-run"
           className="min-h-10 inline-flex items-center justify-center rounded-xl border border-secondary/35 px-4 text-[10px] font-black uppercase tracking-[.16em] text-secondary hover:bg-secondary/10">
