@@ -21,7 +21,7 @@ export default function SpinTheBottleBoard() {
   const [session, setSession] = useState<GameSession>(EMPTY_GAME_SESSION);
   const [rotation, setRotation] = useState(0);
   const previousPlayer = useRef<string | undefined>(undefined);
-  const spinTimer = useRef<ReturnType<typeof window.setTimeout> | null>(null);
+  const spinTimer = useRef<number | null>(null);
 
   useEffect(() => {
     setSession(loadGameSession(STORAGE_KEY));
