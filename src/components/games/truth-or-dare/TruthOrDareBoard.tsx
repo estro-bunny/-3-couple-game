@@ -47,7 +47,7 @@ export default function TruthOrDareBoard() {
 
   return (
     <div className="w-full max-w-3xl mx-auto space-y-5 sm:space-y-8">
-      <div className="glass-card rounded-2xl p-4 flex items-center justify-between gap-3 text-left">
+      <div className="burrow-panel rounded-2xl p-4 flex items-center justify-between gap-3 text-left">
         <div>
           <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">
             Local session
@@ -87,7 +87,7 @@ export default function TruthOrDareBoard() {
         </Button>
       </div>
 
-      <div className="glass-card rounded-3xl min-h-[240px] sm:min-h-[280px] p-6 sm:p-8 md:p-12 flex flex-col items-center justify-center text-center border border-outline-variant/20">
+      <div className="burrow-panel rounded-[2rem] min-h-[280px] sm:min-h-[340px] p-6 sm:p-10 md:p-14 flex flex-col items-center justify-center text-center border border-primary/15 shadow-[0_25px_80px_rgba(255,125,233,.07)]">
         {prompt ? (
           <>
             <span className="text-xs font-black uppercase tracking-[0.3em] text-primary mb-5">
@@ -107,7 +107,7 @@ export default function TruthOrDareBoard() {
           </>
         ) : (
           <>
-            <span className="text-5xl mb-4">💗</span>
+            <span className="text-5xl mb-4 animate-bunny-float">ᕱ⑅ᕱ</span>
             <h2 className="text-3xl font-black font-headline">Your turn.</h2>
             <p className="text-on-surface-variant mt-2 max-w-md">
               Pick Truth or Dare. You can skip anything that doesn't feel right.
