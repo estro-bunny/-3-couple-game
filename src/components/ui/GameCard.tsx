@@ -18,14 +18,14 @@ export default function GameCard({ title, image, alt, buttonLabel, href, badge, 
   return (
     <article className={`relative overflow-hidden rounded-[1.35rem] border border-white/10 bg-surface-container-high group animate-chroma-pulse ${config.container}`}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_15%,rgba(255,125,233,.16),transparent_35%)] pointer-events-none" />
-      <img className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${config.imgOpacity}`} src={image} alt={alt || `${title} - online couple game on CouplePlayHub`} loading={variant === "large" ? "eager" : "lazy"} width={variant === "large" ? 800 : 400} height={variant === "large" ? 500 : 400} />
+      <img className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${config.imgOpacity}`} src={image} alt={alt || `${title} - game room inside EstroBunny's Burrow`} loading={variant === "large" ? "eager" : "lazy"} width={variant === "large" ? 800 : 400} height={variant === "large" ? 500 : 400} />
       <div className="absolute inset-0 bg-gradient-to-t from-[#08070d] via-[#08070d]/25 to-transparent" />
       <div className={`absolute bottom-0 ${config.padding} space-y-3 sm:space-y-4 w-full`}>
         {categoryLabel && <span className="inline-block text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-[.2em] bg-black/50 border border-secondary/30 text-secondary backdrop-blur-md">{categoryLabel}</span>}
         {badge && <span className={`${badgeBg} inline-block text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest`}>{badge}</span>}
         <div className="flex items-end justify-between gap-3 sm:gap-4">
           <h3 className={`${config.titleSize} font-headline font-black uppercase tracking-[-.04em]`}>{title}</h3>
-          <span className="hidden sm:block shrink-0 text-secondary/70 text-[9px] font-black tracking-[.25em] uppercase">PLAY // 01</span>
+          <span className="hidden sm:block shrink-0 text-secondary/70 text-[9px] font-black tracking-[.25em] uppercase">ROOM // OPEN</span>
         </div>
         {description && <p className="text-on-surface-variant max-w-sm text-sm leading-relaxed">{description}</p>}
         {variant === "large" ? <Button href={href} size="md">{buttonLabel} ♡</Button> :
