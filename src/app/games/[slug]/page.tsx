@@ -11,7 +11,7 @@ import PartyGamesBoard from "@/components/games/party-games/PartyGamesBoard";
 import SuperDiceBoard from "@/components/games/super-dice/SuperDiceBoard";
 import SexyTimerBoard from "@/components/games/sexy-timer/SexyTimerBoard";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
-import GameRoomHeader from "@/components/games/GameRoomHeader";
+import GameRoomChrome from "@/components/games/GameRoomChrome";
 import ChaosRunHud from "@/components/games/ChaosRunHud";
 import ChaosRunHandoff from "@/components/games/ChaosRunHandoff";
 import GameRoomFooter from "@/components/games/GameRoomFooter";
@@ -62,14 +62,10 @@ export async function generateMetadata({
 
 export default async function GamePage({
   params,
-  searchParams,
 }: {
   params: Promise<{ slug: string }>;
-  searchParams?: Promise<{ session?: string }>;
 }) {
   const { slug } = await params;
-  const search = searchParams ? await searchParams : undefined;
-  const sessionActive = search?.session === "1";
   const game = getGame(slug);
 
   if (!game) notFound();
@@ -99,11 +95,10 @@ export default async function GamePage({
             ]}
           />
           <ChaosRunHud currentSlug={slug} />
-          <GameRoomHeader
+          <GameRoomChrome
             title={title}
             vibe={game.vibe}
             category={game.category}
-            sessionActive={sessionActive}
             image={image}
           />
           {image && (
@@ -175,7 +170,13 @@ export default async function GamePage({
               </p>
             </>
           )}
-          <GameRoomFooter title={title} sessionActive={sessionActive} />
+          <GameRoomChrome
+            title={title}
+            vibe={game.vibe}
+            category={game.category}
+            image={image}
+            footerOnly
+          />
           <ChaosRunHandoff currentSlug={slug} />
         </div>
       </section>
