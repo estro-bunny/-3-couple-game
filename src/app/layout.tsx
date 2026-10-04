@@ -34,7 +34,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} - Online Couple Games | Naughty & Romantic Games for Partners`,
+    default: `${SITE_NAME} - Cute Chaos for Couples Who Cause Trouble Together`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -55,12 +55,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} - Best Online Couple Games | Spice Up Your Relationship`,
+    title: `${SITE_NAME} - Cute Chaos for Couples Who Cause Trouble Together`,
     description: SITE_DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} - Online Couple Games`,
+    title: `${SITE_NAME} - Cute Chaos for Couples`,
     description: SITE_DESCRIPTION,
   },
   robots: {
