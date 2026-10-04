@@ -62,6 +62,7 @@ export async function generateMetadata({
 
 export default async function GamePage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
   searchParams?: Promise<{ session?: string }>;
