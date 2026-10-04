@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import PageShell from "@/components/layout/PageShell";
 import Button from "@/components/ui/Button";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
-import { CATEGORIES } from "@/lib/constants";
+import { GAME_CATEGORIES, getCategory } from "@/lib/games/registry";
 import {
   CATEGORY_SEO,
   SITE_URL,
@@ -12,9 +12,7 @@ import {
 } from "@/lib/seo";
 
 export function generateStaticParams() {
-  return CATEGORIES.map((c) => ({
-    slug: c.title.toLowerCase().replace(/\s+/g, "-"),
-  }));
+  return GAME_CATEGORIES.map((category) => ({ slug: category.slug }));
 }
 
 export async function generateMetadata({
@@ -34,9 +32,7 @@ export async function generateMetadata({
     });
   }
 
-  const category = CATEGORIES.find(
-    (c) => c.title.toLowerCase().replace(/\s+/g, "-") === slug
-  );
+  const category = getCategory(slug);
 
   return buildMetadata({
     title: `${category?.title ?? slug} Couple Games | CouplePlayHub`,
