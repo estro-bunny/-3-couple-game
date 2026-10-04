@@ -92,10 +92,10 @@ export default function SexRouletteBoard() {
 
   return (
     <div className="w-full max-w-3xl mx-auto space-y-5 sm:space-y-8">
-      <div className="glass-card rounded-2xl p-4 flex items-center justify-between gap-3 text-left">
+      <div className="burrow-panel rounded-2xl p-4 flex items-center justify-between gap-3 text-left">
         <div>
-          <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">
-            Local session
+          <p className="text-[9px] font-black uppercase tracking-[.25em] text-secondary">
+            Burrow session
           </p>
           <p className="font-bold">
             {session.roundsCompleted}{" "}
@@ -107,17 +107,17 @@ export default function SexRouletteBoard() {
             type="button"
             onClick={clearProgress}
             disabled={isSpinning}
-            className="text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors disabled:opacity-40"
+            className="text-xs font-black uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors disabled:opacity-40"
           >
             Clear progress
           </button>
         )}
       </div>
 
-      <div className="glass-card rounded-3xl p-6 md:p-10 border border-outline-variant/20">
+      <div className="burrow-panel rounded-[2rem] p-6 md:p-10 border border-primary/25 shadow-[0_0_70px_rgba(255,125,233,0.12)]">
         <div className="relative mx-auto w-[min(78vw,420px)] aspect-square">
           <div
-            className="absolute -top-5 left-1/2 z-20 -translate-x-1/2 text-3xl drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]"
+            className="absolute -top-5 left-1/2 z-20 -translate-x-1/2 text-3xl text-primary drop-shadow-[0_0_12px_rgba(255,125,233,0.8)]"
             aria-hidden="true"
           >
             ▼
@@ -155,15 +155,15 @@ export default function SexRouletteBoard() {
             })}
           </div>
 
-          <div className="absolute inset-[42%] z-10 rounded-full bg-surface border-4 border-outline-variant/30 shadow-xl flex items-center justify-center text-2xl">
-            🐇
+          <div className="absolute inset-[42%] z-10 rounded-full bg-surface border-4 border-primary/30 shadow-[0_0_30px_rgba(255,125,233,0.25)] flex items-center justify-center text-2xl">
+            ᕱ⑅ᕱ
           </div>
         </div>
 
         <div className="mt-10 min-h-24 flex flex-col items-center justify-center text-center">
           {selected ? (
             <>
-              <span className="text-xs font-black uppercase tracking-[0.3em] text-primary">
+              <span className="text-[9px] font-black uppercase tracking-[.3em] text-secondary">
                 Roulette chose
               </span>
               <p className="text-2xl md:text-3xl font-black font-headline tracking-tight mt-2">
