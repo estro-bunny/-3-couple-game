@@ -36,15 +36,23 @@ export default function Button({
   size = "md",
   href,
   onClick,
-  disabled,
+  disabled = false,
 }: ButtonProps) {
-  const classes = `inline-flex min-h-11 items-center justify-center text-center whitespace-nowrap rounded-lg font-bold transition-all duration-200 active:scale-95 ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
+  const classes = `inline-flex min-h-11 items-center justify-center text-center whitespace-nowrap rounded-lg font-bold transition-all duration-200 active:scale-95 disabled:pointer-events-none disabled:opacity-50 ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
 
-  if (href) {
+  if (href && !disabled) {
     return (
-      <Link href={href} className={classes} aria-disabled={disabled}>
+      <Link href={href} className={classes}>
         {children}
       </Link>
+    );
+  }
+
+  if (href && disabled) {
+    return (
+      <span className={`${classes} cursor-not-allowed opacity-50`} aria-disabled="true">
+        {children}
+      </span>
     );
   }
 
