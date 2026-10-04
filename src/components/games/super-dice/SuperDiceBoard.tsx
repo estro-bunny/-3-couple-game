@@ -62,29 +62,29 @@ export default function SuperDiceBoard() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-8">
-      <div className="glass-card rounded-2xl p-4 flex items-center justify-between text-left">
+    <div className="w-full max-w-4xl mx-auto space-y-5 sm:space-y-8">
+      <div className="glass-card rounded-2xl p-4 flex items-center justify-between gap-3 text-left">
         <div>
           <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Local session</p>
           <p className="font-bold">{session.roundsCompleted} {session.roundsCompleted === 1 ? "round" : "rounds"} played</p>
         </div>
         {session.roundsCompleted > 0 && (
-          <button type="button" onClick={clearProgress} className="text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary">
+          <button type="button" onClick={clearProgress} className="min-h-11 px-3 rounded-xl text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary border border-transparent hover:border-primary/20">
             Clear progress
           </button>
         )}
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
         {[
           ["Action", action, ACTIONS],
           ["Setting", setting, SETTINGS],
         ].map(([label, value, items]) => (
-          <div key={label as string} className="glass-card rounded-2xl p-6">
+          <div key={label as string} className="glass-card rounded-2xl p-5 sm:p-6">
             <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">{label as string} die</p>
-            <div className="min-h-32 flex items-center justify-center">
+            <div className="min-h-28 sm:min-h-32 flex items-center justify-center">
               <div className="text-center">
-                <div className="text-6xl font-black">{rolling ? "?" : value === null ? "🎲" : Number(value) + 1}</div>
+                <div className="text-5xl sm:text-6xl font-black">{rolling ? "?" : value === null ? "🎲" : Number(value) + 1}</div>
                 <p className="mt-3 text-lg font-bold">{rolling ? "Rolling..." : value === null ? "Ready" : (items as string[])[Number(value)]}</p>
               </div>
             </div>
@@ -92,16 +92,16 @@ export default function SuperDiceBoard() {
         ))}
       </div>
 
-      <div className="flex justify-center gap-4">
-        <button type="button" onClick={roll} disabled={rolling} className="rounded-xl px-8 py-4 font-black bg-primary text-on-primary disabled:opacity-50">
+      <div className="flex flex-col sm:flex-row justify-center gap-3">
+        <button type="button" onClick={roll} disabled={rolling} className="min-h-12 rounded-xl px-6 sm:px-8 py-4 font-black bg-primary text-on-primary disabled:opacity-50">
           {rolling ? "ROLLING..." : action === null ? "ROLL THE DICE" : "ROLL AGAIN"}
         </button>
         {action !== null && !rolling && (
-          <button type="button" onClick={reset} className="rounded-xl px-8 py-4 font-bold border border-outline-variant/40">RESET</button>
+          <button type="button" onClick={reset} className="min-h-12 rounded-xl px-6 sm:px-8 py-4 font-bold border border-outline-variant/40">RESET</button>
         )}
       </div>
 
-      <p className="text-center text-sm text-on-surface-variant/70">
+      <p className="text-center text-xs sm:text-sm leading-relaxed text-on-surface-variant/70">
         Keep it mutual, comfortable, and fun. Either partner can skip a result or reset the round.
       </p>
     </div>
