@@ -1,4 +1,4 @@
-# 🐇💗 CouplePlayHub — EstroBunny
+# 🐇💗 EstroBunny's Burrow
 
 ![GitHub stars](https://img.shields.io/github/stars/estro-bunny/-3-couple-game?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/estro-bunny/-3-couple-game?style=social)
@@ -6,17 +6,17 @@
 ![License](https://img.shields.io/github/license/estro-bunny/-3-couple-game)
 ![Last Commit](https://img.shields.io/github/last-commit/estro-bunny/-3-couple-game)
 
-A fun, private-first web playground for couples to play games, flirt, laugh, and create their own chaos together. ❤️
+A fun, private-first cyber-kawaii burrow for couples to play games, flirt, laugh, and create their own chaos together. ❤️
 
-**CouplePlayHub is an EstroBunny passion project.** The goal is simple: build a genuinely good couple-game platform without turning every interaction into a login wall, subscription funnel, or data-harvesting machine.
+**EstroBunny's Burrow is an EstroBunny passion project.** The goal is simple: build a genuinely good couple-game platform without turning every interaction into a login wall, subscription funnel, or data-harvesting machine.
 
 🌐 **Live App:** https://coupleplayhub.netlify.app/
 
 ---
 
-## 💡 About the Project
+## 💡 About the Burrow
 
-**CouplePlayHub** is built to bring couples closer through engaging and entertaining games.
+**EstroBunny's Burrow** is built to bring couples closer through engaging and entertaining games.
 Unlike traditional apps focused on chatting, this platform focuses on **fun, interaction, and bonding**.
 
 No login. No friction. Just play instantly.
@@ -96,7 +96,7 @@ public         → Static assets
 * 💾 Local-first saves with explicit export/import
 * 📱 Make the mobile experience first-class
 * 🔊 Sound, haptics, accessibility, and reduced-motion polish
-* 🐇 EstroBunny visual identity without losing the intimate/night-game atmosphere
+* 🐇 EstroBunny visual identity as the core of the Burrow
 
 ---
 
@@ -144,10 +144,10 @@ It really helps in growing and improving the project.
 
 ---
 
-## 💬 Why CouplePlayHub?
+## 💬 Why the Burrow?
 
 Most couple apps focus on messaging.
-**CouplePlayHub focuses on fun.**
+**The Burrow focuses on fun.**
 
 Because playing together builds stronger connections ❤️
 
