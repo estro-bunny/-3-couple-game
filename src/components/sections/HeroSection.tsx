@@ -2,78 +2,99 @@ import { HERO_BG_IMAGE } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 import MaterialIcon from "@/components/ui/MaterialIcon";
 
+const SIGNALS = [
+  ["01", "CHAOS DEN", "Pick a room and cause problems."],
+  ["02", "CHAOS RUN", "Let the Burrow choose what happens next."],
+  ["03", "BURROW RULES", "Skip, stop, laugh, repeat."],
+];
+
 export default function HeroSection() {
   return (
-    <section
-      className="relative min-h-[calc(100vh-5rem)] flex flex-col items-center justify-center text-center px-5 py-24 hero-gradient cyber-grid overflow-hidden"
-      aria-label="Welcome to EstroBunny's Burrow"
-    >
-      <div className="absolute inset-0 z-0 opacity-10 pointer-events-none bg-cover bg-center mix-blend-screen" style={{ backgroundImage: `url('${HERO_BG_IMAGE}')` }} aria-hidden="true" />
-      <div className="absolute -top-24 -left-20 text-[12rem] leading-none text-primary/10 animate-bunny-float select-none" aria-hidden="true">ᕱ⑅ᕱ</div>
-      <div className="absolute top-32 -right-16 text-[10rem] leading-none text-secondary/10 -rotate-12 select-none" aria-hidden="true">✦</div>
+    <section className="relative min-h-[calc(100vh-5rem)] overflow-hidden hero-gradient cyber-grid px-4 sm:px-6 lg:px-8 py-20 md:py-24 flex items-center" aria-label="Welcome to EstroBunny's Burrow">
+      <div className="absolute inset-0 z-0 opacity-[.07] pointer-events-none bg-cover bg-center mix-blend-screen" style={{ backgroundImage: "url('" + HERO_BG_IMAGE + "')" }} aria-hidden="true" />
+      <div className="absolute -top-20 -left-10 sm:left-8 text-[8rem] sm:text-[13rem] leading-none text-primary/[.07] animate-bunny-float select-none" aria-hidden="true">ᕱ⑅ᕱ</div>
+      <div className="absolute top-28 right-0 sm:right-12 text-7xl sm:text-[11rem] leading-none text-secondary/[.06] rotate-12 select-none" aria-hidden="true">✦</div>
 
-      <div className="relative z-10 max-w-6xl mx-auto space-y-7">
-        <div className="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/5 px-4 py-2 text-[10px] font-black tracking-[.28em] text-secondary uppercase">
-          <span className="h-1.5 w-1.5 rounded-full bg-secondary shadow-[0_0_12px_#00e5ff]" />
-          BURROW // ONLINE
-          <span className="text-primary">♡</span>
-        </div>
-
-        <div className="space-y-3">
-          <p className="text-[10px] font-black tracking-[.4em] text-primary uppercase">
-            ESTROBUNNY PRESENTS
-          </p>
-          <h1 className="text-5xl sm:text-6xl md:text-8xl font-black font-headline tracking-[-.07em] leading-[.84]">
-            ESTROBUNNY'S
-            <span className="block bg-gradient-to-r from-primary via-[#ff3ddf] to-secondary text-transparent bg-clip-text">
-              BURROW
-            </span>
-          </h1>
-          <p className="text-sm sm:text-base font-black uppercase tracking-[.28em] text-secondary/80">
-            Cute chaos for couples who cause trouble together ♡
-          </p>
-        </div>
-
-        <p className="text-on-surface-variant text-base md:text-xl max-w-2xl mx-auto leading-relaxed">
-          A tiny neon hideout for dice, dares, questions, timers and spins —
-          built for connection, curiosity, and the sacred art of deciding
-          <span className="text-primary font-bold"> “fuck it, let's play.”</span>
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-3">
-          <Button href="/games" size="lg" className="rounded-xl shadow-[0_0_35px_rgba(255,0,255,.35)] hover:shadow-[0_0_65px_rgba(255,0,255,.55)] hover:-translate-y-0.5 transition-all">
-            ENTER THE BURROW ♡
-          </Button>
-          <Button href="/categories" variant="outline" size="lg" className="rounded-xl border-secondary/30 hover:border-secondary hover:text-secondary">
-            FIND YOUR VIBE
-          </Button>
-        </div>
-
-        <div className="pt-8 flex flex-wrap justify-center gap-3 text-[10px] font-black tracking-[.18em] uppercase">
-          {["FREE TO PLAY", "NO ACCOUNT", "SKIP ANYTHING", "LOCAL-FIRST"].map((tag) => (
-            <span key={tag} className="rounded-full border border-outline-variant/40 bg-black/20 px-3 py-1.5 text-on-surface-variant">
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        <div className="mx-auto max-w-2xl pt-2 grid grid-cols-1 sm:grid-cols-3 gap-3 text-left">
-          {[
-            ["01", "CHAOS DEN", "Pick your game."],
-            ["02", "CHAOS RUN", "Chain the night together."],
-            ["03", "BURROW RULES", "Privacy, consent, easy skips."],
-          ].map(([number, title, copy]) => (
-            <div key={number} className="glass-card rounded-xl p-4 border border-primary/10">
-              <div className="text-[9px] font-black tracking-[.25em] text-secondary">{number} // {title}</div>
-              <div className="mt-2 text-sm font-bold text-on-surface">{copy}</div>
+      <div className="relative z-10 max-w-7xl w-full mx-auto">
+        <div className="grid lg:grid-cols-[1.15fr_.85fr] gap-10 lg:gap-16 items-center">
+          <div className="max-w-4xl">
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="bunny-sticker"><span className="h-1.5 w-1.5 rounded-full bg-secondary shadow-[0_0_10px_#00e5ff]" /> BURROW // ONLINE</span>
+              <span className="bunny-sticker bunny-sticker-cyan">NO ACCOUNT // NO PRESSURE</span>
             </div>
-          ))}
-        </div>
-      </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
-        <div className="text-[9px] font-black tracking-[.35em] text-primary/60 uppercase mb-2">scroll for trouble</div>
-        <MaterialIcon name="keyboard_double_arrow_down" className="text-secondary text-3xl animate-bounce" aria-hidden="true" />
+            <p className="text-[10px] sm:text-xs font-black tracking-[.38em] text-primary uppercase mb-4">ESTROBUNNY PRESENTS</p>
+
+            <h1 className="font-headline font-black tracking-[-.075em] leading-[.82] text-[4rem] sm:text-7xl md:text-8xl lg:text-[7.5rem]">
+              WELCOME TO
+              <span className="block text-primary">THE BURROW.</span>
+            </h1>
+
+            <div className="mt-7 max-w-2xl">
+              <p className="text-xl sm:text-2xl font-black tracking-tight text-on-surface">
+                A tiny digital hideout for couples who like their nights a little <span className="text-secondary">unhinged.</span>
+              </p>
+              <p className="mt-4 text-sm sm:text-base md:text-lg text-on-surface-variant leading-relaxed max-w-xl">
+                Dice. Dares. Questions. Spins. Timers. Zero weird gender assumptions.
+                Pick a room, make your own rules, and leave whenever you want.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3 pt-8">
+              <Button href="/games" size="lg">ENTER THE BURROW ♡</Button>
+              <Button href="/games/chaos-run" variant="outline" size="lg">LET CHAOS PICK →</Button>
+            </div>
+
+            <div className="flex flex-wrap gap-x-5 gap-y-2 pt-7 text-[9px] font-black tracking-[.2em] uppercase text-on-surface-variant">
+              <span className="text-primary">♡ FREE</span>
+              <span>♡ LOCAL-FIRST</span>
+              <span>♡ SKIP ANYTHING</span>
+              <span>♡ QUEER-FRIENDLY</span>
+            </div>
+          </div>
+
+          <div className="relative lg:pt-8">
+            <div className="burrow-panel rounded-[2rem] p-5 sm:p-7 rotate-[1.5deg] shadow-[0_35px_100px_rgba(0,0,0,.45)]">
+              <div className="flex items-center justify-between gap-3 mb-6">
+                <div>
+                  <div className="text-[9px] font-black tracking-[.3em] text-secondary">BUNNI CORE</div>
+                  <div className="text-xl font-black font-headline mt-1">what's happening?</div>
+                </div>
+                <div className="text-3xl animate-bunny-float" aria-hidden="true">ᕱ⑅ᕱ</div>
+              </div>
+
+              <div className="space-y-3">
+                {SIGNALS.map(([number, title, copy], index) => (
+                  <div key={number} className={"group rounded-2xl border border-white/[.07] bg-black/20 p-4 transition-all hover:-translate-x-1 hover:border-primary/30 " + (index === 0 ? "border-primary/25 bg-primary/[.045]" : "")}>
+                    <div className="flex gap-4">
+                      <span className="text-[9px] font-black tracking-[.2em] text-primary pt-1">{number}</span>
+                      <div>
+                        <div className="font-black text-sm tracking-wide">{title}</div>
+                        <div className="text-xs text-on-surface-variant mt-1 leading-relaxed">{copy}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-5 pt-5 border-t border-white/[.07] flex items-center justify-between gap-4">
+                <div className="text-[9px] font-black uppercase tracking-[.2em] text-on-surface-variant">SYSTEM STATUS</div>
+                <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[.2em] text-secondary">
+                  <span className="h-1.5 w-1.5 rounded-full bg-secondary shadow-[0_0_10px_#00e5ff]" />
+                  chaotic / operational
+                </div>
+              </div>
+            </div>
+            <div className="absolute -bottom-4 -left-4 sm:-left-8 bunny-sticker rotate-[-6deg]">GOOD GIRLS CAUSE PROBLEMS ♡</div>
+            <div className="absolute -top-5 -right-2 sm:-right-5 bunny-sticker bunny-sticker-cyan rotate-[5deg]">MORE CHAOS PLS</div>
+          </div>
+        </div>
+
+        <div className="mt-16 md:mt-20 flex items-center gap-4">
+          <div className="text-[9px] font-black tracking-[.3em] text-primary uppercase">SCROLL FOR TROUBLE</div>
+          <div className="neon-rule flex-1" />
+          <MaterialIcon name="keyboard_double_arrow_down" className="text-secondary text-2xl animate-bounce" aria-hidden="true" />
+        </div>
       </div>
     </section>
   );
