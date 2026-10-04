@@ -37,7 +37,6 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const seo = GAME_SEO[slug];
-  const sessionActive = query.session === "1";
 
   if (seo) {
     return buildMetadata({
@@ -65,8 +64,6 @@ export default async function GamePage({
   searchParams?: Promise<{ session?: string }>;
 }) {
   const { slug } = await params;
-  const query = searchParams ? await searchParams : {};
-
   const game = getGame(slug);
 
   if (!game) notFound();
@@ -99,7 +96,7 @@ export default async function GamePage({
             title={title}
             vibe={game.vibe}
             category={game.category}
-            sessionActive={sessionActive}
+            sessionActive={false}
             image={image}
           />
           {image && (
