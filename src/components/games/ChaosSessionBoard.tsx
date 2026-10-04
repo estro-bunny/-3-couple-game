@@ -162,6 +162,23 @@ export default function ChaosSessionBoard() {
           )}
         </div>
 
+        {current && state.completedSlugs.includes(current.slug) && !sessionComplete && (() => {
+          const next = pickSessionGame(CHAOS_SESSION_GAMES, vibe, current.slug, state.completedSlugs);
+          return (
+            <div className="mt-8 rounded-2xl border border-primary/30 bg-primary/5 p-6 text-center shadow-[0_0_45px_rgba(255,0,255,.08)]">
+              <p className="text-xs font-black tracking-[.28em] uppercase text-primary">ROOM CLEARED ♡</p>
+              <p className="mt-2 text-2xl sm:text-4xl font-black font-headline">THE BURROW HAS ANOTHER IDEA.</p>
+              <p className="mt-2 text-sm text-on-surface-variant">Next room: <span className="font-black text-secondary">{next.title}</span></p>
+              <Link
+                href={"/games/" + next.slug + "?session=1"}
+                className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl bg-primary px-6 py-3 text-xs font-black uppercase tracking-[.16em] text-on-primary shadow-[0_0_35px_rgba(255,0,255,.2)] hover:scale-[1.01] transition-transform"
+              >
+                ENTER NEXT ROOM →
+              </Link>
+            </div>
+          );
+        })()}
+
         {current && (
           <div className="mt-8 rounded-2xl border border-secondary/20 bg-secondary/5 p-6 text-center">
             <p className="text-xs font-black tracking-[.25em] uppercase text-secondary">CHAOS HAS CHOSEN</p>
