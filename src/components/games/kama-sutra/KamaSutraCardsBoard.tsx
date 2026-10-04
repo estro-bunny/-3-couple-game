@@ -58,12 +58,8 @@ export default function KamaSutraCardsBoard() {
     timeoutRef.current = window.setTimeout(() => {
       setCurrentCardId(next.id);
       setIsDrawing(false);
-      setSession((current) => {
-        const nextSession = recordRound(current);
-        saveGameSession(STORAGE_KEY, nextSession);
-        syncChaosSessionCompletion(STORAGE_KEY, nextSession.lastPlayedAt ?? Date.now());
-        return nextSession;
-      });
+      const nextSession = completeGameRound(STORAGE_KEY, session);
+      setSession(nextSession);
     }, 450);
   }, [isDrawing]);
 
