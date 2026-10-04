@@ -23,7 +23,7 @@ export default function SexRouletteBoard() {
   const [isSpinning, setIsSpinning] = useState(false);
   const [session, setSession] = useState<GameSession>(EMPTY_GAME_SESSION);
   const [rotation, setRotation] = useState(0);
-  const previousId = useRef<string | undefined>();
+  const previousId = useRef<string | undefined>(undefined);
   const timeoutRef = useRef<number | null>(null);
 
   const selected = useMemo(
