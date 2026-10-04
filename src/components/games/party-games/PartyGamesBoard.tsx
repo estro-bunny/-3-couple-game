@@ -37,7 +37,7 @@ export default function PartyGamesBoard() {
     setRounds(session.roundsCompleted);
     setPreviousId(next.id);
     setPrompt(next);
-  }, []);
+  }, [mode, previousId]);
 
   function changeMode(nextMode: PartyMode) {
     setMode(nextMode);
