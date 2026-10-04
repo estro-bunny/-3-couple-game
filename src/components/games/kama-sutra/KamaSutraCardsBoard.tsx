@@ -79,10 +79,10 @@ export default function KamaSutraCardsBoard() {
 
   return (
     <div className="w-full max-w-3xl mx-auto space-y-5 sm:space-y-8">
-      <div className="glass-card rounded-2xl p-4 flex items-center justify-between gap-3 text-left">
+      <div className="burrow-panel rounded-2xl p-4 flex items-center justify-between gap-3 text-left">
         <div>
-          <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">
-            Local session
+          <p className="text-[9px] font-black uppercase tracking-[.25em] text-secondary">
+            Burrow session
           </p>
           <p className="font-bold">
             {session.roundsCompleted}{" "}
@@ -94,7 +94,7 @@ export default function KamaSutraCardsBoard() {
             type="button"
             onClick={clearProgress}
             disabled={isDrawing}
-            className="text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors disabled:opacity-40"
+            className="text-xs font-black uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors disabled:opacity-40"
           >
             Clear progress
           </button>
@@ -103,9 +103,8 @@ export default function KamaSutraCardsBoard() {
 
       <div
         className={[
-          "min-h-[430px] rounded-3xl p-8 md:p-12 flex flex-col items-center justify-center text-center",
-          "border border-primary/20 bg-gradient-to-br from-primary/10 via-surface-container to-secondary/10",
-          "shadow-[0_0_60px_rgba(255,0,255,0.12)] transition-transform duration-300",
+          "burrow-panel min-h-[430px] rounded-[2rem] p-8 md:p-12 flex flex-col items-center justify-center text-center",
+          "border border-primary/25 shadow-[0_0_70px_rgba(255,125,233,0.14)] transition-transform duration-300",
           isDrawing ? "scale-95 opacity-70" : "scale-100 opacity-100",
         ].join(" ")}
       >
@@ -114,7 +113,7 @@ export default function KamaSutraCardsBoard() {
             <div className="text-5xl mb-5" aria-hidden="true">
               {currentCard.emoji}
             </div>
-            <span className="text-xs font-black uppercase tracking-[0.3em] text-primary">
+            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-secondary">
               {KIND_LABELS[currentCard.kind]}
             </span>
             <h2 className="text-4xl md:text-5xl font-black font-headline tracking-tight mt-3">
@@ -126,8 +125,8 @@ export default function KamaSutraCardsBoard() {
           </>
         ) : (
           <>
-            <div className="text-7xl mb-6" aria-hidden="true">
-              🃏
+            <div className="text-7xl mb-6 text-primary animate-bunny-float" aria-hidden="true">
+              ᕱ⑅ᕱ
             </div>
             <h2 className="text-4xl font-black font-headline">
               {isDrawing ? "Drawing..." : "Draw a card"}
