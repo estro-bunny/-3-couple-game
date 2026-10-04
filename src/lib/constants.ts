@@ -1,8 +1,6 @@
 import type {
   NavLink,
   CategoryItem,
-  FeaturedGame,
-  GlassGame,
   HighlightItem,
   FeaturePoint,
   FooterLink,
