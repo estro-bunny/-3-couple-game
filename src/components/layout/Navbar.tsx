@@ -13,7 +13,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3 sm:gap-5 min-w-0">
           <Logo size="sm" />
           <span className="hidden lg:inline text-[10px] font-black tracking-[.28em] text-secondary/70">
-            INITIALIZING CHAOS...
+            BURROW // ONLINE
           </span>
           <div className="hidden md:flex gap-4 lg:gap-5 items-center">
             {NAV_LINKS.map((link) => (
