@@ -7,6 +7,7 @@ import {
   parseChaosSession,
   serializeChaosSession,
   startChaosSession,
+  isChaosSessionComplete,
 } from "./chaos-session-state";
 
 describe("chaos session state", () => {
@@ -44,6 +45,16 @@ describe("chaos session state", () => {
     expect(state.currentSlug).toBe(second.slug);
     expect(state.completedSlugs).toEqual([first.slug]);
     expect(state.roundsCompleted).toBe(1);
+  });
+
+  it("detects a fully cleared session without requiring duplicate rounds", () => {
+    let state = startChaosSession(EMPTY_CHAOS_SESSION, first, "surprise", 1000);
+    state = completeChaosGame(state, first.slug, 2000);
+    state = completeChaosGame(state, second.slug, 3000);
+
+    expect(isChaosSessionComplete(state, 2)).toBe(true);
+    expect(isChaosSessionComplete(state, 3)).toBe(false);
+    expect(isChaosSessionComplete(state, 0)).toBe(false);
   });
 
   it("round-trips through serialization", () => {
