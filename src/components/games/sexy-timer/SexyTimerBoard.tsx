@@ -77,21 +77,24 @@ export default function SexyTimerBoard() {
 
   return (
     <div className="w-full max-w-4xl mx-auto space-y-5 sm:space-y-8">
-      <div className="glass-card rounded-2xl p-4 flex items-center justify-between gap-3 text-left">
+      <div className="burrow-panel rounded-2xl p-4 flex items-center justify-between gap-3 text-left">
         <div>
-          <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Local session</p>
+          <p className="text-[9px] font-black uppercase tracking-[.25em] text-secondary">Burrow session</p>
           <p className="font-bold">{session.roundsCompleted} {session.roundsCompleted === 1 ? "round" : "rounds"} completed</p>
         </div>
         {session.roundsCompleted > 0 && (
-          <button type="button" onClick={clearProgress} className="min-h-11 px-3 rounded-xl text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary border border-transparent hover:border-primary/20">
+          <button type="button" onClick={clearProgress} className="min-h-11 px-3 rounded-xl text-xs font-black uppercase tracking-widest text-on-surface-variant hover:text-primary border border-transparent hover:border-primary/20">
             Clear progress
           </button>
         )}
       </div>
 
-      <div className="glass-card rounded-3xl p-6 sm:p-8 md:p-12">
-        <p className="text-xs font-bold uppercase tracking-[0.3em] text-on-surface-variant">Countdown</p>
-        <div className="text-[clamp(4rem,22vw,9rem)] leading-none font-black tracking-tighter my-6 sm:my-8 tabular-nums" aria-live="polite">
+      <div className="burrow-panel rounded-[2rem] p-6 sm:p-8 md:p-12 border border-primary/25 shadow-[0_0_75px_rgba(255,125,233,0.14)]">
+        <p className="text-[9px] font-black uppercase tracking-[0.3em] text-secondary">Countdown</p>
+        <div
+          className="text-[clamp(4rem,22vw,9rem)] leading-none font-black font-headline tracking-tighter my-6 sm:my-8 tabular-nums text-primary drop-shadow-[0_0_28px_rgba(255,125,233,0.4)]"
+          aria-live="polite"
+        >
           {timeLabel}
         </div>
         <p className="min-h-12 text-base sm:text-lg font-bold flex items-center justify-center">
@@ -106,7 +109,11 @@ export default function SexyTimerBoard() {
             type="button"
             onClick={() => { if (!running) setDuration(value); }}
             disabled={running}
-            className={`min-h-12 rounded-xl px-5 py-3 font-bold border transition-colors ${duration === value ? "border-primary bg-primary/10" : "border-outline-variant/30"} disabled:opacity-50`}
+            className={`min-h-12 rounded-xl px-5 py-3 font-black uppercase tracking-wide border transition-all ${
+              duration === value
+                ? "border-primary bg-primary/10 text-primary shadow-[0_0_22px_rgba(255,125,233,0.16)]"
+                : "border-outline-variant/30 text-on-surface-variant hover:border-primary/40 hover:text-primary"
+            } disabled:opacity-50`}
           >
             {value}s
           </button>
@@ -114,7 +121,7 @@ export default function SexyTimerBoard() {
       </div>
 
       <div className="flex flex-col sm:flex-row justify-center gap-3">
-        <Button size="lg" className="rounded-xl min-w-[180px]" onClick={running ? reset : start}>
+        <Button size="lg" className="rounded-xl min-w-[180px] shadow-[0_0_40px_rgba(255,0,255,0.3)]" onClick={running ? reset : start}>
           {running ? "STOP" : remaining === 0 ? "PLAY AGAIN" : "START"}
         </Button>
         {remaining !== null && !running && (
