@@ -10,6 +10,7 @@ export interface GameCategoryDefinition {
   icon: string;
   description: string;
   href: string;
+  gameCategory: GameCategory;
 }
 
 export const GAME_CATEGORIES: readonly GameCategoryDefinition[] = [
@@ -19,6 +20,7 @@ export const GAME_CATEGORIES: readonly GameCategoryDefinition[] = [
     icon: "favorite",
     description: "Soft, romantic, queer-friendly, and playful connections.",
     href: "/categories/vanilla",
+    gameCategory: "vanilla",
   },
   {
     slug: "pg",
@@ -26,13 +28,15 @@ export const GAME_CATEGORIES: readonly GameCategoryDefinition[] = [
     icon: "auto_awesome",
     description: "Light teasing, flirting, and fun challenges without gendered roles.",
     href: "/categories/pg",
+    gameCategory: "pg",
   },
   {
-    slug: "mature",
+    slug: "xxx",
     title: "XXX",
     icon: "local_fire_department",
     description: "Bolder prompts and playful challenges for partners of any gender.",
     href: "/categories/xxx",
+    gameCategory: "mature",
   },
   {
     slug: "kinky-levels",
@@ -40,6 +44,7 @@ export const GAME_CATEGORIES: readonly GameCategoryDefinition[] = [
     icon: "token",
     description: "For partners who want to explore boundaries on their own terms.",
     href: "/categories/kinky-levels",
+    gameCategory: "kinky-levels",
   },
 ];
 
