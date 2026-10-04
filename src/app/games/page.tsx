@@ -9,7 +9,7 @@ import LovenseBridge from "@/components/lovense/LovenseBridge";
 
 export const metadata: Metadata = buildMetadata({
   title: "All Couple Games Online - Play Free Naughty & Romantic Games",
-  description: "Browse the playable CouplePlayHub library: dice, truth or dare, roulette, cards, timers, spins and party games.",
+  description: "Browse the playable EstroBunny's Burrow library: dice, truth or dare, roulette, cards, timers, spins and party games.",
   keywords: ["couple games list", "all couple games online", "free couple games", "browse couple games"],
   path: "/games",
 });
@@ -22,12 +22,12 @@ export default function GamesPage() {
         <div className="relative max-w-7xl mx-auto">
           <Breadcrumbs items={[{ label: "Games" }]} />
           <div className="max-w-4xl mt-7 sm:mt-10 mb-10 sm:mb-14">
-            <p className="text-[10px] font-black tracking-[.35em] text-secondary uppercase mb-4">02 // CHAOS LIBRARY</p>
+            <p className="text-[10px] font-black tracking-[.35em] text-secondary uppercase mb-4">02 // CHAOS DEN</p>
             <h1 className="text-4xl sm:text-5xl md:text-8xl font-black font-headline tracking-[-.07em] leading-[.88]">
               PICK A GAME.<br /><span className="text-primary">CAUSE TROUBLE.</span>
             </h1>
             <p className="text-on-surface-variant text-base sm:text-lg md:text-xl mt-5 sm:mt-6 max-w-2xl leading-relaxed">
-              Eight playable games. No account. No fake leaderboard. No pretending we're normal.
+              Eight playable games inside the Burrow. No account. No fake leaderboard. No pretending we're normal.
               Built queer-friendly: no assigned gender roles, no heterosexual assumptions. Pick one, play together, skip whatever you don't vibe with.
             </p>
           </div>
