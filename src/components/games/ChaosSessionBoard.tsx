@@ -6,6 +6,8 @@ import { CHAOS_SESSION_GAMES, type ChaosVibe, pickSessionGame } from "@/lib/game
 import {
   EMPTY_CHAOS_SESSION,
   advanceChaosSession,
+  exportChaosSession,
+  importChaosSession,
   isChaosSessionComplete,
   parseChaosSession,
   serializeChaosSession,
@@ -83,6 +85,31 @@ export default function ChaosSessionBoard() {
     setState(EMPTY_CHAOS_SESSION);
   }
 
+  function exportSession() {
+    const blob = new Blob([exportChaosSession(state)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = "coupleplayhub-chaos-session.json";
+    anchor.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function importSession(event: React.ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const imported = importChaosSession(
+        typeof reader.result === "string" ? reader.result : null
+      );
+      setState(imported);
+    };
+    reader.readAsText(file);
+  }
+
   return (
     <div className="w-full max-w-5xl mx-auto">
       <div className="glass-card rounded-3xl p-6 md:p-10 border border-primary/20 shadow-[0_0_80px_rgba(255,0,255,0.08)]">
@@ -145,6 +172,16 @@ export default function ChaosSessionBoard() {
                   ROUND CLEARED ♡
                 </span>
               )}
+              <button type="button" onClick={exportSession}
+                className="rounded-xl px-4 py-2 text-xs font-black uppercase tracking-widest border border-secondary/30 text-secondary hover:border-secondary/60 transition-colors">
+                EXPORT
+              </button>
+              <label
+                className="cursor-pointer rounded-xl px-4 py-2 text-xs font-black uppercase tracking-widest border border-secondary/30 text-secondary hover:border-secondary/60 transition-colors"
+              >
+                IMPORT
+                <input type="file" accept="application/json,.json" onChange={importSession} className="sr-only" />
+              </label>
               <button type="button" onClick={reset}
                 className="rounded-xl px-4 py-2 text-xs font-black uppercase tracking-widest border border-outline-variant/30 text-on-surface-variant hover:border-secondary/50 transition-colors">
                 RESET SESSION
