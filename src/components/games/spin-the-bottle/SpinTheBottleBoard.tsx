@@ -72,8 +72,8 @@ export default function SpinTheBottleBoard() {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-8">
-      <div className="glass-card rounded-2xl p-4 flex items-center justify-between gap-4 text-left">
+    <div className="w-full max-w-3xl mx-auto space-y-5 sm:space-y-8">
+      <div className="glass-card rounded-2xl p-4 flex items-center justify-between gap-3 text-left">
         <div>
           <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">
             Local session
@@ -87,7 +87,7 @@ export default function SpinTheBottleBoard() {
           <button
             type="button"
             onClick={clearProgress}
-            className="text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors"
+            className="min-h-11 px-3 rounded-xl text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors border border-transparent hover:border-primary/20"
           >
             Clear progress
           </button>
@@ -104,15 +104,15 @@ export default function SpinTheBottleBoard() {
               value={player}
               onChange={(event) => updatePlayer(index as 0 | 1, event.target.value)}
               maxLength={24}
-              className="w-full rounded-xl border border-outline-variant/30 bg-surface-container-high/70 px-4 py-3 text-on-surface outline-none transition focus:border-primary"
+              className="w-full min-h-12 rounded-xl border border-outline-variant/30 bg-surface-container-high/70 px-4 py-3 text-on-surface outline-none transition focus:border-primary"
               aria-label={"Player " + (index + 1) + " name"}
             />
           </label>
         ))}
       </div>
 
-      <div className="glass-card rounded-3xl min-h-[360px] p-8 md:p-12 flex flex-col items-center justify-center text-center border border-outline-variant/20 overflow-hidden">
-        <div className="relative w-56 h-56 md:w-64 md:h-64 flex items-center justify-center">
+      <div className="glass-card rounded-3xl min-h-[300px] sm:min-h-[360px] p-5 sm:p-8 md:p-12 flex flex-col items-center justify-center text-center border border-outline-variant/20 overflow-hidden">
+        <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 flex items-center justify-center">
           <div className="absolute inset-0 rounded-full border border-primary/20 bg-primary/5" />
           <div className="absolute inset-5 rounded-full border border-secondary/20" />
           <div className="absolute top-2 left-1/2 -translate-x-1/2 text-xs font-black uppercase tracking-widest text-on-surface-variant">
@@ -122,7 +122,7 @@ export default function SpinTheBottleBoard() {
             {players[1]}
           </div>
           <div
-            className="text-7xl select-none transition-transform duration-[1800ms] ease-out will-change-transform"
+            className="text-6xl sm:text-7xl select-none transition-transform duration-[1800ms] ease-out will-change-transform"
             style={{ transform: "rotate(" + rotation + "deg)" }}
             aria-hidden="true"
           >
@@ -130,13 +130,13 @@ export default function SpinTheBottleBoard() {
           </div>
         </div>
 
-        <div className="mt-8 min-h-20 flex flex-col items-center justify-center">
+        <div className="mt-6 sm:mt-8 min-h-20 flex flex-col items-center justify-center">
           {selectedPlayer ? (
             <>
               <span className="text-xs font-black uppercase tracking-[0.3em] text-primary">
                 The bottle chose
               </span>
-              <p className="text-3xl md:text-4xl font-black font-headline tracking-tight mt-2">
+              <p className="text-2xl sm:text-3xl md:text-4xl font-black font-headline tracking-tight mt-2">
                 {selectedPlayer}
               </p>
             </>
@@ -153,10 +153,10 @@ export default function SpinTheBottleBoard() {
         </div>
       </div>
 
-      <div className="flex justify-center gap-3">
+      <div className="flex flex-col sm:flex-row justify-center gap-3">
         <Button
           size="lg"
-          className="rounded-xl min-w-[180px] shadow-[0_0_40px_rgba(255,0,255,0.3)]"
+          className="rounded-xl min-w-[180px] w-full sm:w-auto shadow-[0_0_40px_rgba(255,0,255,0.3)]"
           onClick={spin}
           disabled={isSpinning}
         >
