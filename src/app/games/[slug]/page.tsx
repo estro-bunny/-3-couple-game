@@ -64,8 +64,11 @@ export default async function GamePage({
   params,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams?: Promise<{ session?: string }>;
 }) {
   const { slug } = await params;
+  const search = searchParams ? await searchParams : undefined;
+  const sessionActive = search?.session === "1";
   const game = getGame(slug);
 
   if (!game) notFound();
@@ -99,7 +102,7 @@ export default async function GamePage({
             title={title}
             vibe={game.vibe}
             category={game.category}
-            sessionActive={false}
+            sessionActive={sessionActive}
             image={image}
           />
           {image && (
@@ -140,8 +143,6 @@ export default async function GamePage({
                             : seo?.description ?? description}
           </p>
 
-          <GameRoomFooter title={title} />
-
           {isSexyDice ? (
             <GameBoard />
           ) : isTruthOrDare ? (
@@ -173,6 +174,7 @@ export default async function GamePage({
               </p>
             </>
           )}
+          <GameRoomFooter title={title} sessionActive={sessionActive} />
           <ChaosRunHandoff currentSlug={slug} />
         </div>
       </section>
