@@ -69,12 +69,12 @@ export default function ChaosSessionBoard() {
 
   function launch() {
     const restarting = sessionComplete;
-    const next = pickSessionGame(
-      CHAOS_SESSION_GAMES,
-      vibe,
-      restarting ? undefined : current?.slug,
-      restarting ? [] : state.completedSlugs
-    );
+    const queued = state.nextSlug
+      ? CHAOS_SESSION_GAMES.find((game) => game.slug === state.nextSlug)
+      : null;
+    const next = restarting
+      ? pickSessionGame(CHAOS_SESSION_GAMES, vibe, undefined, [])
+      : queued ?? pickSessionGame(CHAOS_SESSION_GAMES, vibe, current?.slug, state.completedSlugs);
     setState((previous) =>
       restarting
         ? startChaosSession(previous, next, vibe)
@@ -188,7 +188,10 @@ export default function ChaosSessionBoard() {
         )}
 
         {current && state.completedSlugs.includes(current.slug) && !sessionComplete && (() => {
-          const next = pickSessionGame(CHAOS_SESSION_GAMES, vibe, current.slug, state.completedSlugs);
+          const next = state.nextSlug
+            ? CHAOS_SESSION_GAMES.find((game) => game.slug === state.nextSlug)
+            : null;
+          if (!next) return null;
           return (
             <div className="mt-8 rounded-2xl border border-primary/30 bg-primary/5 p-6 text-center shadow-[0_0_45px_rgba(255,0,255,.08)]">
               <p className="text-xs font-black tracking-[.28em] uppercase text-primary">ROOM CLEARED ♡</p>
