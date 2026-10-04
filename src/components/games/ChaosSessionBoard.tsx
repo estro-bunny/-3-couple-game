@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import ChaosRunTrail from "./ChaosRunTrail";
 import { CHAOS_SESSION_GAMES, type ChaosVibe, pickSessionGame } from "@/lib/games/chaos-session";
 import {
   EMPTY_CHAOS_SESSION,
@@ -194,6 +195,8 @@ export default function ChaosSessionBoard() {
 
         <p className="text-center text-xs text-on-surface-variant/70 mt-6">Progress stays in this browser. No account. No server-side session. No pressure. Skip anything you don't want to play.</p>
       </div>
+
+      <ChaosRunTrail />
     </div>
   );
 }
