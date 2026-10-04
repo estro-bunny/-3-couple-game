@@ -42,14 +42,15 @@ export function completeChaosGame(
 ): ChaosSessionState {
   if (!slug) return state;
 
-  const completedSlugs = state.completedSlugs.includes(slug)
+  const alreadyCompleted = state.completedSlugs.includes(slug);
+  const completedSlugs = alreadyCompleted
     ? state.completedSlugs
     : [...state.completedSlugs, slug];
 
   return {
     ...state,
     completedSlugs,
-    roundsCompleted: state.roundsCompleted + 1,
+    roundsCompleted: alreadyCompleted ? state.roundsCompleted : state.roundsCompleted + 1,
     lastAdvancedAt: now,
   };
 }
