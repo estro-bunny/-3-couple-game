@@ -73,7 +73,7 @@ export default function SpinTheBottleBoard() {
 
   return (
     <div className="w-full max-w-3xl mx-auto space-y-5 sm:space-y-8">
-      <div className="glass-card rounded-2xl p-4 flex items-center justify-between gap-3 text-left">
+      <div className="burrow-panel rounded-2xl p-4 flex items-center justify-between gap-3 text-left">
         <div>
           <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">
             Local session
@@ -111,7 +111,7 @@ export default function SpinTheBottleBoard() {
         ))}
       </div>
 
-      <div className="glass-card rounded-3xl min-h-[300px] sm:min-h-[360px] p-5 sm:p-8 md:p-12 flex flex-col items-center justify-center text-center border border-outline-variant/20 overflow-hidden">
+      <div className="burrow-panel rounded-[2rem] min-h-[330px] sm:min-h-[390px] p-5 sm:p-8 md:p-12 flex flex-col items-center justify-center text-center border border-primary/15 overflow-hidden shadow-[0_25px_80px_rgba(255,125,233,.07)]">
         <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 flex items-center justify-center">
           <div className="absolute inset-0 rounded-full border border-primary/20 bg-primary/5" />
           <div className="absolute inset-5 rounded-full border border-secondary/20" />
@@ -126,7 +126,7 @@ export default function SpinTheBottleBoard() {
             style={{ transform: "rotate(" + rotation + "deg)" }}
             aria-hidden="true"
           >
-            🍾
+            ᕱ⑅ᕱ
           </div>
         </div>
 
