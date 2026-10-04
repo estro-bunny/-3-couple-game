@@ -67,21 +67,18 @@ export default function ChaosSessionBoard() {
     setState((previous) => ({ ...previous, vibe: nextVibe }));
   }
 
-  function launch() {
-    const restarting = sessionComplete;
+  function startNewRun() {
+    const next = pickSessionGame(CHAOS_SESSION_GAMES, vibe, undefined, []);
+    setState((previous) => startChaosSession(previous, next, vibe));
+  }
+
+  function resumeRun() {
+    if (!state.startedAt || sessionComplete) return;
     const queued = state.nextSlug
       ? CHAOS_SESSION_GAMES.find((game) => game.slug === state.nextSlug)
       : null;
-    const next = restarting
-      ? pickSessionGame(CHAOS_SESSION_GAMES, vibe, undefined, [])
-      : queued ?? pickSessionGame(CHAOS_SESSION_GAMES, vibe, current?.slug, state.completedSlugs);
-    setState((previous) =>
-      restarting
-        ? startChaosSession(previous, next, vibe)
-        : previous.startedAt
-          ? advanceChaosSession(previous, next)
-          : startChaosSession(previous, next, vibe)
-    );
+    const next = queued ?? pickSessionGame(CHAOS_SESSION_GAMES, vibe, current?.slug, state.completedSlugs);
+    setState((previous) => advanceChaosSession(previous, next));
   }
 
   function reset() {
@@ -142,11 +139,11 @@ export default function ChaosSessionBoard() {
         </div>
 
         <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3">
-          <button type="button" onClick={launch}
+          <button type="button" onClick={sessionComplete || !current ? startNewRun : resumeRun}
             className="flex-1 rounded-2xl px-6 py-4 font-black uppercase tracking-widest bg-primary text-on-primary shadow-[0_0_45px_rgba(255,0,255,0.25)] hover:scale-[1.01] active:scale-[0.99] transition-transform">
-            {sessionComplete ? "RUN IT AGAIN ♡" : current ? "NEXT CHAOS ♡" : "START SESSION ♡"}
+            {sessionComplete ? "START NEW RUN ♡" : current ? "RESUME RUN ♡" : "START RUN ♡"}
           </button>
-          {current && (
+          {current && !sessionComplete && (
             <Link href={"/games/" + current.slug + "?session=1"}
               className="rounded-2xl px-6 py-4 font-black uppercase tracking-widest border border-secondary/40 text-secondary hover:bg-secondary/10 text-center transition-colors">
               PLAY {current.title}
@@ -164,7 +161,7 @@ export default function ChaosSessionBoard() {
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               <button
                 type="button"
-                onClick={launch}
+                onClick={startNewRun}
                 className="inline-flex min-h-12 items-center justify-center rounded-xl bg-primary px-6 py-3 text-xs font-black uppercase tracking-[.16em] text-on-primary shadow-[0_0_35px_rgba(255,0,255,.2)] hover:scale-[1.01] transition-transform"
               >
                 RUN IT AGAIN ♡
