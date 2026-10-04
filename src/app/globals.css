@@ -94,6 +94,31 @@ body::before {
 
 a, button { -webkit-tap-highlight-color: transparent; }
 
+button, [role="button"], a { touch-action: manipulation; }
+
+button, [role="button"] { min-height: 44px; }
+
+@supports (padding: max(0px)) {
+  body { padding-bottom: env(safe-area-inset-bottom); }
+}
+
+@media (max-width: 640px) {
+  html { overflow-x: hidden; }
+
+  body { min-width: 320px; }
+
+  .glass-card {
+    border-radius: 1.25rem;
+  }
+
+  .hero-gradient::after {
+    bottom: 6rem;
+    max-width: calc(100vw - 2rem);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
