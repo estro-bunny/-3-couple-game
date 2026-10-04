@@ -12,7 +12,7 @@ const variantConfig = {
   small: { container: "md:col-span-3 h-[390px]", imgOpacity: "opacity-30", padding: "p-5 sm:p-6", titleSize: "text-lg sm:text-xl" },
   wide: { container: "md:col-span-6 h-[390px]", imgOpacity: "opacity-30", padding: "p-5 sm:p-7 md:p-10", titleSize: "text-xl sm:text-2xl" },
 };
-export default function GameCard({ title, image, alt, buttonLabel, href, badge, badgeColor = "primary", description, variant }: GameCardProps) {
+export default function GameCard({ title, image, alt, buttonLabel, href, badge, badgeColor = "primary", description, categoryLabel, variant }: GameCardProps) {
   const config = variantConfig[variant];
   const badgeBg = badgeColor === "secondary" ? "bg-secondary-container text-on-secondary" : "bg-primary-container text-on-primary";
   return (
