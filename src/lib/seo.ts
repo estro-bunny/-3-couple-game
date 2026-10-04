@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
-export const SITE_NAME = "CouplePlayHub by EstroBunny";
+export const SITE_NAME = "EstroBunny's Burrow";
 export const SITE_URL = "https://coupleplayhub.netlify.app";
 export const SITE_DESCRIPTION =
   "Play free browser-based couple games including Truth or Dare, dice, roulette, cards, timers, and playful challenges designed for connection.";
-export const SITE_TAGLINE = "Couple games, private by default, made for connection";
+export const SITE_TAGLINE = "Cute chaos for couples who cause trouble together ♡";
 
 export const DEFAULT_KEYWORDS = [
   "couple games online",
@@ -74,7 +74,7 @@ export const GAME_SEO: Record<
   { title: string; description: string; keywords: string[] }
 > = {
   "sexy-dice": {
-    title: "Sexy Dice Game Online - Roll & Play | CouplePlayHub",
+    title: "Sexy Dice Game Online - Roll & Play | EstroBunny's Burrow",
     description:
       "Roll the sexy dice and let fate decide your next intimate move. A playful browser dice game for couples looking to add spontaneity to date night.",
     keywords: [
@@ -86,7 +86,7 @@ export const GAME_SEO: Record<
     ],
   },
   "sex-roulette-wheel": {
-    title: "Sex Roulette Wheel - Spin to Win | CouplePlayHub",
+    title: "Sex Roulette Wheel - Spin to Win | EstroBunny's Burrow",
     description:
       "Spin the roulette wheel and discover exciting new challenges. A playful roulette game that lets chance choose the next shared moment.",
     keywords: [
@@ -97,7 +97,7 @@ export const GAME_SEO: Record<
     ],
   },
   "truth-or-dare": {
-    title: "Truth or Dare for Couples - Spicy Edition | CouplePlayHub",
+    title: "Truth or Dare for Couples - Spicy Edition | EstroBunny's Burrow",
     description:
       "Play the ultimate couples truth or dare game online. Spicy questions and daring challenges to deepen your connection and keep the spark alive.",
     keywords: [
@@ -109,7 +109,7 @@ export const GAME_SEO: Record<
     ],
   },
   "kama-sutra-cards": {
-    title: "Kama Sutra Cards - Draw & Explore | CouplePlayHub",
+    title: "Kama Sutra Cards - Draw & Explore | EstroBunny's Burrow",
     description:
       "Draw a romantic prompt, connection challenge, or conversation starter from a browser-based card deck.",
     keywords: [
@@ -120,7 +120,7 @@ export const GAME_SEO: Record<
     ],
   },
   "party-games": {
-    title: "Party Games for Couples & Friends | CouplePlayHub",
+    title: "Party Games for Couples & Friends | EstroBunny's Burrow",
     description:
       "Bring the heat to your social gatherings with fun party games. Perfect for couples game nights, double dates, and friend groups.",
     keywords: [
@@ -131,7 +131,7 @@ export const GAME_SEO: Record<
     ],
   },
   "super-sex-dice": {
-    title: "Super Sex Dice - Customizable Actions | CouplePlayHub",
+    title: "Super Sex Dice - Customizable Actions | EstroBunny's Burrow",
     description:
       "Customize actions and locations for the ultimate random thrill. An upgraded dice game with more options for adventurous couples.",
     keywords: [
@@ -141,7 +141,7 @@ export const GAME_SEO: Record<
     ],
   },
   "sexy-timer": {
-    title: "Sexy Timer Challenge - Race Against Time | CouplePlayHub",
+    title: "Sexy Timer Challenge - Race Against Time | EstroBunny's Burrow",
     description:
       "Race against the clock to complete daring intimate tasks. A fast-paced timer game that adds excitement and urgency to your love life.",
     keywords: [
@@ -151,7 +151,7 @@ export const GAME_SEO: Record<
     ],
   },
   "spin-the-bottle": {
-    title: "Spin the Bottle Online - Classic Reimagined | CouplePlayHub",
+    title: "Spin the Bottle Online - Classic Reimagined | EstroBunny's Burrow",
     description:
       "The classic spin the bottle game reimagined for modern couples. A digital twist on the timeless party favorite, perfect for two players.",
     keywords: [
@@ -168,7 +168,7 @@ export const CATEGORY_SEO: Record<
   { title: string; description: string; keywords: string[] }
 > = {
   vanilla: {
-    title: "Vanilla Couple Games - Soft & Romantic | CouplePlayHub",
+    title: "Vanilla Couple Games - Soft & Romantic | EstroBunny's Burrow",
     description:
       "Explore soft, romantic, and playful couple games perfect for date nights. Gentle intimacy games designed to strengthen your emotional connection.",
     keywords: [
@@ -179,7 +179,7 @@ export const CATEGORY_SEO: Record<
     ],
   },
   pg: {
-    title: "PG Couple Games - Light & Playful Challenges | CouplePlayHub",
+    title: "PG Couple Games - Light & Playful Challenges | EstroBunny's Burrow",
     description:
       "Enjoy light teasing and fun challenges with PG-rated couple games. Perfect for new couples or casual game nights with mild excitement.",
     keywords: [
@@ -190,9 +190,9 @@ export const CATEGORY_SEO: Record<
     ],
   },
   xxx: {
-    title: "XXX Couple Games - Intense & Adventurous | CouplePlayHub",
+    title: "XXX Couple Games - Intense & Adventurous | EstroBunny's Burrow",
     description:
-      "Explore the bolder side of CouplePlayHub with playful challenges designed for consenting adults.",
+      "Explore the bolder side of EstroBunny's Burrow with playful challenges designed for consenting adults.",
     keywords: [
       "adult games for couples",
       "explicit couple games",
@@ -201,7 +201,7 @@ export const CATEGORY_SEO: Record<
     ],
   },
   "kinky-levels": {
-    title: "Kinky Level Games - Push Your Boundaries | CouplePlayHub",
+    title: "Kinky Level Games - Push Your Boundaries | EstroBunny's Burrow",
     description:
       "For couples who want bolder challenges, with an emphasis on mutual comfort and easy skips.",
     keywords: [
