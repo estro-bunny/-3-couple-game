@@ -6,32 +6,45 @@ interface GameCardProps {
   badge?: string; badgeColor?: "primary" | "secondary"; description?: string; categoryLabel?: string;
   variant: "large" | "medium" | "small" | "wide";
 }
+
 const variantConfig = {
-  large: { container: "md:col-span-8 aspect-[16/10] md:aspect-auto md:h-[520px]", imgOpacity: "opacity-45", padding: "p-5 sm:p-7 md:p-10", titleSize: "text-3xl sm:text-4xl md:text-5xl" },
-  medium: { container: "md:col-span-4 h-[520px]", imgOpacity: "opacity-45", padding: "p-5 sm:p-7 md:p-8", titleSize: "text-2xl sm:text-3xl leading-tight" },
-  small: { container: "md:col-span-3 h-[390px]", imgOpacity: "opacity-30", padding: "p-5 sm:p-6", titleSize: "text-lg sm:text-xl" },
-  wide: { container: "md:col-span-6 h-[390px]", imgOpacity: "opacity-30", padding: "p-5 sm:p-7 md:p-10", titleSize: "text-xl sm:text-2xl" },
+  large: { container: "md:col-span-8 min-h-[430px] md:h-[540px]", padding: "p-6 sm:p-8 md:p-10", titleSize: "text-4xl sm:text-5xl md:text-6xl" },
+  medium: { container: "md:col-span-4 min-h-[430px] md:h-[540px]", padding: "p-6 sm:p-7", titleSize: "text-3xl sm:text-4xl" },
+  small: { container: "md:col-span-3 min-h-[350px]", padding: "p-5 sm:p-6", titleSize: "text-xl" },
+  wide: { container: "md:col-span-6 min-h-[350px]", padding: "p-5 sm:p-7", titleSize: "text-2xl sm:text-3xl" },
 };
+
 export default function GameCard({ title, image, alt, buttonLabel, href, badge, badgeColor = "primary", description, categoryLabel, variant }: GameCardProps) {
   const config = variantConfig[variant];
-  const badgeBg = badgeColor === "secondary" ? "bg-secondary-container text-on-secondary" : "bg-primary-container text-on-primary";
+  const badgeClass = badgeColor === "secondary"
+    ? "border-secondary/30 bg-secondary/10 text-secondary"
+    : "border-primary/30 bg-primary/10 text-primary";
+
   return (
-    <article className={`relative overflow-hidden rounded-[1.35rem] border border-white/10 bg-surface-container-high group animate-chroma-pulse ${config.container}`}>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_15%,rgba(255,125,233,.16),transparent_35%)] pointer-events-none" />
-      <img className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${config.imgOpacity}`} src={image} alt={alt || `${title} - game room inside EstroBunny's Burrow`} loading={variant === "large" ? "eager" : "lazy"} width={variant === "large" ? 800 : 400} height={variant === "large" ? 500 : 400} />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#08070d] via-[#08070d]/25 to-transparent" />
-      <div className={`absolute bottom-0 ${config.padding} space-y-3 sm:space-y-4 w-full`}>
-        {categoryLabel && <span className="inline-block text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-[.2em] bg-black/50 border border-secondary/30 text-secondary backdrop-blur-md">{categoryLabel}</span>}
-        {badge && <span className={`${badgeBg} inline-block text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest`}>{badge}</span>}
-        <div className="flex items-end justify-between gap-3 sm:gap-4">
-          <h3 className={`${config.titleSize} font-headline font-black uppercase tracking-[-.04em]`}>{title}</h3>
-          <span className="hidden sm:block shrink-0 text-secondary/70 text-[9px] font-black tracking-[.25em] uppercase">ROOM // OPEN</span>
+    <article className={"relative overflow-hidden rounded-[1.7rem] border border-white/10 bg-[#0b0810] group transition-transform duration-500 hover:-translate-y-1 " + config.container}>
+      <img className="absolute inset-0 w-full h-full object-cover opacity-35 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-45" src={image} alt={alt || title} loading={variant === "large" ? "eager" : "lazy"} width={variant === "large" ? 800 : 400} height={variant === "large" ? 500 : 400} />
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,36,214,.12),transparent_38%),linear-gradient(0deg,#08070d_5%,rgba(8,7,13,.55)_55%,rgba(8,7,13,.08))]" />
+      <div className="absolute inset-0 border border-primary/0 group-hover:border-primary/25 rounded-[1.7rem] transition-colors pointer-events-none" />
+
+      <div className={"absolute bottom-0 left-0 w-full " + config.padding}>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {categoryLabel && <span className="bunny-sticker bunny-sticker-cyan">{categoryLabel}</span>}
+          {badge && <span className={"bunny-sticker " + badgeClass}>{badge}</span>}
         </div>
-        {description && <p className="text-on-surface-variant max-w-sm text-sm leading-relaxed">{description}</p>}
-        {variant === "large" ? <Button href={href} size="md">{buttonLabel} ♡</Button> :
-          variant === "medium" ? <Button href={href} variant="outline" size="sm">{buttonLabel}</Button> :
-          variant === "wide" ? <Button href={href} variant="secondary" size="md">{buttonLabel}</Button> :
-          <Link href={href} className="inline-flex min-h-11 w-full items-center justify-center bg-white/5 hover:bg-primary/15 border border-white/10 hover:border-primary/40 backdrop-blur-md rounded-lg font-bold text-sm text-center transition-all">{buttonLabel} →</Link>}
+
+        <div className="flex items-end justify-between gap-4">
+          <h3 className={config.titleSize + " font-headline font-black uppercase tracking-[-.055em] leading-[.9] max-w-[85%]"}>{title}</h3>
+          <span className="hidden sm:block text-3xl text-secondary/60 rotate-[-12deg]" aria-hidden="true">ᕱ⑅ᕱ</span>
+        </div>
+
+        {description && <p className="text-on-surface-variant max-w-xl text-sm leading-relaxed mt-4">{description}</p>}
+
+        <div className="mt-5">
+          {variant === "large" ? <Button href={href} size="md">{buttonLabel} ♡</Button> :
+           variant === "medium" ? <Button href={href} variant="outline" size="sm">{buttonLabel}</Button> :
+           variant === "wide" ? <Button href={href} variant="secondary" size="md">{buttonLabel}</Button> :
+           <Link href={href} className="inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-white/10 bg-white/[.045] font-black text-[11px] uppercase tracking-[.12em] text-on-surface hover:bg-primary/10 hover:border-primary/30 transition-all">{buttonLabel} →</Link>}
+        </div>
       </div>
     </article>
   );
