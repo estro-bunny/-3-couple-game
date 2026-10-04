@@ -23,8 +23,8 @@ export default function GameBoard() {
   } = useDiceRoll();
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-10">
-      <div className="glass-card rounded-2xl p-4 flex items-center justify-between gap-4 text-left">
+    <div className="w-full max-w-4xl mx-auto space-y-6 sm:space-y-10">
+      <div className="glass-card rounded-2xl p-4 flex items-center justify-between gap-3 text-left">
         <div>
           <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">
             Local session
@@ -38,19 +38,19 @@ export default function GameBoard() {
           <button
             type="button"
             onClick={resetSession}
-            className="text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors"
+            className="min-h-11 px-3 rounded-xl text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors border border-transparent hover:border-primary/20"
           >
             Clear progress
           </button>
         )}
       </div>
 
-      <div className="flex justify-center items-center gap-10 md:gap-16">
+      <div className="flex justify-center items-center gap-5 sm:gap-10 md:gap-16">
         <Dice value={dice1} isRolling={isRolling} label="Action" />
         <Dice value={dice2} isRolling={isRolling} label="Body Part" />
       </div>
 
-      <div className="flex justify-center gap-4">
+      <div className="flex flex-col sm:flex-row justify-center gap-3">
         <Button
           size="lg"
           className="rounded-xl shadow-[0_0_40px_rgba(255,0,255,0.3)] min-w-[180px]"
@@ -79,7 +79,7 @@ export default function GameBoard() {
         isRolling={isRolling}
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         <ListPanel
           title="🎲 Activities"
           items={activities}
@@ -119,7 +119,7 @@ function ListPanel({
       : "border-secondary bg-secondary/10";
 
   return (
-    <div className="glass-card rounded-2xl p-6 border border-outline-variant/20">
+    <div className="glass-card rounded-2xl p-4 sm:p-6 border border-outline-variant/20">
       <h3 className="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-4">
         {title}
       </h3>
