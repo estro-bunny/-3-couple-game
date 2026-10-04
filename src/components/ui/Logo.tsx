@@ -14,7 +14,7 @@ export default function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
   };
 
   return (
-    <Link href="/" className="no-underline">
+    <Link href="/" className="inline-flex min-h-11 items-center no-underline">
       <span
         className={`${sizeClasses[size]} font-[600] tracking-tighter relative select-none flex items-baseline font-[var(--font-logo)]`}
       >
