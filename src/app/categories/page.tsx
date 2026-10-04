@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageShell from "@/components/layout/PageShell";
-import { CATEGORIES } from "@/lib/constants";
+import { GAME_CATEGORIES } from "@/lib/games/registry";
 import CategoryCard from "@/components/ui/CategoryCard";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo";
@@ -31,8 +31,8 @@ export default function CategoriesPage() {
             Pick a category that matches your mood tonight. From gentle romance to boundary-pushing excitement, we have the perfect couple games for every desire.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            {CATEGORIES.map((category) => (
-              <CategoryCard key={category.title} {...category} />
+            {GAME_CATEGORIES.map((category) => (
+              <CategoryCard key={category.slug} {...category} />
             ))}
           </div>
         </div>
