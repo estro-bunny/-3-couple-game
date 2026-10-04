@@ -9,19 +9,17 @@ import HighlightCard from "@/components/ui/HighlightCard";
 
 export default function DescriptiveSection() {
   return (
-    <section className="py-32 px-8 bg-surface-container-low overflow-hidden" aria-label="Why Choose CouplePlayHub">
+    <section className="py-32 px-8 bg-surface-container-low overflow-hidden" aria-label="Why Enter the Burrow">
       <div className="max-w-7xl mx-auto space-y-32">
         {/* Spice It Up */}
         <div className="flex flex-col md:flex-row items-center gap-20">
           <div className="flex-1 space-y-6">
             <h2 className="text-6xl font-black font-headline tracking-tighter leading-none">
-              SPICE <br /> IT UP
+              MAKE SOME CHAOS <br /> TOGETHER
             </h2>
             <div className="w-20 h-2 bg-primary" aria-hidden="true" />
             <p className="text-xl text-on-surface-variant leading-relaxed">
-              Our couple games aren&apos;t just about winning — they&apos;re about
-              exploring together. Designed by intimacy experts, we provide the spark that
-              helps partners rediscover each other in exciting new ways.
+              Our games are built for connection, curiosity, and playful exploration. Pick a vibe, make your own boundaries, and keep whatever feels fun.
             </p>
             <ul className="space-y-4 font-bold text-on-surface">
               {FEATURES.map((feature) => (
@@ -53,13 +51,11 @@ export default function DescriptiveSection() {
         <div className="flex flex-col md:flex-row-reverse items-center gap-20">
           <div className="flex-1 space-y-6 text-right">
             <h2 className="text-6xl font-black font-headline tracking-tighter leading-none">
-              PAVLOVIAN <br /> CONDITIONING
+              BURROW <br /> PHILOSOPHY
             </h2>
             <div className="w-20 h-2 bg-secondary ml-auto" aria-hidden="true" />
             <p className="text-xl text-on-surface-variant leading-relaxed">
-              Experience the psychology of pleasure. Our reward-based couple game mechanics
-              create lasting memories and deep connections through positive
-              reinforcement and playful anticipation.
+              The Burrow keeps things simple: play locally, communicate clearly, skip anything you do not want, and make the night your own.
             </p>
             <div className="flex flex-wrap justify-end gap-3 pt-4" aria-label="Product principles">
               <span className="rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-primary">
@@ -89,7 +85,7 @@ export default function DescriptiveSection() {
         {/* Platform Highlights */}
         <div className="space-y-16">
           <h2 className="text-center text-4xl font-headline font-black uppercase">
-            PLATFORM HIGHLIGHTS
+            BURROW SIGNALS
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {HIGHLIGHTS.map((highlight) => (
