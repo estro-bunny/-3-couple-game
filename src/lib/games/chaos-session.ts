@@ -1,19 +1,10 @@
-export interface ChaosSessionGame {
-  slug: string;
-  title: string;
-  vibe: string;
-}
+import { GAME_REGISTRY, type GameDefinition } from "./registry";
 
-export const CHAOS_SESSION_GAMES: readonly ChaosSessionGame[] = [
-  { slug: "truth-or-dare", title: "Truth or Dare", vibe: "connection" },
-  { slug: "spin-the-bottle", title: "Spin the Bottle", vibe: "chaos" },
-  { slug: "sex-roulette-wheel", title: "Sex Roulette Wheel", vibe: "flirty" },
-  { slug: "kama-sutra-cards", title: "Kama Sutra Cards", vibe: "romantic" },
-  { slug: "party-games", title: "Party Games", vibe: "playful" },
-  { slug: "super-sex-dice", title: "Super Sex Dice", vibe: "chaos" },
-  { slug: "sexy-timer", title: "Sexy Timer", vibe: "flirty" },
-  { slug: "sexy-dice", title: "Sexy Dice", vibe: "chaos" },
-];
+export type ChaosSessionGame = Pick<GameDefinition, "slug" | "title" | "vibe">;
+
+export const CHAOS_SESSION_GAMES: readonly ChaosSessionGame[] = GAME_REGISTRY
+  .filter((game) => game.playable && game.sessionEnabled)
+  .map(({ slug, title, vibe }) => ({ slug, title, vibe }));
 
 export type ChaosVibe = "surprise" | "cozy" | "romantic" | "mischief" | "chaos";
 
