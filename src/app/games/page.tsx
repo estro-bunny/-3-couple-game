@@ -6,6 +6,7 @@ import GlassGameCard from "@/components/ui/GlassGameCard";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo";
 import LovenseBridge from "@/components/lovense/LovenseBridge";
+import ChaosRunTeaser from "@/components/games/ChaosRunTeaser";
 
 export const metadata: Metadata = buildMetadata({
   title: "Chaos Den - EstroBunny's Burrow",
@@ -33,6 +34,7 @@ export default function GamesPage() {
           </div>
 
           <div className="mb-6 sm:mb-8"><LovenseBridge /></div>
+          <ChaosRunTeaser />
 
           <div className="mb-4 text-[9px] font-black tracking-[.28em] text-primary/70 uppercase">01 // FEATURED ROOMS</div>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
