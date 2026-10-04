@@ -11,34 +11,9 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Categories", href: "/categories" },
 ];
 
-export const CATEGORIES: CategoryItem[] = [
-  {
-    icon: "favorite",
-    title: "Vanilla",
-    description: "Soft, romantic, queer-friendly, and playful connections.",
-    href: "/categories/vanilla",
-  },
-  {
-    icon: "auto_awesome",
-    title: "PG",
-    description: "Light teasing, flirting, and fun challenges without gendered roles.",
-    href: "/categories/pg",
-  },
-  {
-    icon: "local_fire_department",
-    title: "XXX",
-    description: "Bolder prompts and playful challenges for partners of any gender.",
-    href: "/categories/xxx",
-  },
-  {
-    icon: "token",
-    title: "Kinky Levels",
-    description: "For partners who want to explore boundaries on their own terms.",
-    href: "/categories/kinky-levels",
-  },
-];
+import { GAME_CATEGORIES, getFeaturedGames, getGlassGames, toFeaturedGame, toGlassGame } from "@/lib/games/registry";
 
-import { getFeaturedGames, getGlassGames, toFeaturedGame, toGlassGame } from "@/lib/games/registry";
+export const CATEGORIES = GAME_CATEGORIES.map((category) => ({ ...category }));
 
 export const FEATURED_GAMES = getFeaturedGames().map(toFeaturedGame);
 
