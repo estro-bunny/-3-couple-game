@@ -78,8 +78,8 @@ export default function KamaSutraCardsBoard() {
   }, [isDrawing]);
 
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-8">
-      <div className="glass-card rounded-2xl p-4 flex items-center justify-between gap-4 text-left">
+    <div className="w-full max-w-3xl mx-auto space-y-5 sm:space-y-8">
+      <div className="glass-card rounded-2xl p-4 flex items-center justify-between gap-3 text-left">
         <div>
           <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">
             Local session
@@ -139,7 +139,7 @@ export default function KamaSutraCardsBoard() {
         )}
       </div>
 
-      <div className="flex justify-center gap-3">
+      <div className="flex flex-col sm:flex-row justify-center gap-3">
         <Button
           size="lg"
           className="rounded-xl min-w-[190px] shadow-[0_0_40px_rgba(255,0,255,0.3)]"
