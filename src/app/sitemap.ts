@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { getPlayableGames } from "@/lib/games/registry";
 import { SITE_URL } from "@/lib/seo";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const games = getPlayableGames();
 
