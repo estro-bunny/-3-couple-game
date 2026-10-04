@@ -11,14 +11,6 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Categories", href: "/categories" },
 ];
 
-import { GAME_CATEGORIES, getFeaturedGames, getGlassGames, toFeaturedGame, toGlassGame } from "@/lib/games/registry";
-
-export const CATEGORIES = GAME_CATEGORIES.map((category) => ({ ...category }));
-
-export const FEATURED_GAMES = getFeaturedGames().map(toFeaturedGame);
-
-export const GLASS_GAMES = getGlassGames().map(toGlassGame);
-
 export const FEATURES: FeaturePoint[] = [
   { icon: "check_circle", text: "Playable games with simple local progress" },
   { icon: "check_circle", text: "Skip-friendly prompts with no gendered roles" },
