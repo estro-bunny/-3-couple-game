@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CATEGORIES } from "@/lib/constants";
+import { GAME_GAME_CATEGORIES } from "@/lib/games/registry";
 import CategoryCard from "@/components/ui/CategoryCard";
 
 export default function CategoriesSection() {
@@ -15,11 +15,11 @@ export default function CategoriesSection() {
             </h2>
           </div>
           <Link href="/categories" className="text-primary font-black text-sm hover:text-secondary transition-colors">
-            VIEW ALL CATEGORIES →
+            VIEW ALL GAME_CATEGORIES →
           </Link>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
-          {CATEGORIES.map((category) => (
+          {GAME_CATEGORIES.map((category) => (
             <CategoryCard key={category.title} {...category} />
           ))}
         </div>
