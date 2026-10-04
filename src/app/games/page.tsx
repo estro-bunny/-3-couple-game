@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageShell from "@/components/layout/PageShell";
-import { getFeaturedGames, getGlassGames, toFeaturedGame, toGlassGame } from "@/lib/games/registry";
+import { GAME_CATEGORIES, getFeaturedGames, getGlassGames, toFeaturedGame, toGlassGame } from "@/lib/games/registry";
 import GameCard from "@/components/ui/GameCard";
 import GlassGameCard from "@/components/ui/GlassGameCard";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
@@ -35,7 +35,10 @@ export default function GamesPage() {
           <div className="mb-6 sm:mb-8"><LovenseBridge /></div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
-            {getFeaturedGames().map((game) => <GameCard key={game.slug} {...toFeaturedGame(game)} />)}
+            {getFeaturedGames().map((game) => {
+              const category = GAME_CATEGORIES.find((item) => item.gameCategory === game.category);
+              return <GameCard key={game.slug} {...toFeaturedGame(game)} categoryLabel={category?.title} />;
+            })}
           </div>
 
           <div className="flex items-center gap-3 sm:gap-4 mt-12 sm:mt-16 mb-6 sm:mb-7">
@@ -43,7 +46,10 @@ export default function GamesPage() {
             <div className="h-px flex-1 bg-gradient-to-r from-secondary/30 to-transparent" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            {getGlassGames().map((game) => <GlassGameCard key={game.slug} {...toGlassGame(game)} />)}
+            {getGlassGames().map((game) => {
+              const category = GAME_CATEGORIES.find((item) => item.gameCategory === game.category);
+              return <GlassGameCard key={game.slug} {...toGlassGame(game)} categoryLabel={category?.title} />;
+            })}
           </div>
         </div>
       </section>
