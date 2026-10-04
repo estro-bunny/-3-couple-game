@@ -25,6 +25,8 @@ const VIBES: { id: ChaosVibe; label: string; emoji: string; copy: string }[] = [
   { id: "chaos", label: "Maximum chaos", emoji: "⚡", copy: "Roll the dice on everything." },
 ];
 
+const CHAOS_TOTAL = CHAOS_SESSION_GAMES.length;
+
 export default function ChaosSessionBoard() {
   const [state, setState] = useState<ChaosSessionState>(EMPTY_CHAOS_SESSION);
   const [hydrated, setHydrated] = useState(false);
@@ -140,7 +142,7 @@ export default function ChaosSessionBoard() {
 
         {sessionComplete && (
           <div className="mt-6 sm:mt-8 rounded-2xl border border-primary/40 bg-primary/10 p-6 text-center shadow-[0_0_50px_rgba(255,0,255,0.12)]">
-            <p className="text-xs font-black tracking-[.3em] uppercase text-primary">SESSION COMPLETE // 08 / 08</p>
+            <p className="text-xs font-black tracking-[.3em] uppercase text-primary">SESSION COMPLETE // {String(CHAOS_TOTAL).padStart(2, "0")} / {String(CHAOS_TOTAL).padStart(2, "0")}</p>
             <p className="text-3xl md:text-5xl font-black font-headline mt-2">CHAOS CLEARED ♡</p>
             <p className="text-sm text-on-surface-variant mt-2">You cleared every game in this session. Run it again whenever you want another round of trouble.</p>
           </div>
