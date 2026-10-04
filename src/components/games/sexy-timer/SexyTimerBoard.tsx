@@ -76,44 +76,44 @@ export default function SexyTimerBoard() {
   }, [reset]);
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-8">
-      <div className="glass-card rounded-2xl p-4 flex items-center justify-between text-left">
+    <div className="w-full max-w-4xl mx-auto space-y-5 sm:space-y-8">
+      <div className="glass-card rounded-2xl p-4 flex items-center justify-between gap-3 text-left">
         <div>
           <p className="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Local session</p>
           <p className="font-bold">{session.roundsCompleted} {session.roundsCompleted === 1 ? "round" : "rounds"} completed</p>
         </div>
         {session.roundsCompleted > 0 && (
-          <button type="button" onClick={clearProgress} className="text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary">
+          <button type="button" onClick={clearProgress} className="min-h-11 px-3 rounded-xl text-xs font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary border border-transparent hover:border-primary/20">
             Clear progress
           </button>
         )}
       </div>
 
-      <div className="glass-card rounded-3xl p-8 md:p-12">
+      <div className="glass-card rounded-3xl p-6 sm:p-8 md:p-12">
         <p className="text-xs font-bold uppercase tracking-[0.3em] text-on-surface-variant">Countdown</p>
-        <div className="text-7xl md:text-9xl font-black tracking-tighter my-6" aria-live="polite">
+        <div className="text-[clamp(4rem,22vw,9rem)] leading-none font-black tracking-tighter my-6 sm:my-8 tabular-nums" aria-live="polite">
           {timeLabel}
         </div>
-        <p className="min-h-7 text-lg font-bold">
+        <p className="min-h-12 text-base sm:text-lg font-bold flex items-center justify-center">
           {prompt ?? "Choose a duration, then start the challenge."}
         </p>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-3">
+      <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-3">
         {DURATIONS.map((value) => (
           <button
             key={value}
             type="button"
             onClick={() => { if (!running) setDuration(value); }}
             disabled={running}
-            className={`rounded-xl px-5 py-3 font-bold border transition-colors ${duration === value ? "border-primary bg-primary/10" : "border-outline-variant/30"} disabled:opacity-50`}
+            className={`min-h-12 rounded-xl px-5 py-3 font-bold border transition-colors ${duration === value ? "border-primary bg-primary/10" : "border-outline-variant/30"} disabled:opacity-50`}
           >
             {value}s
           </button>
         ))}
       </div>
 
-      <div className="flex justify-center gap-4">
+      <div className="flex flex-col sm:flex-row justify-center gap-3">
         <Button size="lg" className="rounded-xl min-w-[180px]" onClick={running ? reset : start}>
           {running ? "STOP" : remaining === 0 ? "PLAY AGAIN" : "START"}
         </Button>
@@ -122,7 +122,7 @@ export default function SexyTimerBoard() {
         )}
       </div>
 
-      <p className="text-center text-xs text-on-surface-variant/70">
+      <p className="text-center text-xs leading-relaxed text-on-surface-variant/70">
         Keep it mutual, comfortable, and fun. Stopping early is always allowed.
       </p>
     </div>
