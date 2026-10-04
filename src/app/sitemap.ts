@@ -1,11 +1,9 @@
 import type { MetadataRoute } from "next";
-import { FEATURED_GAMES, GLASS_GAMES } from "@/lib/constants";
+import { getPlayableGames } from "@/lib/games/registry";
 import { SITE_URL } from "@/lib/seo";
 
-const toSlug = (title: string) => title.toLowerCase().replace(/\s+/g, "-");
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  const games = [...FEATURED_GAMES, ...GLASS_GAMES];
+  const games = getPlayableGames();
 
   return [
     {
@@ -19,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     ...games.map((game) => ({
-      url: `${SITE_URL}/games/${toSlug(game.title)}`,
+      url: `${SITE_URL}/games/${game.slug}`,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
