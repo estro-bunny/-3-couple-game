@@ -12,7 +12,7 @@ import SuperDiceBoard from "@/components/games/super-dice/SuperDiceBoard";
 import SexyTimerBoard from "@/components/games/sexy-timer/SexyTimerBoard";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import RelatedGames from "@/components/ui/RelatedGames";
-import { FEATURED_GAMES, GLASS_GAMES } from "@/lib/constants";
+import { GAME_REGISTRY, getGame } from "@/lib/games/registry";
 import {
   GAME_SEO,
   SITE_URL,
@@ -26,11 +26,7 @@ function toSlug(title: string) {
 }
 
 export function generateStaticParams() {
-  const allGames = [
-    ...FEATURED_GAMES.map((g) => ({ slug: toSlug(g.title) })),
-    ...GLASS_GAMES.map((g) => ({ slug: toSlug(g.title) })),
-  ];
-  return allGames;
+  return GAME_REGISTRY.map((game) => ({ slug: game.slug }));
 }
 
 export async function generateMetadata({
@@ -50,9 +46,8 @@ export async function generateMetadata({
     });
   }
 
-  const featured = FEATURED_GAMES.find((g) => toSlug(g.title) === slug);
-  const glass = GLASS_GAMES.find((g) => toSlug(g.title) === slug);
-  const title = featured?.title ?? glass?.title ?? slug.replace(/-/g, " ");
+  const game = getGame(slug);
+  const title = game?.title ?? slug.replace(/-/g, " ");
 
   return buildMetadata({
     title: `${title} - Play Online | CouplePlayHub`,
@@ -68,17 +63,13 @@ export default async function GamePage({
 }) {
   const { slug } = await params;
 
-  const featured = FEATURED_GAMES.find((g) => toSlug(g.title) === slug);
-  const glass = GLASS_GAMES.find((g) => toSlug(g.title) === slug);
+  const game = getGame(slug);
 
-  if (!featured && !glass) notFound();
+  if (!game) notFound();
 
-  const title = featured?.title ?? glass?.title ?? slug.replace(/-/g, " ").toUpperCase();
-  const description =
-    featured?.description ??
-    glass?.description ??
-    "Get ready for an unforgettable experience with your partner.";
-  const image = featured?.image;
+  const title = game.title;
+  const description = game.description || "Get ready for an unforgettable experience with your partner.";
+  const image = "image" in game ? game.image : undefined;
   const isSexyDice = slug === "sexy-dice";
   const isTruthOrDare = slug === "truth-or-dare";
   const isSpinTheBottle = slug === "spin-the-bottle";
