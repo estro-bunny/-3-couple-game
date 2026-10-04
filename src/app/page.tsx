@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 
 const HOME_FAQS = [
   {
-    question: "What is CouplePlayHub?",
-    answer: "CouplePlayHub is a free browser-based collection of playful couple games built around connection, conversation, and easy-to-skip challenges. The games are queer-friendly by design and avoid assuming your gender, roles, or relationship shape.",
+    question: "What is EstroBunny's Burrow?",
+    answer: "EstroBunny's Burrow is a free browser-based collection of playful couple games built around connection, conversation, and easy-to-skip challenges. The games are queer-friendly by design and avoid assuming your gender, roles, or relationship shape.",
   },
   {
     question: "Are the couple games free to play?",
@@ -26,7 +26,7 @@ const HOME_FAQS = [
   },
   {
     question: "Is my privacy protected?",
-    answer: "The current games use browser-local progress and do not require an account. That means your local session history is kept on the device rather than tied to a CouplePlayHub account.",
+    answer: "The current games use browser-local progress and do not require an account. That means your local session history is kept on the device rather than tied to an EstroBunny's Burrow account.",
   },
   {
     question: "What types of couple games are available?",
