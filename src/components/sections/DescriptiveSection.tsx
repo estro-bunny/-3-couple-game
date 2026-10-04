@@ -1,96 +1,55 @@
-import {
-  FEATURES,
-  HIGHLIGHTS,
-  SPICE_IMAGE,
-  PAVLOV_IMAGE,
-} from "@/lib/constants";
+import { FEATURES, HIGHLIGHTS } from "@/lib/constants";
 import MaterialIcon from "@/components/ui/MaterialIcon";
 import HighlightCard from "@/components/ui/HighlightCard";
+import Button from "@/components/ui/Button";
 
 export default function DescriptiveSection() {
   return (
-    <section className="py-32 px-8 bg-surface-container-low overflow-hidden" aria-label="Why Enter the Burrow">
-      <div className="max-w-7xl mx-auto space-y-32">
-        {/* Spice It Up */}
-        <div className="flex flex-col md:flex-row items-center gap-20">
-          <div className="flex-1 space-y-6">
-            <h2 className="text-6xl font-black font-headline tracking-tighter leading-none">
-              MAKE SOME CHAOS <br /> TOGETHER
+    <section className="relative py-24 md:py-32 px-5 md:px-8 bg-surface-container-low overflow-hidden" aria-label="Why Enter the Burrow">
+      <div className="absolute inset-0 cyber-grid opacity-20 pointer-events-none" />
+      <div className="relative max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-[.85fr_1.15fr] gap-10 lg:gap-16 items-start">
+          <div className="lg:sticky lg:top-28">
+            <div className="bunny-sticker bunny-sticker-cyan">04 // BURROW PHILOSOPHY</div>
+            <h2 className="mt-6 text-5xl sm:text-6xl md:text-7xl font-black font-headline tracking-[-.07em] leading-[.84]">
+              CUTE ON
+              <span className="block text-primary">PURPOSE.</span>
+              CHAOTIC BY
+              <span className="block text-secondary">CHOICE.</span>
             </h2>
-            <div className="w-20 h-2 bg-primary" aria-hidden="true" />
-            <p className="text-xl text-on-surface-variant leading-relaxed">
-              Our games are built for connection, curiosity, and playful exploration. Pick a vibe, make your own boundaries, and keep whatever feels fun.
+            <p className="mt-6 text-on-surface-variant text-base sm:text-lg leading-relaxed max-w-md">
+              The Burrow is supposed to feel like a place someone actually made because they cared.
+              Small rules. Big personality. No pretending the internet needs another sterile couples app.
             </p>
-            <ul className="space-y-4 font-bold text-on-surface">
-              {FEATURES.map((feature) => (
-                <li key={feature.text} className="flex items-center gap-3">
-                  <MaterialIcon
-                    name={feature.icon}
-                    className="text-primary"
-                    aria-hidden="true"
-                  />
-                  {feature.text}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="flex-1 relative">
-            <div className="absolute -inset-4 bg-primary/20 blur-3xl rounded-full" aria-hidden="true" />
-            <img
-              className="relative z-10 rounded-3xl grayscale hover:grayscale-0 transition-all duration-1000 shadow-2xl"
-              src={SPICE_IMAGE}
-              alt="Couple holding silk ribbon - symbolizing romantic connection and intimacy games"
-              loading="lazy"
-              width={600}
-              height={400}
-            />
-          </div>
-        </div>
-
-        {/* Pavlovian Conditioning */}
-        <div className="flex flex-col md:flex-row-reverse items-center gap-20">
-          <div className="flex-1 space-y-6 text-right">
-            <h2 className="text-6xl font-black font-headline tracking-tighter leading-none">
-              BURROW <br /> PHILOSOPHY
-            </h2>
-            <div className="w-20 h-2 bg-secondary ml-auto" aria-hidden="true" />
-            <p className="text-xl text-on-surface-variant leading-relaxed">
-              The Burrow keeps things simple: play locally, communicate clearly, skip anything you do not want, and make the night your own.
-            </p>
-            <div className="flex flex-wrap justify-end gap-3 pt-4" aria-label="Product principles">
-              <span className="rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-primary">
-                Private-first
-              </span>
-              <span className="rounded-full border border-secondary/20 bg-secondary/5 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-secondary">
-                Local play
-              </span>
-              <span className="rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-primary">
-                Queer-friendly
-              </span>
+            <div className="pt-7">
+              <Button href="/privacy" variant="outline" size="sm">READ BURROW RULES →</Button>
             </div>
           </div>
-          <div className="flex-1 relative">
-            <div className="absolute -inset-4 bg-secondary/20 blur-3xl rounded-full" aria-hidden="true" />
-            <img
-              className="relative z-10 rounded-3xl shadow-2xl border border-secondary/10"
-              src={PAVLOV_IMAGE}
-              alt="Abstract brain waves visualization representing the psychology of couple gaming"
-              loading="lazy"
-              width={600}
-              height={400}
-            />
-          </div>
-        </div>
 
-        {/* Platform Highlights */}
-        <div className="space-y-16">
-          <h2 className="text-center text-4xl font-headline font-black uppercase">
-            BURROW SIGNALS
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {HIGHLIGHTS.map((highlight) => (
-              <HighlightCard key={highlight.title} {...highlight} />
-            ))}
+          <div className="space-y-4">
+            <div className="burrow-panel rounded-[1.7rem] p-6 sm:p-8">
+              <div className="flex items-center gap-3 mb-7">
+                <span className="text-[9px] font-black tracking-[.3em] text-primary">BUNNI CORE // PRINCIPLES</span>
+                <div className="neon-rule flex-1" />
+              </div>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {FEATURES.map((feature, index) => (
+                  <div key={feature.text} className="rounded-2xl border border-white/[.07] bg-black/15 p-5">
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 border border-primary/20">
+                        <MaterialIcon name={feature.icon} className="text-primary text-xl" aria-hidden="true" />
+                      </span>
+                      <span className="text-sm font-black">{String(index + 1).padStart(2, "0")} // RULE</span>
+                    </div>
+                    <p className="mt-4 text-sm text-on-surface-variant leading-relaxed">{feature.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid sm:grid-cols-3 gap-4">
+              {HIGHLIGHTS.map((highlight) => <HighlightCard key={highlight.title} {...highlight} />)}
+            </div>
           </div>
         </div>
       </div>
