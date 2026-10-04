@@ -76,7 +76,7 @@ export const KAMA_SUTRA_CARDS: readonly KamaCard[] = [
     id: "gratitude",
     kind: "connection",
     title: "Gratitude",
-    prompt: "Finish this sentence: "I feel lucky to have you because..."",
+    prompt: 'Finish this sentence: "I feel lucky to have you because..."',
     emoji: "🌷",
   },
 ];
