@@ -58,7 +58,11 @@ export default function KamaSutraCardsBoard() {
     timeoutRef.current = window.setTimeout(() => {
       setCurrentCardId(next.id);
       setIsDrawing(false);
-      const nextSession = completeGameRound(STORAGE_KEY, session);
+
+      // Read the latest persisted session instead of closing over stale React state.
+      // This keeps progress accurate without performing side effects inside a state updater.
+      const currentSession = loadGameSession(STORAGE_KEY);
+      const nextSession = completeGameRound(STORAGE_KEY, currentSession);
       setSession(nextSession);
     }, 450);
   }, [isDrawing]);
